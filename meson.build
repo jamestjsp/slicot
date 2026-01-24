@@ -36,7 +36,9 @@ else
   lapack = dependency(lapack_opt, required: true)
 endif
 
-if cc.has_function('dgemm_', dependencies: blas)
+if cc.has_function('scipy_dgemm_', dependencies: blas)
+  add_project_arguments('-DSLC_FC_SCIPY_OPENBLAS', language: 'c')
+elif cc.has_function('dgemm_', dependencies: blas)
   add_project_arguments('-DSLC_FC_LOWER_US', language: 'c')
 elif cc.has_function('dgemm', dependencies: blas)
   add_project_arguments('-DSLC_FC_LOWER', language: 'c')

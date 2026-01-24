@@ -31,9 +31,11 @@
 extern "C" {
 #endif
 
-/* Symbol mangling macros - defined by CMake configuration */
+/* Symbol mangling macros - defined by Meson configuration */
 #ifndef SLC_FC_FUNC
-  #if defined(SLC_FC_LOWER_US)
+  #if defined(SLC_FC_SCIPY_OPENBLAS)
+    #define SLC_FC_FUNC(lc, UC) scipy_##lc##_
+  #elif defined(SLC_FC_LOWER_US)
     #define SLC_FC_FUNC(lc, UC) lc##_
   #elif defined(SLC_FC_LOWER)
     #define SLC_FC_FUNC(lc, UC) lc
