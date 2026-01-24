@@ -58,7 +58,7 @@ jobs:
           CIBW_MANYLINUX_AARCH64_IMAGE: manylinux2014
           CIBW_MUSLLINUX_X86_64_IMAGE: musllinux_1_2
           CIBW_MUSLLINUX_AARCH64_IMAGE: musllinux_1_2
-          CIBW_BEFORE_ALL_LINUX: yum install -y openblas-devel || apk add openblas-dev
+          CIBW_BEFORE_ALL_LINUX: (dnf install -y openblas-devel 2>/dev/null || yum install -y openblas-devel) || apk add openblas-dev
           CIBW_BEFORE_ALL_WINDOWS: choco install -y pkgconfiglite
           CIBW_ENVIRONMENT_LINUX: PKG_CONFIG_PATH=/tmp/openblas
           CIBW_ENVIRONMENT_MACOS: MACOSX_DEPLOYMENT_TARGET=11.0 PKG_CONFIG_PATH=/tmp/openblas
