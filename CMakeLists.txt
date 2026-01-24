@@ -70,11 +70,11 @@ if(DEFINED SKBUILD)
 
     target_link_libraries(_slicot PRIVATE slicot)
 
-    install(TARGETS _slicot LIBRARY DESTINATION slicot)
+    install(TARGETS _slicot LIBRARY DESTINATION .)
     install(FILES
         ${CMAKE_SOURCE_DIR}/python/slicot/__init__.py
         ${CMAKE_SOURCE_DIR}/python/slicot/py.typed
-        DESTINATION slicot
+        DESTINATION .
         OPTIONAL
     )
 endif()
