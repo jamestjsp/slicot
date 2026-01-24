@@ -29,6 +29,12 @@ jobs:
       - name: Install Python package
         run: pip install .[test] -v
 
+      - name: Debug installed package
+        run: |
+          python -c "import slicot; print(slicot.__file__)"
+          python -c "import slicot; import os; print(os.listdir(os.path.dirname(slicot.__file__)))"
+          python -c "from slicot import _slicot; print('_slicot imported')" || true
+
       - name: Run quick test
         run: pytest tests/python/test_ab01md.py -v
 
