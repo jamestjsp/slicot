@@ -29,6 +29,9 @@ classifiers = [
 ]
 dependencies = ["numpy>=2.0"]
 
+[project.optional-dependencies]
+test = ["pytest", "pytest-xdist", "pytest-rerunfailures", "scipy"]
+
 [project.urls]
 Homepage = "https://github.com/jamestjsp/slicot"
 Documentation = "https://slicot.github.io/"
