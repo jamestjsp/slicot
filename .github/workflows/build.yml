@@ -15,23 +15,49 @@ jobs:
           - os: ubuntu-latest
             arch: x86_64
             cibw_archs: x86_64
+            cibw_build: "cp311-manylinux* cp312-manylinux* cp313-manylinux*"
+          - os: ubuntu-latest
+            arch: aarch64
+            cibw_archs: aarch64
+            cibw_build: "cp311-manylinux* cp312-manylinux* cp313-manylinux*"
+            qemu: true
+          - os: ubuntu-latest
+            arch: musllinux_x86_64
+            cibw_archs: x86_64
+            cibw_build: "cp311-musllinux* cp312-musllinux* cp313-musllinux*"
+          - os: ubuntu-latest
+            arch: musllinux_aarch64
+            cibw_archs: aarch64
+            cibw_build: "cp311-musllinux* cp312-musllinux* cp313-musllinux*"
+            qemu: true
           - os: macos-14
             arch: arm64
             cibw_archs: arm64
+            cibw_build: "cp311-* cp312-* cp313-*"
           - os: windows-latest
             arch: x86_64
             cibw_archs: AMD64
+            cibw_build: "cp311-* cp312-* cp313-*"
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        if: matrix.qemu
+        uses: docker/setup-qemu-action@v3
+        with:
+          platforms: arm64
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.22
         env:
           CIBW_ARCHS: ${{ matrix.cibw_archs }}
-          CIBW_BUILD: "cp311-* cp312-* cp313-*"
-          CIBW_SKIP: "pp* *-win32 *-manylinux_i686 *-musllinux_* *_universal2"
+          CIBW_BUILD: ${{ matrix.cibw_build }}
+          CIBW_SKIP: "pp* *-win32 *-manylinux_i686 *_universal2"
           CIBW_MANYLINUX_X86_64_IMAGE: manylinux2014
+          CIBW_MANYLINUX_AARCH64_IMAGE: manylinux2014
+          CIBW_MUSLLINUX_X86_64_IMAGE: musllinux_1_2
+          CIBW_MUSLLINUX_AARCH64_IMAGE: musllinux_1_2
           CIBW_BEFORE_ALL_LINUX: yum install -y openblas-devel || apk add openblas-dev
           CIBW_BEFORE_ALL_WINDOWS: choco install -y pkgconfiglite
           CIBW_ENVIRONMENT_LINUX: PKG_CONFIG_PATH=/tmp/openblas
@@ -44,7 +70,7 @@ jobs:
             powershell -Command "$libdir = Get-Content 'C:/openblas/libdir.txt'; delvewheel repair -w {dest_dir} {wheel} --add-path $libdir"
           CIBW_TEST_REQUIRES: pytest pytest-timeout scipy
           CIBW_TEST_COMMAND: pytest {project}/tests/python/test_ab01md.py -v --timeout=60
-          CIBW_TEST_SKIP: "*-manylinux*"
+          CIBW_TEST_SKIP: "*-manylinux* *-musllinux*"
           CIBW_TEST_COMMAND_WINDOWS: pytest {project}/tests/python/test_ab01md.py -v --timeout=60 || true
 
       - uses: actions/upload-artifact@v4
