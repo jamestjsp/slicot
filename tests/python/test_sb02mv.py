@@ -1,0 +1,124 @@
+"""
+Tests for SB02MV: Select stable eigenvalues for continuous-time Riccati.
+
+SB02MV is a selector function for continuous-time algebraic Riccati equations.
+Returns True for stable eigenvalues (real part < 0).
+
+Mathematical definition:
+- Continuous-time stability: eigenvalue is stable if Re(lambda) < 0
+- SB02MV selects STABLE eigenvalues: Re(lambda) < 0
+"""
+
+import numpy as np
+from numpy.testing import assert_equal
+
+
+def test_sb02mv_stable_negative():
+    """Negative real part eigenvalues are stable (return True)."""
+    from slicot import sb02mv
+
+    result = sb02mv(-1.0, 0.0)
+    assert_equal(result, True)
+
+    result = sb02mv(-0.5, 2.0)
+    assert_equal(result, True)
+
+    result = sb02mv(-100.0, 50.0)
+    assert_equal(result, True)
+
+
+def test_sb02mv_unstable_positive():
+    """Positive real part eigenvalues are unstable (return False)."""
+    from slicot import sb02mv
+
+    result = sb02mv(1.0, 0.0)
+    assert_equal(result, False)
+
+    result = sb02mv(0.5, 2.0)
+    assert_equal(result, False)
+
+    result = sb02mv(100.0, -50.0)
+    assert_equal(result, False)
+
+
+def test_sb02mv_unstable_zero():
+    """Zero real part eigenvalues are unstable (return False).
+
+    Purely imaginary eigenvalues on stability boundary are NOT selected.
+    """
+    from slicot import sb02mv
+
+    result = sb02mv(0.0, 1.0)
+    assert_equal(result, False)
+
+    result = sb02mv(0.0, 0.0)
+    assert_equal(result, False)
+
+    result = sb02mv(0.0, -5.5)
+    assert_equal(result, False)
+
+
+def test_sb02mv_boundary_small():
+    """Test small positive/negative values near zero.
+
+    Ensures strict < 0 comparison works correctly.
+    """
+    from slicot import sb02mv
+
+    eps = np.finfo(float).eps
+
+    result = sb02mv(-eps, 1.0)
+    assert_equal(result, True)
+
+    result = sb02mv(eps, 1.0)
+    assert_equal(result, False)
+
+
+def test_sb02mv_imaginary_symmetry():
+    """
+    Mathematical property: sign of imaginary part doesn't affect result.
+
+    sb02mv(reig, ieig) == sb02mv(reig, -ieig) for all values.
+    """
+    from slicot import sb02mv
+
+    test_cases = [
+        (0.0, 1.0),
+        (0.5, 2.0),
+        (-0.5, 3.0),
+        (1e-10, 100.0),
+        (-1e-10, 100.0),
+    ]
+
+    for reig, ieig in test_cases:
+        result_pos = sb02mv(reig, ieig)
+        result_neg = sb02mv(reig, -ieig)
+        assert_equal(result_pos, result_neg,
+                    f"Imaginary symmetry failed for reig={reig}, ieig={ieig}")
+
+
+def test_sb02mv_complement_sb02mr():
+    """
+    Mathematical property: SB02MV and SB02MR are complements.
+
+    For any eigenvalue, SB02MV and SB02MR should return opposite values.
+    - SB02MV returns True for stable (Re < 0)
+    - SB02MR returns True for unstable (Re >= 0)
+    """
+    from slicot import sb02mv, sb02mr
+
+    test_cases = [
+        (0.0, 1.0),     # On boundary: unstable
+        (1.0, 0.0),     # Positive: unstable
+        (-1.0, 0.0),    # Negative: stable
+        (0.5, -2.0),    # Positive: unstable
+        (-0.5, 2.0),    # Negative: stable
+        (0.0, 0.0),     # Origin: unstable
+    ]
+
+    for reig, ieig in test_cases:
+        result_mv = sb02mv(reig, ieig)
+        result_mr = sb02mr(reig, ieig)
+        # Exactly one should be True
+        assert_equal(result_mv != result_mr, True,
+                    f"Complement property failed for reig={reig}, ieig={ieig}")
