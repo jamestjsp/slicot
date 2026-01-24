@@ -7400,7 +7400,7 @@ PyObject *py_mb03lp(PyObject *self, PyObject *args, PyObject *kwargs) {
     i32 lbwork = m > 0 ? m : 1;
     i32 *iwork = (i32 *)calloc(liwork > 1 ? liwork : 1, sizeof(i32));
     f64 *dwork = (f64 *)calloc(ldwork > 1 ? ldwork : 1, sizeof(f64));
-    bool *bwork = (bool *)calloc(lbwork, sizeof(bool));
+    i32 *bwork = (i32 *)calloc(lbwork, sizeof(i32));
 
     if (iwork == NULL || dwork == NULL || bwork == NULL) {
         free(iwork);
