@@ -1,0 +1,92 @@
+[build-system]
+requires = ["scikit-build-core>=0.10", "numpy>=2.0"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "slicot"
+version = "1.0.0"
+description = "Python bindings for SLICOT - Subroutine Library in Control Theory"
+readme = "README.md"
+license = "BSD-3-Clause"
+requires-python = ">=3.11"
+authors = [
+    { name = "SLICOT Contributors" }
+]
+keywords = ["control", "systems", "linear", "lapack", "blas", "riccati", "lyapunov"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Programming Language :: C",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Mathematics",
+]
+dependencies = ["numpy>=2.0"]
+
+[project.urls]
+Homepage = "https://github.com/jamestjsp/slicot"
+Documentation = "https://slicot.github.io/"
+Repository = "https://github.com/jamestjsp/slicot"
+Issues = "https://github.com/jamestjsp/slicot/issues"
+
+[tool.scikit-build]
+cmake.minimum-version = "3.20"
+cmake.build-type = "Release"
+cmake.args = [
+    "-DBUILD_TESTING=OFF",
+    "-DBUILD_EXAMPLES=OFF",
+    "-DSLICOT_VENDOR_OPENBLAS=ON",
+]
+wheel.packages = ["python/slicot"]
+wheel.install-dir = "slicot"
+sdist.include = [
+    "cmake/*",
+    "include/**/*",
+    "src/**/*.c",
+    "python/**/*.c",
+    "python/**/*.h",
+    "python/slicot/*.py",
+    "python/data/*.json",
+    "tools/generate_docstrings.py",
+]
+sdist.exclude = [
+    "build/*",
+    "tests/*",
+]
+
+[tool.scikit-build.cmake.define]
+SLICOT_VENDOR_OPENBLAS = "ON"
+
+[tool.cibuildwheel]
+build = "cp311-* cp312-* cp313-*"
+skip = "pp* *-win32 *-manylinux_i686 *-musllinux_i686 *_universal2"
+test-requires = ["pytest", "scipy"]
+test-command = "pytest {project}/tests/python/test_ab01md.py -v"
+
+[tool.cibuildwheel.linux]
+archs = ["x86_64", "aarch64"]
+manylinux-x86_64-image = "manylinux2014"
+manylinux-aarch64-image = "manylinux2014"
+musllinux-x86_64-image = "musllinux_1_2"
+musllinux-aarch64-image = "musllinux_1_2"
+before-all = "yum install -y cmake ninja-build || apk add cmake ninja"
+
+[tool.cibuildwheel.macos]
+archs = ["arm64"]
+environment = { MACOSX_DEPLOYMENT_TARGET = "11.0" }
+
+[tool.cibuildwheel.windows]
+archs = ["AMD64", "ARM64"]
+before-build = "pip install delvewheel"
+repair-wheel-command = "delvewheel repair -w {dest_dir} {wheel}"
+
+[tool.pytest.ini_options]
+testpaths = ["tests/python"]
+python_files = ["test_*.py"]
+addopts = "-v"
