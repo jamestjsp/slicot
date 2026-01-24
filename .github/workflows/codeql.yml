@@ -40,8 +40,9 @@ jobs:
         if: matrix.language == 'c-cpp'
         run: |
           sudo apt-get update && sudo apt-get install -y libblas-dev liblapack-dev ninja-build
-          cmake -B build -G Ninja -DBUILD_TESTING=OFF
-          cmake --build build
+          pip install meson
+          meson setup build
+          meson compile -C build
 
       - uses: github/codeql-action/analyze@v3
         with:
