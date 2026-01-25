@@ -104,7 +104,8 @@ def solve_lqr_continuous(A, B, Q, R):
     if info != 0:
         raise RuntimeError(f"sb02md failed with info={info}")
     K = R_inv @ B.T @ X
-    poles = wr[:n] + 1j * wi[:n]
+    A_cl = A - B @ K
+    poles = np.linalg.eigvals(A_cl)
     return K, X, poles
 
 
@@ -119,7 +120,8 @@ def solve_lqr_discrete(A, B, Q, R):
     if info != 0:
         raise RuntimeError(f"sb02md failed with info={info}")
     K = np.linalg.inv(R + B.T @ X @ B) @ B.T @ X @ A
-    poles = wr[:n] + 1j * wi[:n]
+    A_cl = A - B @ K
+    poles = np.linalg.eigvals(A_cl)
     return K, X, poles
 
 

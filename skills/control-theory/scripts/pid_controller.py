@@ -14,7 +14,7 @@ Author: Converted from Java to Python
 
 import numpy as np
 from typing import Optional
-from slicot import tf01md, ab04md
+from slicot import ab04md
 
 
 class PIDController:
@@ -91,6 +91,15 @@ class PIDController:
         ulow: float = -1.0,
         uhigh: float = 1.0
     ):
+        if Ti <= 0:
+            raise ValueError(f"Ti must be positive, got {Ti}")
+        if h <= 0:
+            raise ValueError(f"h (sampling period) must be positive, got {h}")
+        if ulow >= uhigh:
+            raise ValueError(f"ulow must be < uhigh, got ulow={ulow}, uhigh={uhigh}")
+        if Tt <= 0:
+            raise ValueError(f"Tt must be positive, got {Tt}")
+
         self.params = {
             'K': K,
             'Ti': Ti,
@@ -317,9 +326,12 @@ def simulate_pid_control(
 
 
 if __name__ == "__main__":
-    import matplotlib
-    matplotlib.use('Agg')
-    import matplotlib.pyplot as plt
+    import argparse
+
+    parser = argparse.ArgumentParser(description='PID Controller Demo')
+    parser.add_argument('--save', type=str, help='Save plot to file')
+    parser.add_argument('--show', action='store_true', help='Display plot interactively')
+    args = parser.parse_args()
 
     print("=" * 70)
     print("PID CONTROLLER DEMONSTRATION")
@@ -343,30 +355,12 @@ if __name__ == "__main__":
     print(f"\nPlant: 1/(s^2 + 2s + 1)")
     print(f"Discrete plant (h=0.01s, Tustin)")
 
-    pid = PIDController(K=3.0, Ti=1.0, Td=0.2, h=0.01, N=10, b=0.8)
+    pid = PIDController(K=3.0, Ti=1.0, Td=0.2, h=0.01, N=10, b=0.8,
+                        ulow=-10.0, uhigh=10.0)  # Wide limits to show control action
     print(f"\nController: {pid}")
 
     print("\nSimulating step response...")
     t, y, u, sp = simulate_pid_control(pid, plant, setpoint=1.0, duration=10.0)
-
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8))
-
-    ax1.plot(t, sp, 'r--', label='Setpoint', linewidth=2)
-    ax1.plot(t, y, 'b-', label='Output', linewidth=1.5)
-    ax1.set_ylabel('Output')
-    ax1.set_title('PID Control: Step Response')
-    ax1.legend()
-    ax1.grid(True, alpha=0.3)
-
-    ax2.plot(t, u, 'g-', label='Control Signal', linewidth=1.5)
-    ax2.set_xlabel('Time (s)')
-    ax2.set_ylabel('Control Signal')
-    ax2.legend()
-    ax2.grid(True, alpha=0.3)
-
-    plt.tight_layout()
-    plt.savefig('pid_response.png', dpi=150)
-    print("Plot saved as 'pid_response.png'")
 
     settling_idx = np.where(np.abs(y - 1.0) < 0.02)[0]
     if len(settling_idx) > 0:
@@ -375,6 +369,39 @@ if __name__ == "__main__":
         print(f"  Settling time (2%): {settling_time:.2f} s")
         print(f"  Max overshoot: {(np.max(y) - 1.0) * 100:.1f}%")
         print(f"  Steady-state error: {abs(y[-1] - 1.0):.4f}")
+        print(f"  Control range: [{u.min():.3f}, {u.max():.3f}]")
+        print(f"  Control at steady-state: {u[-1]:.4f}")
+
+    if args.save or args.show:
+        try:
+            import matplotlib
+            if args.save and not args.show:
+                matplotlib.use('Agg')
+            import matplotlib.pyplot as plt
+
+            fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8))
+            ax1.plot(t, sp, 'r--', label='Setpoint', linewidth=2)
+            ax1.plot(t, y, 'b-', label='Output', linewidth=1.5)
+            ax1.set_ylabel('Output')
+            ax1.set_title('PID Control: Step Response')
+            ax1.legend()
+            ax1.grid(True, alpha=0.3)
+
+            ax2.plot(t, u, 'g-', label='Control Signal', linewidth=1.5)
+            ax2.set_xlabel('Time (s)')
+            ax2.set_ylabel('Control Signal')
+            ax2.legend()
+            ax2.grid(True, alpha=0.3)
+
+            plt.tight_layout()
+
+            if args.save:
+                plt.savefig(args.save, dpi=150)
+                print(f"\nPlot saved as '{args.save}'")
+            if args.show:
+                plt.show()
+        except ImportError:
+            print("\nmatplotlib not available - skipping plot")
 
     print("\n" + "=" * 70)
     print("DEMONSTRATION COMPLETE")

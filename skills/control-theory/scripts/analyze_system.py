@@ -220,15 +220,15 @@ def main():
         den = parse_polynomial(args.denominator)
 
         if args.dt is None:
-            sys, fresp = analyze_continuous_system(num, den)
+            sys_matrices, fresp = analyze_continuous_system(num, den)
             title = "Continuous-Time System"
         else:
-            sys, fresp = analyze_discrete_system(num, den, args.dt)
+            sys_matrices, fresp = analyze_discrete_system(num, den, args.dt)
             title = f"Discrete-Time System (Ts={args.dt}s)"
 
         if args.plot:
             mag, phase, w = fresp
-            plot_frequency_response(sys, mag, phase, w, title, args.dt)
+            plot_frequency_response(sys_matrices, mag, phase, w, title, args.dt)
 
     except ValueError as e:
         print(f"Error parsing polynomials: {e}", file=sys.stderr)

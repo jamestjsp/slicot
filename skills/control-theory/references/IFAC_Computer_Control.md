@@ -21,13 +21,6 @@ Computer control is entering all facets of life from home electronics to product
 
 The paper introduces different aspects of computer-controlled systems from simple approximation of continuous time controllers to design aspects of optimal sampled-data controllers. We also point out some of the pitfalls of computer control and discusses the practical aspects as well as the implementation issues of computer control.
 
-> **Note:** Some code examples in this document use the `harold` library. For slicot-based implementations, use the following mappings:
-> - Discretization: `harold.discretize()` → `slicot.ab04md()` (Tustin)
-> - Simulation: `harold.simulate_step_response()` → `slicot.tf01md()`
-> - Frequency response: `harold.frequency_response()` → `slicot.tb05ad()`
-> - LQR: `harold.lqr()` → `slicot.sb02md()` (Riccati solver)
-> - See `scripts/` directory for working slicot examples.
-
 ---
 
 ## Contents
@@ -145,14 +138,38 @@ The computer-controlled system has slightly higher overshoot and the settling ti
 
 The example shows that it is straightforward to obtain an algorithm for computer control simply by writing the continuous-time control law as a differential equation and approximating the derivatives by differences. The example also indicates that the procedure seems to work well if the sampling period is sufficiently small. The overshoot and the settling time are, however, a little larger for the computer-controlled system, i.e. there is a deterioration due to the approximation.
 
-**Python Implementation using harold:**
+**Python Implementation using slicot:**
 
 ```python
 #!/usr/bin/env python3
-"""Disk-Drive Positioning System Example using harold"""
+"""Disk-Drive Positioning System Example using slicot"""
 import numpy as np
-from harold import Transfer, State, discretize, simulate_step_response
+from slicot import ab04md, tf01md
 import matplotlib.pyplot as plt
+
+def tf_to_ss(num, den):
+    """Convert SISO transfer function to controllable canonical state-space."""
+    num = np.atleast_1d(num).astype(float)
+    den = np.atleast_1d(den).astype(float)
+    den = den / den[0]
+    num = num / den[0]
+    n = len(den) - 1
+    if n == 0:
+        return (np.zeros((0, 0), order='F'), np.zeros((0, 1), order='F'),
+                np.zeros((1, 0), order='F'), np.array([[num[0]]], order='F'))
+    num_padded = np.zeros(n + 1)
+    num_padded[n + 1 - len(num):] = num
+    A = np.zeros((n, n), order='F', dtype=float)
+    A[:-1, 1:] = np.eye(n - 1)
+    A[-1, :] = -den[1:][::-1]
+    B = np.zeros((n, 1), order='F', dtype=float)
+    B[-1, 0] = 1.0
+    C = np.zeros((1, n), order='F', dtype=float)
+    d0 = num_padded[0]
+    for i in range(n):
+        C[0, n - 1 - i] = num_padded[i + 1] - d0 * den[i + 1]
+    D = np.array([[d0]], order='F', dtype=float)
+    return A, B, C, D
 
 # Plant parameters
 k, J = 1.0, 1.0  # Amplifier gain and moment of inertia
@@ -160,7 +177,7 @@ omega_0 = 1.0    # Design parameter (determines speed)
 h = 0.3          # Sampling period
 
 # Create continuous-time plant: G(s) = k/(J*s^2)
-G_plant = Transfer(k, [J, 0, 0])
+A_plant, B_plant, C_plant, D_plant = tf_to_ss([k], [J, 0, 0])
 print(f"Plant: G(s) = {k}/{J}s²")
 
 # Controller parameters (equation 2)
@@ -173,44 +190,44 @@ print(f"  a = 2ω₀ = {a}")
 print(f"  b = ω₀/2 = {b}")
 print(f"  K = 2Jω₀²/k = {K}")
 
-# Continuous-time controller: U(s) = (bK/a)Uc(s) - K(s+b)/(s+a)Y(s)
-# Transfer function from Y to U (feedback part)
-C_fb = Transfer([K, K*b], [1, a])
+# Simulate continuous-time closed-loop using fine discretization
+dt_cont = 0.01
+A_d, B_d, C_d, D_d, _ = ab04md('C',
+    np.asfortranarray(A_plant), np.asfortranarray(B_plant),
+    np.asfortranarray(C_plant), np.asfortranarray(D_plant),
+    alpha=1.0, beta=2.0/dt_cont)
 
-# Create closed-loop system for continuous-time
-G_cl_cont = (b/a * K * G_plant) / (1 + C_fb * G_plant)
+n_cont = int(15 / dt_cont)
+t_cont = np.arange(n_cont) * dt_cont
+y_cont = np.zeros(n_cont)
+x_cont = np.zeros(A_d.shape[0])
+x_ctrl_cont = 0.0
 
-# Simulate continuous-time step response
-y_cont, t_cont = simulate_step_response(G_cl_cont, t=np.linspace(0, 15, 500))
+for i in range(n_cont):
+    y_k = (C_d @ x_cont + D_d.flatten() * 0).item()
+    y_cont[i] = y_k
+    u_k = K * (b/a * 1.0 - y_k - x_ctrl_cont)
+    x_ctrl_cont += dt_cont * ((a - b) * y_k - a * x_ctrl_cont)
+    x_cont = A_d @ x_cont + B_d.flatten() * u_k
 
 # DISCRETE-TIME IMPLEMENTATION (equation 3)
-# Discretize using forward difference approximation
-
 class DiskDriveController:
     """Discrete controller for disk drive (equation 3)."""
-
     def __init__(self, K, a, b, h):
-        self.K = K
-        self.a = a
-        self.b = b
-        self.h = h
-        self.x = 0.0  # Controller state
+        self.K, self.a, self.b, self.h = K, a, b, h
+        self.x = 0.0
 
     def calculate_output(self, uc, y):
-        """Calculate control output."""
-        u = self.K * (self.b/self.a * uc - y - self.x)
-        return u
+        return self.K * (self.b/self.a * uc - y - self.x)
 
     def update_state(self, y):
-        """Update controller state (forward difference)."""
         self.x = self.x + self.h * ((self.a - self.b) * y - self.a * self.x)
 
-# Discrete plant model (zero-order hold)
-G_discrete = discretize(G_plant, dt=h, method='zoh')
-
-# Convert to state-space for simulation
-from harold import transfer_to_state
-plant_ss = transfer_to_state(G_discrete)
+# Discrete plant model (Tustin approximation)
+A_disc, B_disc, C_disc, D_disc, _ = ab04md('C',
+    np.asfortranarray(A_plant), np.asfortranarray(B_plant),
+    np.asfortranarray(C_plant), np.asfortranarray(D_plant),
+    alpha=1.0, beta=2.0/h)
 
 # Simulation
 n_steps = int(15 / h)
@@ -219,28 +236,19 @@ y_disc = np.zeros(n_steps)
 u_disc = np.zeros(n_steps)
 
 controller = DiskDriveController(K, a, b, h)
-x_plant = np.zeros(plant_ss.NumberOfStates)
+x_plant = np.zeros(A_disc.shape[0])
 setpoint = 1.0
 
-for k in range(n_steps):
-    # Measure output
-    y_k = (plant_ss.c @ x_plant).item()
-    y_disc[k] = y_k
-
-    # Calculate control
+for i in range(n_steps):
+    y_k = (C_disc @ x_plant).item()
+    y_disc[i] = y_k
     u_k = controller.calculate_output(setpoint, y_k)
-    u_disc[k] = u_k
-
-    # Update controller state
+    u_disc[i] = u_k
     controller.update_state(y_k)
-
-    # Update plant state
-    x_plant = plant_ss.a @ x_plant + (plant_ss.b * u_k).flatten()
+    x_plant = A_disc @ x_plant + B_disc.flatten() * u_k
 
 # Plot results (matching Figure 4)
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 8))
-
-# Position plot
 ax1.plot(t_cont, y_cont, 'r--', label='Continuous (Analog)', linewidth=2)
 ax1.plot(t_disc, y_disc, 'b-', label='Discrete (Sampled-data)', linewidth=1.5)
 ax1.axhline(1, color='k', linestyle=':', alpha=0.3)
@@ -249,7 +257,6 @@ ax1.set_title(f'Disk Drive Control: ω₀={omega_0}, h={h}')
 ax1.legend()
 ax1.grid(True, alpha=0.3)
 
-# Control signal plot
 ax2.step(t_disc, u_disc, 'b-', where='post', label='Control signal', linewidth=1.5)
 ax2.set_xlabel('Time (s)')
 ax2.set_ylabel('Control u(t)')
@@ -258,13 +265,7 @@ ax2.grid(True, alpha=0.3)
 
 plt.tight_layout()
 plt.savefig('disk_drive_control.png')
-print("\nPlot saved as 'disk_drive_control.png'")
-
-# Performance comparison
-print(f"\nPerformance Analysis:")
-print(f"  Continuous overshoot: {(max(y_cont) - 1.0)*100:.1f}%")
-print(f"  Discrete overshoot: {(max(y_disc) - 1.0)*100:.1f}%")
-print(f"  Difference in outputs is negligible for h < 0.1/ω₀ = {0.1/omega_0}")
+print(f"\nPerformance: Discrete overshoot: {(max(y_disc) - 1.0)*100:.1f}%")
 ```
 
 This implementation demonstrates:
@@ -1093,41 +1094,49 @@ where β and γ are weighting factors (typically β = 1, γ = 0 to reduce oversh
 
 ### Computer Code
 
-**Python implementation of digital PID controller with anti-windup using harold:**
+**Python implementation of digital PID controller with anti-windup using slicot:**
 
 ```python
 #!/usr/bin/env python3
 """Digital PID Controller with anti-windup (converted from Java Listing 1)"""
 import numpy as np
-from harold import Transfer, transfer_to_state, discretize
+from slicot import ab04md
+
+def tf_to_ss(num, den):
+    """Convert SISO transfer function to controllable canonical state-space."""
+    num = np.atleast_1d(num).astype(float)
+    den = np.atleast_1d(den).astype(float)
+    den = den / den[0]
+    num = num / den[0]
+    n = len(den) - 1
+    if n == 0:
+        return (np.zeros((0, 0), order='F'), np.zeros((0, 1), order='F'),
+                np.zeros((1, 0), order='F'), np.array([[num[0]]], order='F'))
+    num_padded = np.zeros(n + 1)
+    num_padded[n + 1 - len(num):] = num
+    A = np.zeros((n, n), order='F', dtype=float)
+    A[:-1, 1:] = np.eye(n - 1)
+    A[-1, :] = -den[1:][::-1]
+    B = np.zeros((n, 1), order='F', dtype=float)
+    B[-1, 0] = 1.0
+    C = np.zeros((1, n), order='F', dtype=float)
+    d0 = num_padded[0]
+    for i in range(n):
+        C[0, n - 1 - i] = num_padded[i + 1] - d0 * den[i + 1]
+    D = np.array([[d0]], order='F', dtype=float)
+    return A, B, C, D
 
 class PIDController:
     """PID controller with anti-windup and setpoint weighting."""
 
     def __init__(self, K=4.4, Ti=0.4, Td=0.2, h=0.03, Tt=10.0,
                  N=10.0, b=1.0, ulow=-1.0, uhigh=1.0):
-        """
-        Parameters:
-            K: Proportional gain
-            Ti: Integral time
-            Td: Derivative time
-            h: Sampling period
-            Tt: Anti-windup tracking time
-            N: Derivative filter constant
-            b: Setpoint weighting (0-1)
-            ulow, uhigh: Output limits
-        """
         self.params = {'K': K, 'Ti': Ti, 'Td': Td, 'h': h,
-                      'Tt': Tt, 'N': N, 'b': b,
-                      'ulow': ulow, 'uhigh': uhigh}
-
-        # Pre-compute coefficients
+                      'Tt': Tt, 'N': N, 'b': b, 'ulow': ulow, 'uhigh': uhigh}
         self.params['bi'] = K * h / Ti
         self.params['ar'] = h / Tt
         self.params['ad'] = Td / (Td + N * h)
         self.params['bd'] = K * N * self.params['ad']
-
-        # Initialize states
         self.states = {'I': 0.0, 'D': 0.0, 'yold': 0.0}
         self.signals = {'uc': 0.0, 'y': 0.0, 'v': 0.0, 'u': 0.0}
 
@@ -1135,62 +1144,46 @@ class PIDController:
         """Calculate PID output u(k) given setpoint uc and measurement y."""
         p = self.params
         self.signals['uc'], self.signals['y'] = uc, y
-
-        # Proportional term with setpoint weighting
         P = p['K'] * (p['b'] * uc - y)
-
-        # Derivative term (filtered backward difference)
-        self.states['D'] = (p['ad'] * self.states['D'] -
-                           p['bd'] * (y - self.states['yold']))
-
-        # Sum P + I + D
+        self.states['D'] = p['ad'] * self.states['D'] - p['bd'] * (y - self.states['yold'])
         self.signals['v'] = P + self.states['I'] + self.states['D']
-
-        # Apply output limits
-        self.signals['u'] = np.clip(self.signals['v'],
-                                    p['ulow'], p['uhigh'])
-
+        self.signals['u'] = np.clip(self.signals['v'], p['ulow'], p['uhigh'])
         return self.signals['u']
 
     def update_state(self, u):
         """Update states after output applied (anti-windup)."""
         p = self.params
-
-        # Integral update with anti-windup back-calculation
-        self.states['I'] += (p['bi'] * (self.signals['uc'] -
-                                        self.signals['y']) +
-                            p['ar'] * (u - self.signals['v']))
-
-        # Store measurement for next derivative
+        self.states['I'] += p['bi'] * (self.signals['uc'] - self.signals['y']) + \
+                           p['ar'] * (u - self.signals['v'])
         self.states['yold'] = self.signals['y']
 
 # Example usage
 if __name__ == "__main__":
     # Create plant: G(s) = 1/(s^2 + 2s + 1)
-    G = Transfer(1, [1, 2, 1])
-    Gd = discretize(G, dt=0.01, method='zoh')
-    plant = transfer_to_state(Gd)
+    A, B, C, D = tf_to_ss([1], [1, 2, 1])
+    dt = 0.01
+
+    # Discretize using Tustin
+    A_d, B_d, C_d, D_d, _ = ab04md('C',
+        np.asfortranarray(A), np.asfortranarray(B),
+        np.asfortranarray(C), np.asfortranarray(D),
+        alpha=1.0, beta=2.0/dt)
 
     # Create PID controller
-    pid = PIDController(K=3.0, Ti=1.0, Td=0.2, h=0.01)
+    pid = PIDController(K=3.0, Ti=1.0, Td=0.2, h=dt)
 
     # Simulation loop
     setpoint = 1.0
-    x = np.zeros(plant.NumberOfStates)  # Plant state
+    x = np.zeros(A_d.shape[0])
 
     for k in range(1000):
-        # Measure output
-        y = (plant.c @ x).item()
-
-        # Calculate control
+        y = (C_d @ x).item()
         u = pid.calculate_output(setpoint, y)
         pid.update_state(u)
-
-        # Update plant
-        x = plant.a @ x + (plant.b * u).flatten()
+        x = A_d @ x + B_d.flatten() * u
 
         if k % 100 == 0:
-            print(f"t={k*0.01:.2f}s: y={y:.3f}, u={u:.3f}")
+            print(f"t={k*dt:.2f}s: y={y:.3f}, u={u:.3f}")
 ```
 
 **Key features of this implementation:**
