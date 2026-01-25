@@ -50,7 +50,7 @@ Kp = calculate_process_gain(delta_pv=10.0, delta_output=5.0)
 print(f"Process Gain: {Kp:.2f}")  # Output: 2.00
 ```
 
-See [Process Identification](reference/01_process_identification.md) for detailed bump test procedures and analysis.
+See [Process Identification](references/01_process_identification.md) for detailed bump test procedures and analysis.
 
 ### 2. Understand the Controller
 
@@ -142,7 +142,7 @@ print(f"Tank Integral Time Ti:   {Ti:.1f} min")
 # Tank Integral Time Ti:   8.0 min
 ```
 
-See [Lambda Tuning Methods](reference/03_lambda_tuning.md) for detailed derivations and advanced scenarios.
+See [Lambda Tuning Methods](references/03_lambda_tuning.md) for detailed derivations and advanced scenarios.
 
 ### 4. Validate Performance
 
@@ -171,7 +171,7 @@ Test the tuned controller in automatic mode with a small setpoint change. Verify
 **Dead Time Limits:**
 - If Td > 3 × λ, conventional PI fails
 - Use advanced methods: Smith Predictor or IMC
-- See [Advanced Methods](reference/05_advanced_methods.md)
+- See [Advanced Methods](references/05_advanced_methods.md)
 
 **Model Mismatch:**
 - Real processes deviate from first-order model
@@ -181,7 +181,7 @@ Test the tuned controller in automatic mode with a small setpoint change. Verify
 **Nonlinearities:**
 - Stiction, dead band, varying gain cannot be fixed by tuning
 - Require mechanical repair or adaptive control
-- See [Nonlinearities](reference/06_nonlinearities.md)
+- See [Nonlinearities](references/06_nonlinearities.md)
 
 ## Additional Resources
 
@@ -198,12 +198,12 @@ Test the tuned controller in automatic mode with a small setpoint change. Verify
 
 ### Reference Documentation
 
-- **[Process Identification](reference/01_process_identification.md)** - Detailed bump test procedures, slope methods, fill time calculations
-- **[PID Fundamentals](reference/02_pid_fundamentals.md)** - Deep dive into P, I, D actions and controller forms
-- **[Lambda Tuning](reference/03_lambda_tuning.md)** - Complete derivation, tau ratio selection, frequency analysis
-- **[Integrating Processes](reference/04_integrating_processes.md)** - Tank level tuning, arrest rate selection, validation
-- **[Advanced Methods](reference/05_advanced_methods.md)** - Smith Predictor, IMC, dead time compensation
-- **[Nonlinearities](reference/06_nonlinearities.md)** - Stiction diagnosis, dead band, adaptive control
+- **[Process Identification](references/01_process_identification.md)** - Detailed bump test procedures, slope methods, fill time calculations
+- **[PID Fundamentals](references/02_pid_fundamentals.md)** - Deep dive into P, I, D actions and controller forms
+- **[Lambda Tuning](references/03_lambda_tuning.md)** - Complete derivation, tau ratio selection, frequency analysis
+- **[Integrating Processes](references/04_integrating_processes.md)** - Tank level tuning, arrest rate selection, validation
+- **[Advanced Methods](references/05_advanced_methods.md)** - Smith Predictor, IMC, dead time compensation
+- **[Nonlinearities](references/06_nonlinearities.md)** - Stiction diagnosis, dead band, adaptive control
 
 ## Quick Reference
 
