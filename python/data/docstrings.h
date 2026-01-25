@@ -26,7 +26,8 @@
     "  (a, b, ncont, z, tau, info): Transformed matrices, controllable order,\n" \
     "                               transformation matrix, reflectors, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab01md\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -64,7 +65,8 @@
     "    - tau: Elementary reflector factors\n" \
     "    - info: Exit code (0 = success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab01nd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m = 3, 2\n" \
@@ -107,7 +109,8 @@
     "    - kstair: Block sizes (first indcon elements)\n" \
     "    - info: Exit code (0 = success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab01od\n" \
     ">>> import numpy as np\n" \
     ">>> n, m = 5, 2\n" \
@@ -151,7 +154,8 @@
     "Returns:\n" \
     "  (a, b, c, d, info): Transformed matrices and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab04md\n" \
     ">>> a = np.array([[1.0, 0.5],\n" \
@@ -187,7 +191,8 @@
     "Returns:\n" \
     "  (a, b, c, d, n, info): Cascaded system matrices, state order, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab05md\n" \
     ">>> import numpy as np\n" \
     ">>> a1 = np.array([\n" \
@@ -253,7 +258,8 @@
     "Returns:\n" \
     "  (a, b, c, d, n, info): Feedback system matrices, state order, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab05nd\n" \
     ">>> import numpy as np\n" \
     ">>> a1 = np.array([\n" \
@@ -324,7 +330,8 @@
     "Returns:\n" \
     "  (a, b, c, d, n, m, info): Combined system matrices, state order, input count, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab05od\n" \
     ">>> import numpy as np\n" \
     ">>> a1 = np.array([\n" \
@@ -398,7 +405,8 @@
     "Returns:\n" \
     "  (n, a, b, c, d, info): State order, combined system matrices, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab05pd\n" \
     ">>> n1, m, p, n2 = 3, 2, 2, 3\n" \
@@ -466,7 +474,8 @@
     "  (a, b, c, d, n, m, p, info): Combined system matrices,\n" \
     "    state order, input count, output count, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab05qd\n" \
     ">>> import numpy as np\n" \
     ">>> a1 = np.array([\n" \
@@ -545,7 +554,8 @@
     "  (Ac, Bc, Cc, Dc, rcond, info): Closed-loop matrices,\n" \
     "    reciprocal condition number, exit code (0=success, 1=singular)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab05rd\n" \
     ">>> n, m, p, mv, pz = 3, 2, 2, 2, 2\n" \
@@ -619,7 +629,8 @@
     "  (Ac, Bc, Cc, Dc, rcond, info): Closed-loop matrices,\n" \
     "    reciprocal condition number, exit code (0=success, 1=singular)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab05sd\n" \
     ">>> n, m, p = 3, 2, 2\n" \
@@ -668,7 +679,8 @@
     "Returns:\n" \
     "  (a_dual, b_dual, c_dual, d_dual, info): Dual system matrices and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab07md\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 1, 2\n" \
@@ -710,7 +722,8 @@
     "  (ai, bi, ci, di, rcond, info): Inverse system matrices,\n" \
     "    reciprocal condition number, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab07nd\n" \
     ">>> a = np.array([[1.0, 2.0, 0.0],\n" \
@@ -746,7 +759,8 @@
     "Returns:\n" \
     "  (rank, info): Normal rank and exit code (0 = success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab08md\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 1, 1, 1\n" \
@@ -777,7 +791,8 @@
     "Returns:\n" \
     "  (rank, info): Normal rank and exit code (0 = success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab08mz\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 1, 1, 1\n" \
@@ -820,7 +835,8 @@
     "    - bf: Coefficient matrix Bf of reduced pencil\n" \
     "    - info: Exit code (0 = success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab08nd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 6, 2, 3\n" \
@@ -889,7 +905,8 @@
     "    - kronl: Left Kronecker (row) indices\n" \
     "    - info: Exit code (0 = success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab08nw\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 6, 2, 3\n" \
@@ -943,7 +960,8 @@
     "Returns:\n" \
     "  (abcd, ro, sigma, ninfz, mu, nu, nkrol, infz, kronl, info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab08nx\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 2, 1, 1\n" \
@@ -984,7 +1002,8 @@
     "Returns:\n" \
     "  (abcd, ninfz, nr, pr, dinfz, nkronl, infz, kronl, info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab08ny\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 2, 1, 1\n" \
@@ -1020,7 +1039,8 @@
     "Returns:\n" \
     "  (nu, rank, dinfz, nkror, nkrol, infz, kronr, kronl, af, bf, info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab08nz\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 6, 0, 3\n" \
@@ -1071,7 +1091,8 @@
     "  (ar, br, cr, hsv, nr, iwarn, info): Reduced system matrices,\n" \
     "    Hankel singular values, actual order, warning indicator, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09ad\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 7, 2, 3\n" \
@@ -1129,7 +1150,8 @@
     "    Hankel singular values, truncation matrices, actual order,\n" \
     "    warning indicator, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09ax\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 4, 1, 1\n" \
@@ -1182,7 +1204,8 @@
     "    Reduced system matrices, actual order, Hankel singular values,\n" \
     "    warning indicator, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09bd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 7, 2, 3\n" \
@@ -1251,7 +1274,8 @@
     "    Reduced system matrices, actual order, Hankel singular values,\n" \
     "    truncation matrices, minimal order, warning, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09bx\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 4, 2, 2\n" \
@@ -1312,7 +1336,8 @@
     "    Reduced system matrices, actual order, Hankel singular values,\n" \
     "    minimal order, warning indicator, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09cd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 7, 2, 3\n" \
@@ -1376,7 +1401,8 @@
     "    Reduced system matrices, actual order, Hankel singular values,\n" \
     "    minimal order, warning indicator, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09cx\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 4, 2, 2\n" \
@@ -1426,7 +1452,8 @@
     "  (ar, br, cr, dr, rcond, info): Reduced system matrices,\n" \
     "    reciprocal condition number, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09dd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p, nr = 7, 2, 3, 5\n" \
@@ -1494,7 +1521,8 @@
     "    Reduced system matrices, actual order, dimension of stable part,\n" \
     "    Hankel singular values, minimal order, warning, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09ed\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 7, 2, 3\n" \
@@ -1580,7 +1608,8 @@
     "    order of coprime factorization (nq), Hankel singular values (hsv),\n" \
     "    warning indicator (iwarn), and exit code (info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09fd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 7, 2, 3\n" \
@@ -1660,7 +1689,8 @@
     "    order of extended system (nq), Hankel singular values (hsv),\n" \
     "    warning indicator (iwarn), and exit code (info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09gd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 7, 2, 3\n" \
@@ -1744,7 +1774,8 @@
     "    Reduced system matrices, actual order, dimension of stable part,\n" \
     "    Hankel singular values of phase system, warning, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab09hd\n" \
     ">>> n, m, p = 7, 2, 3\n" \
@@ -1833,7 +1864,8 @@
     "    - iwarn: Warning (0=ok, 1=nr > nmin)\n" \
     "    - info: Exit code (0=success, 1=A not stable/Schur, 2-5=Hamiltonian errors, 6=D rank deficient, 7=SVD failed)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab09hx\n" \
     ">>> n, m, p = 4, 2, 2\n" \
@@ -1890,7 +1922,8 @@
     "    - rcond: Reciprocal condition number of Riccati solver\n" \
     "    - info: Exit code (0=success, 1=A unstable, 2-5=Riccati failed, 6=D rank deficient)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09hy\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 2, 1\n" \
@@ -1957,7 +1990,8 @@
     "    Reduced system matrices, transformed weight matrices, stable order,\n" \
     "    Hankel singular values, actual order, warning, and error code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab09id\n" \
     ">>> n, m, p = 3, 1, 1\n" \
@@ -2065,7 +2099,8 @@
     "    minimal realization order, Hankel singular values,\n" \
     "    warning indicator, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09ix\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 4, 1, 1\n" \
@@ -2154,7 +2189,8 @@
     "    - scaleo: Scaling factor for observability Grammian\n" \
     "    - info: Exit code (0=success, 1=A unstable, 2=Lyapunov failed)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09iy\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 2, 2\n" \
@@ -2248,7 +2284,8 @@
     "    - iwarn: Warning (0=ok, 1=nr>nsmin, 2=nr<nu)\n" \
     "    - info: Error code (0=success, 1-21 various failures)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab09jd\n" \
     ">>> n, m, p = 6, 1, 1\n" \
@@ -2350,7 +2387,8 @@
     "    info=2: pencil (AV,EV) not in generalized Schur form\n" \
     "    info=3: Sylvester equation singular\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09jv\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 2, 2\n" \
@@ -2422,7 +2460,8 @@
     "    info=3: Sylvester equation (standard) singular\n" \
     "    info=4: stability/antistability check failed\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09jw\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 2, 2\n" \
@@ -2484,7 +2523,8 @@
     "Returns:\n" \
     "  info: 0 if all in domain, 1 if some outside, -i if param i invalid\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09jx\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -2548,7 +2588,8 @@
     "    - iwarn: Warning (0=ok, 1=nr>nsmin, 2=nr<nu)\n" \
     "    - info: Error code (0=success, 1-13 various failures)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab09kd\n" \
     ">>> n, m, p = 6, 1, 1\n" \
@@ -2656,7 +2697,8 @@
     "    - info: Error (0=ok, 1=AV Schur failed, 2=AW Schur failed,\n" \
     "            3=Sylvester (V) failed, 4=Sylvester (W) failed)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab09kx\n" \
     ">>> n, m, p = 2, 1, 2\n" \
@@ -2731,7 +2773,8 @@
     "    Reduced system matrices, dimension of stable part,\n" \
     "    Hankel singular values, actual order, warning indicator, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09md\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 7, 2, 3\n" \
@@ -2796,7 +2839,8 @@
     "    Reduced system matrices, actual order, dimension of stable part,\n" \
     "    Hankel singular values, warning indicator, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab09nd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 7, 2, 3\n" \
@@ -2872,7 +2916,8 @@
     "    - info: Error code (0=success, 1=Schur failed, 2=separation failed,\n" \
     "            3=marginally stable, 4=HSV computation failed)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab13ad\n" \
     ">>> n, m, p = 7, 2, 3\n" \
@@ -2925,7 +2970,8 @@
     "  (h2norm, nq, iwarn, info): H2/L2 norm, order of minimal realization,\n" \
     "    warning indicator, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab13bd\n" \
     ">>> n, m, p = 3, 2, 2\n" \
@@ -2963,7 +3009,8 @@
     "  (hnorm, fpeak, info): H-infinity norm, peak frequency, exit code\n" \
     "    info: 0=success, 1=unstable, 2=tolerance too small, 3=eigenvalue error, 4=SVD error\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab13cd\n" \
     ">>> n, m, np_ = 6, 1, 1\n" \
@@ -3011,7 +3058,8 @@
     "Returns:\n" \
     "  (gpeak, fpeak, info): Peak gain [norm, scale], peak frequency, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab13dd\n" \
     ">>> n, m, p = 6, 1, 1\n" \
@@ -3057,7 +3105,8 @@
     "Returns:\n" \
     "  (result, info): Maximum singular value, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab13dx\n" \
     ">>> n, m, p = 2, 1, 1\n" \
@@ -3083,7 +3132,8 @@
     "Returns:\n" \
     "  (low, high, info): Lower/Upper bounds, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab13ed\n" \
     ">>> import numpy as np\n" \
     ">>> A = np.array([[-1.0]], order='F')\n" \
@@ -3104,7 +3154,8 @@
     "Returns:\n" \
     "  (beta, omega, info): Stability radius, minimizing frequency, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab13fd\n" \
     ">>> a = np.array([\n" \
@@ -3151,7 +3202,8 @@
     "  (gpeak, fpeak, nr, iwarn, info): Peak gain [norm, scale], peak frequency,\n" \
     "    reduced order, warning indicator, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab13hd\n" \
     ">>> n, m, p = 6, 1, 1\n" \
@@ -3210,7 +3262,8 @@
     "    - iwarn: Warning (1=E nearly singular, 2=system nearly improper)\n" \
     "    - info: Exit code (0=success, 1=Schur failed, 2=QZ failed)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab13id\n" \
     ">>> n, m, p = 9, 2, 2\n" \
@@ -3281,7 +3334,8 @@
     "  (bound, d, g, x, info): Upper bound on mu, scaling matrices D and G,\n" \
     "    scaling vector X for next call, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ab13md\n" \
     ">>> n = 4\n" \
@@ -3315,7 +3369,8 @@
     "    final ro/sigma, dimensions (mu,nu), infinite zero count/degrees,\n" \
     "    left Kronecker indices, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ab8nxz\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 2, 1, 1\n" \
@@ -3362,7 +3417,8 @@
     "    - di: Feedthrough matrix of inverse (m x m, always zero)\n" \
     "    - info: Exit code (0 = success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ag07bd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m = 2, 1\n" \
@@ -3412,7 +3468,8 @@
     "    - kronl: Left Kronecker indices\n" \
     "    - info: Exit code (0 = success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ag08bd\n" \
     ">>> import numpy as np\n" \
     ">>> l, n, m, p = 9, 9, 3, 3\n" \
@@ -3496,7 +3553,8 @@
     "    - kronl: Left Kronecker block counts\n" \
     "    - info: Exit code (0 = success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ag08by\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 2, 2\n" \
@@ -3565,7 +3623,8 @@
     "    - kronl: Left Kronecker indices\n" \
     "    - info: Exit code (0 = success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ag08bz\n" \
     ">>> import numpy as np\n" \
     ">>> A = self.A.copy()\n" \
@@ -3607,7 +3666,8 @@
     "    - kronl: Left Kronecker block counts\n" \
     "    - info: Exit code (0 = success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ag8byz\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 2, 2\n" \
@@ -3673,7 +3733,8 @@
     "    - x: Solution matrix (if vec[8]=True)\n" \
     "    - info: 0=success, 1=not implemented, 2=invalid param, 3=singular R\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import bb01ad\n" \
     ">>> nr = [2, 3]\n" \
@@ -3718,7 +3779,8 @@
     "    - x: Solution matrix (if vec[9]=True)\n" \
     "    - info: 0=success, 1=not implemented, 2=div by zero, 3=singular R\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import bb02ad\n" \
     ">>> nr = np.array([2, 3], dtype=np.int32)\n" \
@@ -3765,7 +3827,8 @@
     "    - note: Example description string\n" \
     "    - info: 0=success, <0=invalid argument\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import bb03ad\n" \
     ">>> nr = np.array([4, 1], dtype=np.int32)\n" \
@@ -3811,7 +3874,8 @@
     "    - note: Example description string\n" \
     "    - info: 0=success, <0=invalid argument\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import bb04ad\n" \
     ">>> nr = np.array([4, 1], dtype=np.int32)\n" \
@@ -3853,7 +3917,8 @@
     "    - note: Example description string\n" \
     "    - info: 0=success, 1=data file required, <0=invalid argument\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import bd01ad\n" \
     ">>> nr = np.array([1, 1], dtype=np.int32)\n" \
@@ -3895,7 +3960,8 @@
     "    - note: Example description string\n" \
     "    - info: 0=success, 1=data file required, <0=invalid argument\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import bd02ad\n" \
     ">>> nr = np.array([1, 1], dtype=np.int32)\n" \
@@ -3914,7 +3980,8 @@
     "Returns:\n" \
     "  (a, info): Result signal and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import de01od\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([0.4862, 0.1948, 0.5788, -0.5861, 0.8254, 0.1815, 0.2904, -0.3599], dtype=float)\n" \
@@ -3938,7 +4005,8 @@
     "Returns:\n" \
     "  (a, w, info): Result signal, weight vector, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import de01pd\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([0.4862, 0.1948, 0.5788, -0.5861, 0.8254, 0.1815, 0.2904, -0.3599],\n" \
@@ -3967,7 +4035,8 @@
     "  For sine transform: first and last coefficients are always 0\n" \
     "  For cosine transform: coefficients scaled by sampling time dt\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import df01md\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([-0.1862, 0.1288, 0.3948, 0.0671, 0.6788, -0.2417, 0.1861, 0.8875,\n" \
@@ -3988,7 +4057,8 @@
     "Returns:\n" \
     "  (xr, xi, info): Transformed signal (real, imag) and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import dg01md\n" \
     ">>> import numpy as np\n" \
     ">>> xr = np.array([-0.1862, 0.3948, 0.6788, 0.1861, 0.7254, 0.5815, 0.4904, -0.9599], dtype=float)\n" \
@@ -4010,7 +4080,8 @@
     "Returns:\n" \
     "  (xr, xi, info): N+1 (forward) or N (inverse) components, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import dg01nd\n" \
     ">>> import numpy as np\n" \
     ">>> xr = np.array([-0.1862, 0.3948, 0.6788, 0.1861, 0.7254, 0.5815, 0.4904, -0.9599], dtype=float)\n" \
@@ -4033,7 +4104,8 @@
     "Returns:\n" \
     "  (a, w, info): Transformed signal, weights (for reuse), and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import dg01od\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([1., 2., 3., 4., 5., 6., 7., 8.,\n" \
@@ -4068,7 +4140,8 @@
     "    vr: Right eigenvectors (n x n) if jobvr='V', else empty\n" \
     "    info: Exit code (0=success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import dgegv\n" \
     ">>> a = np.array([\n" \
@@ -4098,7 +4171,8 @@
     "Returns:\n" \
     "  (a, info): Windowed signal and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import dk01md\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([0.3262, 0.8723, -0.7972, 0.6673, -0.1722, 0.3237, 0.5263, -0.3275], dtype=float)\n" \
@@ -4127,7 +4201,8 @@
     "Returns:\n" \
     "  (c1, c2): Modified matrices\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 4, 3\n" \
     ">>> v = np.random.randn(m - 1).astype(float, order='F')\n" \
@@ -4175,7 +4250,8 @@
     "    rcond: Reciprocal condition number of (RINOV)^{1/2}_i (if JOBK='K')\n" \
     "    info: Exit code (0=success, 1=singular matrix, <0=parameter error)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import fb01qd\n" \
     ">>> n, m, p = 4, 2, 2\n" \
@@ -4226,7 +4302,8 @@
     "Returns:\n" \
     "  (s, r, k, info): Updated S, updated R, gain K, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import fb01rd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 4, 2, 2\n" \
@@ -4297,7 +4374,8 @@
     "    e: Estimated error\n" \
     "    info: Exit code (0=success, 1=singular matrix, <0=parameter error)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import fb01sd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 4, 2, 2\n" \
@@ -4375,7 +4453,8 @@
     "    e: Estimated error\n" \
     "    info: Exit code (0=success, 1=singular matrix, <0=parameter error)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import fb01td\n" \
     ">>> import numpy as np\n" \
     ">>> data = self.load_example_data()\n" \
@@ -4439,7 +4518,8 @@
     "    rcond: Reciprocal condition number of RINOV_i\n" \
     "    info: Exit code (0=success, 1-L=Cholesky failed, L+1=RINOV singular)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import fb01vd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, l = 4, 3, 2\n" \
@@ -4523,7 +4603,8 @@
     "    iwarn: Warning (0=ok, 1=numerical precision issue)\n" \
     "    info: Exit code (0=success, <0=parameter error)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import fd01ad\n" \
     ">>> import numpy as np\n" \
     ">>> l = 2\n" \
@@ -4568,7 +4649,8 @@
     "Returns:\n" \
     "  (n, r, sv, iwarn, info): Order, R/S factor, singular values, warning, status\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ib01ad\n" \
     ">>> import numpy as np\n" \
     ">>> u, y, nobr, m, l, nsmp = load_html_example_data()\n" \
@@ -4604,7 +4686,8 @@
     "Returns:\n" \
     "  (A, C, B, D, Q, Ry, S, K, iwarn, info): Matrices, covariances, gain, status\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ib01bd\n" \
     ">>> import numpy as np\n" \
     ">>> u, y, nobr, m, l, nsmp = load_html_example_data()\n" \
@@ -4657,7 +4740,8 @@
     "  - iwarn: Warning (6 = A not stable)\n" \
     "  - info: Exit code (0=success, 1=Schur failed)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ib01cd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, l = 3, 1, 2\n" \
@@ -4698,7 +4782,8 @@
     "Returns for batch='F' or 'I':\n" \
     "  (r, iwork, iwarn, info): R, iwork state, warning, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ib01md\n" \
     ">>> import numpy as np\n" \
     ">>> nobr = 2\n" \
@@ -4732,7 +4817,8 @@
     "Returns:\n" \
     "  (r, sv, rcond1, rcond2, iwarn, info): Processed R, singular values, rconds, status\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ib01nd\n" \
     ">>> import numpy as np\n" \
     ">>> nobr = 4\n" \
@@ -4765,7 +4851,8 @@
     "Returns:\n" \
     "  (n, iwarn, info): Estimated order, warning, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ib01od\n" \
     ">>> import numpy as np\n" \
     ">>> nobr = 5\n" \
@@ -4791,7 +4878,8 @@
     "Returns:\n" \
     "  (n, info): Validated order, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ib01oy\n" \
     ">>> import numpy as np\n" \
     ">>> ns = 10\n" \
@@ -4828,7 +4916,8 @@
     "  JOB='C', JOBCV='N': (a, c, rcond, iwarn, info)\n" \
     "  JOB='D', JOBCV='N': (b, d, rcond, iwarn, info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ib01pd\n" \
     ">>> import numpy as np\n" \
     ">>> nobr = 4\n" \
@@ -4878,7 +4967,8 @@
     "  - iwarn: Warning (4 = rank-deficient)\n" \
     "  - info: Exit code (0=success, 2=SVD failed)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ib01qd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, l = 2, 1, 1\n" \
@@ -4922,7 +5012,8 @@
     "  - iwarn: Warning (4 = rank-deficient)\n" \
     "  - info: Exit code (0=success, 2=SVD failed)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ib01rd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, l = 2, 1, 1\n" \
@@ -4971,7 +5062,8 @@
     "Returns:\n" \
     "  (x, iwarn, info, dwork): Parameters, warning, status, workspace info\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ib03ad\n" \
     ">>> import numpy as np\n" \
     ">>> nobr = 5\n" \
@@ -5030,7 +5122,8 @@
     "Returns:\n" \
     "  (x, iwarn, info, dwork): Parameters, warning, status, workspace info\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ib03bd\n" \
     ">>> u, y, seed = load_test_data()\n" \
@@ -5074,7 +5167,8 @@
     "Returns:\n" \
     "  (yr, yi): Real and imaginary parts of square root\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma01ad\n" \
     ">>> import numpy as np\n" \
     ">>> xr, xi = 4.0, 0.0\n" \
@@ -5096,7 +5190,8 @@
     "Returns:\n" \
     "  (alpha, beta, scal): Scaled result: ALPHA / BETA * BASE^SCAL\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma01bd\n" \
     ">>> import numpy as np\n" \
     ">>> base = 2.0\n" \
@@ -5125,7 +5220,8 @@
     "                       alpha: complex numerator with 1 <= |alpha| < BASE\n" \
     "                       beta: complex (0 or 1)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma01bz\n" \
     ">>> import numpy as np\n" \
     ">>> base = 2.0\n" \
@@ -5151,7 +5247,8 @@
     "Returns:\n" \
     "  int: Sign of the sum: 1 (positive), 0 (zero), or -1 (negative)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma01cd\n" \
     ">>> import numpy as np\n" \
     ">>> result = ma01cd(0.0, 0, 0.0, 0)"
@@ -5173,7 +5270,8 @@
     "Returns:\n" \
     "  float: The approximate symmetric chordal metric D (D >= 0)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma01dd\n" \
     ">>> import numpy as np\n" \
     ">>> eps, safemn = get_machine_constants()\n" \
@@ -5206,7 +5304,8 @@
     "    d2: Denominator (0 or 1)\n" \
     "    iwarn: 0 = success, 1 = NaN input (d1 = d2 = 0)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma01dz\n" \
     ">>> import numpy as np\n" \
     ">>> eps = np.finfo(float).eps\n" \
@@ -5222,7 +5321,8 @@
     "Returns:\n" \
     "  b (ndarray): Transposed matrix (n x m, F-order)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02ad\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([[1.0, 4.0],\n" \
@@ -5244,7 +5344,8 @@
     "Returns:\n" \
     "  b (ndarray): Output transposed matrix (n x m, F-order, complex128)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02az\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([\n" \
@@ -5270,7 +5371,8 @@
     "Returns:\n" \
     "  a: Permuted matrix\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02bd\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.random.randn(4, 3).astype(float, order='F')\n" \
@@ -5288,7 +5390,8 @@
     "Returns:\n" \
     "  a: Permuted complex matrix\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02bz\n" \
     ">>> import numpy as np\n" \
     ">>> a = (np.random.randn(4, 3) + 1j * np.random.randn(4, 3)).astype(\n" \
@@ -5309,7 +5412,8 @@
     "Returns:\n" \
     "  a (ndarray): Matrix with central band pertransposed\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02cd\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([\n" \
@@ -5342,7 +5446,8 @@
     "Returns:\n" \
     "  a: Matrix with central band pertransposed\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02cz\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -5370,7 +5475,8 @@
     "  For job='P': packed array (1D, n*(n+1)/2 elements)\n" \
     "  For job='U': unpacked matrix (n x n, F-order)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02dd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -5389,7 +5495,8 @@
     "Returns:\n" \
     "  a (ndarray): Completed symmetric matrix with both triangles\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
     ">>> A_full = np.random.randn(n, n)\n" \
@@ -5410,7 +5517,8 @@
     "Returns:\n" \
     "  a (ndarray): Completed skew-symmetric matrix (A = -A^T)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
     ">>> A = np.random.randn(n, n).astype(float, order='F')\n" \
@@ -5436,7 +5544,8 @@
     "  For TRANS='C', SKEW='N': diagonal imaginary parts set to 0 (Hermitian)\n" \
     "  For TRANS='C', SKEW='S': diagonal real parts set to 0 (skew-Hermitian)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02ez\n" \
     ">>> import numpy as np\n" \
     ">>> A = np.array([\n" \
@@ -5466,7 +5575,8 @@
     "Returns:\n" \
     "  a: Permuted matrix\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02gd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3  # rows\n" \
@@ -5503,7 +5613,8 @@
     "Returns:\n" \
     "  a: Permuted complex matrix\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02gz\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3  # rows\n" \
@@ -5536,7 +5647,8 @@
     "  bool: True if A = DIAG*I in specified region, False otherwise.\n" \
     "        Returns False if min(m,n) = 0.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02hd\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.eye(3, order='F')\n" \
@@ -5556,7 +5668,8 @@
     "  bool: True if A = DIAG*I in specified region, False otherwise.\n" \
     "        Returns False if min(m,n) = 0.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02hz\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.eye(3, dtype=complex, order='F')\n" \
@@ -5580,7 +5693,8 @@
     "Returns:\n" \
     "  float: The computed norm value\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02iz\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.zeros((0, 0), dtype=complex, order='F')\n" \
@@ -5605,7 +5719,8 @@
     "Returns:\n" \
     "  float: The computed residual || Q^T Q - I ||_F\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02jd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -5633,7 +5748,8 @@
     "Returns:\n" \
     "  float: The computed residual || Q^H Q - I ||_F\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02jz\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -5661,7 +5777,8 @@
     "Returns:\n" \
     "  float: The computed norm value\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02md\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -5692,7 +5809,8 @@
     "Returns:\n" \
     "  float: The computed norm value\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02mz\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -5719,7 +5837,8 @@
     "Returns:\n" \
     "  a: The permuted matrix (modified in-place)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02nz\n" \
     ">>> import numpy as np\n" \
     ">>> A = np.array([\n" \
@@ -5755,7 +5874,8 @@
     "Returns:\n" \
     "  int: Number of zero rows in H\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02od\n" \
     ">>> import numpy as np\n" \
     ">>> m = 3\n" \
@@ -5789,7 +5909,8 @@
     "Returns:\n" \
     "  int: Number of zero rows in H\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02oz\n" \
     ">>> import numpy as np\n" \
     ">>> m = 3\n" \
@@ -5808,7 +5929,8 @@
     "  nzr (int): Number of zero rows\n" \
     "  nzc (int): Number of zero columns\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02pd\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([[1.0, 0.0, 2.0],\n" \
@@ -5828,7 +5950,8 @@
     "  nzr (int): Number of zero rows\n" \
     "  nzc (int): Number of zero columns\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ma02pz\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([[1+1j, 0+0j, 2+2j],\n" \
@@ -5855,7 +5978,8 @@
     "  e (ndarray): Rearranged vector E (same permutation as D)\n" \
     "  info (int): 0 on success, -i if i-th argument had illegal value\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> n = 10\n" \
     ">>> d = np.random.randn(n).astype(float, order='F')\n" \
@@ -5877,7 +6001,8 @@
     "  result (float): Smallest nonzero absolute value. Returns 0 if M=0 or N=0.\n" \
     "                  Returns overflow value if all elements are zero.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ma02sd\n" \
     ">>> a = np.array([[1.0, 2.0, 3.0],\n" \
@@ -5980,7 +6105,8 @@
     "Returns:\n" \
     "  (r, info): Updated R (same triangle) and exit code (0=success, -i=param i invalid)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01oc\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -6035,7 +6161,8 @@
     "Returns:\n" \
     "  (r, info): Updated R (same triangle) and exit code (0=success, -i=param i invalid)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01od\n" \
     ">>> import numpy as np\n" \
     ">>> n = 1\n" \
@@ -6071,7 +6198,8 @@
     "Returns:\n" \
     "  (r, info): Updated R (same triangle) and exit code (0=success, -i=param i invalid)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01oe\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -6125,7 +6253,8 @@
     "Returns:\n" \
     "  (r, info): Updated R (same triangle) and exit code (0=success, -i=param i invalid)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01oh\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -6176,7 +6305,8 @@
     "Returns:\n" \
     "  (p, info): Output matrix P and exit code (0=success, -i=param i invalid)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01oo\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -6205,7 +6335,8 @@
     "Returns:\n" \
     "  (p, info): Output matrix P and exit code (0=success, -i=param i invalid)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01os\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -6237,7 +6368,8 @@
     "Returns:\n" \
     "  (r, info): Updated R (same triangle) and exit code (0=success, -i=param i invalid)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01ot\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -6288,7 +6420,8 @@
     "Returns:\n" \
     "  (a, info): Modified matrix and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb01pd\n" \
     ">>> m, n = 4, 3\n" \
@@ -6314,7 +6447,8 @@
     "Returns:\n" \
     "  (a, info): Modified matrix and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01qd\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 3, 3\n" \
@@ -6354,7 +6488,8 @@
     "Returns:\n" \
     "  (r, info): Updated R (triangle only) and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 4, 3\n" \
     ">>> alpha, beta = 2.0, 0.5\n" \
@@ -6385,7 +6520,8 @@
     "Returns:\n" \
     "  (r, info): Updated R and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb01rd\n" \
     ">>> m, n = 3, 2\n" \
@@ -6435,7 +6571,8 @@
     "Returns:\n" \
     "  (r, info): Updated R and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01rh\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -6489,7 +6626,8 @@
     "Returns:\n" \
     "  (r, info): Updated R and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01rt\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -6543,7 +6681,8 @@
     "Returns:\n" \
     "  (r, info): Updated R (triangle only) and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01ru\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 3, 2\n" \
@@ -6577,7 +6716,8 @@
     "Returns:\n" \
     "  (a, info): Transformed A and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb01rw\n" \
     ">>> m, n = 3, 4\n" \
@@ -6624,7 +6764,8 @@
     "Returns:\n" \
     "  (r, info): Updated R (triangle only) and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb01rx\n" \
     ">>> m, n = 3, 2\n" \
@@ -6665,7 +6806,8 @@
     "Returns:\n" \
     "  (r, info): Updated R (triangle only) and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01ry\n" \
     ">>> import numpy as np\n" \
     ">>> m = 4\n" \
@@ -6694,7 +6836,8 @@
     "Returns:\n" \
     "  a: The scaled matrix\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01sd\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 3, 4\n" \
@@ -6720,7 +6863,8 @@
     "Returns:\n" \
     "  a: The scaled matrix (same triangle as input)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01ss\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -6747,7 +6891,8 @@
     "Returns:\n" \
     "  (b, info): Product A*B in B, exit code (0=success, 1=structure mismatch)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01td\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([\n" \
@@ -6789,7 +6934,8 @@
     "Returns:\n" \
     "  (b, info): Output matrix B and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01ud\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 4, 3\n" \
@@ -6814,7 +6960,8 @@
     "Returns:\n" \
     "  (a, info): Modified matrix A and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01uw\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 3, 2\n" \
@@ -6854,7 +7001,8 @@
     "Returns:\n" \
     "  (a, info): Modified matrix A and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01ux\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 3, 2\n" \
@@ -6890,7 +7038,8 @@
     "Returns:\n" \
     "  (t, info): Result matrix and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01uy\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 3, 2\n" \
@@ -6928,7 +7077,8 @@
     "Returns:\n" \
     "  (t, info): Result matrix T (m-by-n) and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01uz\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 3, 4\n" \
@@ -6967,7 +7117,8 @@
     "Returns:\n" \
     "  (a, r, info): Modified A, result R, and exit code (0=success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01wd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -7009,7 +7160,8 @@
     "Returns:\n" \
     "  (a, info): Result matrix (same triangle) and exit code (0=success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01xd\n" \
     ">>> import numpy as np\n" \
     ">>> u = np.array([\n" \
@@ -7039,7 +7191,8 @@
     "Returns:\n" \
     "  (a, info): Result matrix (same triangle) and exit code (0=success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01xy\n" \
     ">>> import numpy as np\n" \
     ">>> u = np.array([\n" \
@@ -7076,7 +7229,8 @@
     "Returns:\n" \
     "  (c, info): Updated C and exit code (0=success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb01yd\n" \
     ">>> import numpy as np\n" \
     ">>> n, k, l = 3, 3, 1\n" \
@@ -7139,7 +7293,8 @@
     "    transformation info, exit code. Returns None for unrequested outputs.\n" \
     "    info=1 means matrix is not positive definite.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02cd\n" \
     ">>> import numpy as np\n" \
     ">>> k = 2\n" \
@@ -7178,7 +7333,8 @@
     "    pivot indices, rotation info, and exit code.\n" \
     "    info=1 means matrix is not numerically positive definite.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> k = 3\n" \
     ">>> p = 5\n" \
@@ -7218,7 +7374,8 @@
     "Returns:\n" \
     "  (f1, f2, g, info): Transformed generators and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02cv\n" \
     ">>> import numpy as np\n" \
     ">>> k = 2\n" \
@@ -7283,7 +7440,8 @@
     "  (a, b, cs, info): Transformed generators, rotation info, exit code\n" \
     "  info=1 means matrix is not positive definite\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> p = 4\n" \
     ">>> q = 3\n" \
@@ -7316,7 +7474,8 @@
     "Returns:\n" \
     "  (a, b, info): Transformed generators and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> p = 3\n" \
     ">>> q = 2\n" \
@@ -7359,7 +7518,8 @@
     "    Cholesky of T, Cholesky of inv(T), transformation info, exit code.\n" \
     "    info=1 means matrix is not positive definite.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02dd\n" \
     ">>> import numpy as np\n" \
     ">>> k = 2\n" \
@@ -7403,7 +7563,8 @@
     "  (x, t_out, info): Solution matrix, modified T, exit code\n" \
     "  info=1 means matrix is not positive definite\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
     ">>> k = 3\n" \
@@ -7455,7 +7616,8 @@
     "  (r, info): ICC factor R (upper/lower trapezoidal), exit code\n" \
     "  info=1 means matrix is not positive definite\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02fd\n" \
     ">>> import numpy as np\n" \
     ">>> k = 2\n" \
@@ -7490,7 +7652,8 @@
     "  (rb, info): Cholesky factor in banded storage format, exit code\n" \
     "  info=1 means matrix is not positive definite\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02gd\n" \
     ">>> import numpy as np\n" \
     ">>> k = 2\n" \
@@ -7530,7 +7693,8 @@
     "  (rb, info): Lower triangular factor R in band storage, exit code\n" \
     "  info=1 means full rank condition not satisfied\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb02hd\n" \
     ">>> k = 2\n" \
@@ -7589,7 +7753,8 @@
     "    - c_out: Underdetermined solution (M*K x RC) if job='U' or 'A'\n" \
     "    - info: 0=success, <0=invalid arg, 1=T not full rank\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02id\n" \
     ">>> import numpy as np\n" \
     ">>> k, l, m, n = 3, 2, 4, 3\n" \
@@ -7640,7 +7805,8 @@
     "  (q, r, info): Factor Q (M*K x cols), lower triangular factor R, exit code\n" \
     "  info=1 means full rank condition numerically violated\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02jd\n" \
     ">>> import numpy as np\n" \
     ">>> k, l, m, n = 2, 3, 4, 3\n" \
@@ -7688,7 +7854,8 @@
     "    - jpvt: Column permutation (jpvt[j]=k means col j of T*P was col k of T)\n" \
     "    - info: 0=success, 1=generator indefinite, 2=columns not linearly dependent\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02jx\n" \
     ">>> import numpy as np\n" \
     ">>> k, l, m, n = 3, 3, 4, 4\n" \
@@ -7740,7 +7907,8 @@
     "Returns:\n" \
     "  (c, info): Result matrix C = alpha*op(T)*B + beta*C, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02kd\n" \
     ">>> import numpy as np\n" \
     ">>> k, l, m, n, r = 3, 2, 4, 5, 1\n" \
@@ -7805,7 +7973,8 @@
     "    - iwarn: 0=ok, 1=multiplicity, 2=F singular\n" \
     "    - info: Exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb02md\n" \
     ">>> m, n, l = 6, 3, 1\n" \
@@ -7849,7 +8018,8 @@
     "    - iwarn: 0=ok, 1=multiplicity, 2=F singular\n" \
     "    - info: Exit code (0=success, 1=max iterations, 2=rank too large)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02nd\n" \
     ">>> import numpy as np\n" \
     ">>> m, n, l = 6, 3, 1\n" \
@@ -7891,7 +8061,8 @@
     "Returns:\n" \
     "  (q, e, u, v): Transformed diagonal, superdiagonal, and matrices\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02ny\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 5, 5\n" \
@@ -7924,7 +8095,8 @@
     "  (x, rcond, info): Solution X, reciprocal condition number, exit code\n" \
     "  info=1 means matrix is singular (rcond <= tol)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb02od\n" \
     ">>> m, n = 3, 2\n" \
@@ -7950,7 +8122,8 @@
     "  (x, ferr, berr, rcond, info): Solution X, forward/backward error,\n" \
     "                                condition number, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb02pd\n" \
     ">>> n = 4\n" \
@@ -7985,7 +8158,8 @@
     "  (x, rank, sval, jpvt, info): Solution X (N-by-NRHS), effective rank,\n" \
     "                               singular value estimates [3], permutation, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02qd\n" \
     ">>> import numpy as np\n" \
     ">>> m, n, nrhs = 4, 3, 2\n" \
@@ -8042,7 +8216,8 @@
     "Returns:\n" \
     "  (x, info): Solution matrix and exit code (0=success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02rz\n" \
     ">>> import numpy as np\n" \
     ">>> h = np.array([\n" \
@@ -8069,7 +8244,8 @@
     "Returns:\n" \
     "  (h, ipiv, info): LU factors, pivots (1-based), exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb02sd\n" \
     ">>> n = 4\n" \
@@ -8095,7 +8271,8 @@
     "    - ipiv: Pivot indices (1-based, n elements)\n" \
     "    - info: Exit code (0=success, >0=singular U)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02sz\n" \
     ">>> import numpy as np\n" \
     ">>> h = np.array([\n" \
@@ -8126,7 +8303,8 @@
     "Returns:\n" \
     "  (rcond, info): Reciprocal condition estimate and exit code (0=success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb02td\n" \
     ">>> n = 5\n" \
@@ -8156,7 +8334,8 @@
     "Returns:\n" \
     "  (rcond, info): Reciprocal condition estimate and exit code (0=success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02tz\n" \
     ">>> import numpy as np\n" \
     ">>> h = np.array([\n" \
@@ -8198,7 +8377,8 @@
     "Returns:\n" \
     "  (x, q, sv, rank, rp, info): Solution, Q matrix, singular values, rank, pseudoinverse, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 4, 3\n" \
     ">>> l = m\n" \
@@ -8228,7 +8408,8 @@
     "Returns:\n" \
     "  (x, scale): Solution vector and scale factor (0 < scale <= 1)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb02uu\n" \
     ">>> n = 4\n" \
@@ -8253,7 +8434,8 @@
     "Returns:\n" \
     "  (a_lu, ipiv, jpiv, info): LU factors, row pivots, column pivots, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb02uv\n" \
     ">>> n = 4\n" \
@@ -8281,7 +8463,8 @@
     "Returns:\n" \
     "  (x, scale, iwarn): Solution, scale factor, warning (1=A perturbed)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02uw\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([[4.0]], order='F', dtype=float)\n" \
@@ -8299,7 +8482,8 @@
     "Returns:\n" \
     "  (x, ipiv, info): Solution X, pivots, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb02vd\n" \
     ">>> n = 4\n" \
@@ -8336,7 +8520,8 @@
     "  (x, iterations, residual, iwarn, info): Solution, iteration count,\n" \
     "    residual norm, warning code, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02wd\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([\n" \
@@ -8365,7 +8550,8 @@
     "Returns:\n" \
     "  (x, rank, info): Solution vector, estimated rank, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb02yd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -8404,7 +8590,8 @@
     "  (c1, s1, c2, s2): Givens rotation parameters.\n" \
     "    For SHFT='S': c2=1, s2=0\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03ab\n" \
     ">>> k = 2\n" \
@@ -8448,7 +8635,8 @@
     "  (c1, s1, c2, s2): Givens rotation parameters.\n" \
     "    For SHFT='S': c2=1, s2=0\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03ad\n" \
     ">>> k = 2\n" \
@@ -8493,7 +8681,8 @@
     "  (c1, s1, c2, s2): Givens rotation parameters.\n" \
     "    For SHFT='S' or N==2: c2=1, s2=0\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03ae\n" \
     ">>> k = 2\n" \
@@ -8538,7 +8727,8 @@
     "  (c1, s1, c2, s2): Givens rotation parameters.\n" \
     "    For SHFT='S': c2=1, s2=0\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03ag\n" \
     ">>> k = 2\n" \
@@ -8585,7 +8775,8 @@
     "  (c1, s1, c2, s2, info): Givens rotation parameters and exit code.\n" \
     "    For SHFT='S' or N==2: c2=1, s2=0. info=0 always (no error checking).\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03ah\n" \
     ">>> import numpy as np\n" \
     ">>> k = 2  # number of factors\n" \
@@ -8630,7 +8821,8 @@
     "  (c1, s1, c2, s2): Givens rotation parameters.\n" \
     "    For SHFT='S' or N==2: c2=1, s2=0\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03ai\n" \
     ">>> k = 2\n" \
@@ -8665,7 +8857,8 @@
     "Returns:\n" \
     "  (smult, amap, qmap): Signature multiplier, factor access map, Q access map\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03ba\n" \
     ">>> k = 4\n" \
@@ -8705,7 +8898,8 @@
     "    - cv: Cosines of Givens rotations (K,)\n" \
     "    - sv: Sines of Givens rotations (K,)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03bc\n" \
     ">>> import numpy as np\n" \
     ">>> k = 2\n" \
@@ -8751,7 +8945,8 @@
     "\n" \
     "Eigenvalue formula: (alphar + alphai*j) / beta * 2^scal\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03bd\n" \
     ">>> k = 3\n" \
@@ -8818,7 +9013,8 @@
     "Returns:\n" \
     "  a: Modified matrix factors with quasi-triangular first factor\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03be\n" \
     ">>> k = 2\n" \
@@ -8855,7 +9051,8 @@
     "Returns:\n" \
     "  a: Modified matrix factors with quasi-triangular Hessenberg factor\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03bf\n" \
     ">>> k = 2\n" \
@@ -8893,7 +9090,8 @@
     "Returns:\n" \
     "  (wr, wi): Real and imaginary parts of the two eigenvalues\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03bg\n" \
     ">>> import numpy as np\n" \
     ">>> k = 1\n" \
@@ -8943,7 +9141,8 @@
     "\n" \
     "Eigenvalue formula: alpha(i) / beta(i) * BASE^scal(i)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03bz\n" \
     ">>> k = 3\n" \
@@ -9006,7 +9205,8 @@
     "    - n1, n2: Exchanged block sizes (if UPLO='U')\n" \
     "    - info: Exit code (0=success, 1-5=algorithm error)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03cd\n" \
     ">>> n1, n2 = 1, 1\n" \
@@ -9049,7 +9249,8 @@
     "    - co1, co2, co3: Cosines (real)\n" \
     "    - si1, si2, si3: Sines (complex)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03cz\n" \
     ">>> a = np.array([\n" \
@@ -9114,7 +9315,8 @@
     "    - n1, n2: Exchanged block sizes (if UPLO='U'/'T' and INFO=0)\n" \
     "    - info: Exit code (0=success, 3=QZ failed, 4=DHGEQZ error, 5=DTGSEN reorder failed)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03dd\n" \
     ">>> import numpy as np\n" \
     ">>> n1, n2 = 1, 1\n" \
@@ -9153,7 +9355,8 @@
     "    - co2 (float): Cosine of Q2\n" \
     "    - si2 (complex): Sine of Q2\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03dz\n" \
     ">>> a = np.array([\n" \
@@ -9209,7 +9412,8 @@
     "    - q3: Third orthogonal transformation matrix (N x N)\n" \
     "    - info: Exit code (0=success, 1=QZ failed, 2=other DGGES error)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03ed\n" \
     ">>> import numpy as np\n" \
     ">>> prec = np.finfo(float).eps\n" \
@@ -9251,7 +9455,8 @@
     "    - q2: Second orthogonal transformation matrix (N x N)\n" \
     "    - info: Exit code (0=success, 1=QZ failed in DGGES, 2=other DGGES error)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03fd\n" \
     ">>> n = 2\n" \
@@ -9292,7 +9497,8 @@
     "    deflating/companion subspaces, eigenvalue components, exit code.\n" \
     "    Eigenvalue = (alphar + i*alphai) / beta\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03fz\n" \
     ">>> n = 4\n" \
@@ -9335,7 +9541,8 @@
     "    - u (ndarray): N-by-N orthogonal symplectic transformation matrix U\n" \
     "    - info (int): 0=success, 1=B11 or B22 numerically singular\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03gd\n" \
     ">>> n = 2\n" \
@@ -9376,7 +9583,8 @@
     "    - co2 (float): Cosine element of U\n" \
     "    - si2 (complex): Sine element of U\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03gz\n" \
     ">>> z11 = 1.0 + 0.5j\n" \
@@ -9422,7 +9630,8 @@
     "    - q (ndarray): N-by-N orthogonal transformation matrix Q\n" \
     "    - info (int): 0=success, 1=B11 nearly singular (perturbed values used)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03hd\n" \
     ">>> n = 2\n" \
@@ -9465,7 +9674,8 @@
     "    - co (float): Upper left element of Q (real)\n" \
     "    - si (complex): Upper right element of Q\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03hz\n" \
     ">>> s11 = 1.0 + 0.5j\n" \
@@ -9510,7 +9720,8 @@
     "    neig (int): Number of eigenvalues with negative real part\n" \
     "    info (int): 0 = success, <0 = -i means i-th argument invalid, 1=QZ failed, 2=MB03CD error, 3=MB03GD error\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03id\n" \
     ">>> n = 4\n" \
@@ -9564,7 +9775,8 @@
     "    neig (int): Number of eigenvalues with negative real part\n" \
     "    info (int): 0 = success, <0 = -i means i-th argument invalid\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03iz\n" \
     ">>> n = 4\n" \
@@ -9626,7 +9838,8 @@
     "    neig (int): Number of eigenvalues with negative real part\n" \
     "    info (int): 0 = success, <0 = -i means i-th argument invalid\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03jd\n" \
     ">>> n = 4\n" \
@@ -9674,7 +9887,8 @@
     "    neig (int): Number of eigenvalues with negative real part\n" \
     "    info (int): 0 = success, <0 = -i means i-th argument invalid\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03jp\n" \
     ">>> n = 4\n" \
@@ -9729,7 +9943,8 @@
     "    neig (int): Number of eigenvalues with negative real part\n" \
     "    info (int): 0 = success, <0 = -i means i-th argument invalid\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03jz\n" \
     ">>> import numpy as np\n" \
     ">>> m = 2  # n = 2*m = 4\n" \
@@ -9780,7 +9995,8 @@
     "  (t, q, ifst, ilst, info): Updated T matrices, updated Q matrices, final IFST, final ILST, exit code\n" \
     "  info=0: success, info=1: reordering failed, info=-21: workspace too small\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03ka\n" \
     ">>> import numpy as np\n" \
     ">>> k = 2\n" \
@@ -9850,7 +10066,8 @@
     "  (t, q, info): Updated T matrices, updated Q matrices, exit code\n" \
     "  info=0: success, info=1: swap rejected, info=-22: workspace too small\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03kb\n" \
     ">>> import numpy as np\n" \
     ">>> k = 2\n" \
@@ -9915,7 +10132,8 @@
     "    - tau (ndarray): Array of length k containing tau_k values\n" \
     "    - a (ndarray): Transformed matrices Te_k (N x N x K, F-order)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03kc\n" \
     ">>> import numpy as np\n" \
     ">>> k = 2\n" \
@@ -9959,7 +10177,8 @@
     "    m: Number of selected eigenvalues reordered\n" \
     "    info: 0=success, <0=param error, 1=reordering failed\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03kd\n" \
     ">>> k = 3\n" \
@@ -10031,7 +10250,8 @@
     "    - scale (float): Scale factor (<= 1) to avoid overflow\n" \
     "    - info (int): 0=success, -21=ldwork too small, 1=scaled\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03ke\n" \
     ">>> import numpy as np\n" \
     ">>> k, m, n = 2, 1, 1\n" \
@@ -10072,7 +10292,8 @@
     "    alphar, alphai, beta: Eigenvalue components (lambda=alpha/beta)\n" \
     "    info: 0=success, 1=MB04BD/HD QZ failed, 2=MB04HD/MB03DD failed, 3=singular, 4=SVD failed, 5=eigenvalues may be inaccurate\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03ld\n" \
     ">>> import numpy as np\n" \
     ">>> n = 8\n" \
@@ -10134,7 +10355,8 @@
     "    iwarn: 0=ok, 1=some eigenvalues may be unreliable\n" \
     "    info: 0=success, 1=QZ failed, 2=QZ iteration failed, 3=singular, 4=SVD failed\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03lf\n" \
     ">>> import numpy as np\n" \
     ">>> n = 8\n" \
@@ -10192,7 +10414,8 @@
     "    alphar, alphai, beta: Eigenvalue components (lambda=alpha/beta)\n" \
     "    info: 0=success, 1=MB04BP/HD QZ failed, 2=MB04HD/MB03DD failed, 3=singular, 4=SVD failed, 5=eigenvalues may be inaccurate\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03lp\n" \
     ">>> n = 8\n" \
@@ -10247,7 +10470,8 @@
     "    neig: Number of eigenvalues with negative real part\n" \
     "    info: 0=success, 1=MB04FD failed, 2=ZHGEQZ failed, 3=SVD failed, 4=singular\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03lz\n" \
     ">>> n = 4\n" \
@@ -10298,7 +10522,8 @@
     "    - iwarn (int): 0=ok, 1=L increased due to coinciding singular values\n" \
     "    - info (int): 0=success, <0=parameter error\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03md\n" \
     ">>> import numpy as np\n" \
     ">>> pass\n" \
@@ -10329,7 +10554,8 @@
     "Returns:\n" \
     "  (jpvt, rank, sval, info): Pivot indices, rank, singular values, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03od\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 6, 5\n" \
@@ -10362,7 +10588,8 @@
     "Returns:\n" \
     "  (a, rank, info, sval, jpvt, tau): QR factorization results\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03oy\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 6, 4\n" \
@@ -10404,7 +10631,8 @@
     "    - jpvt: Row pivot indices (1-based)\n" \
     "    - tau: Elementary reflector factors\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03pd\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 6, 5\n" \
@@ -10445,7 +10673,8 @@
     "    - jpvt: Row pivot indices (1-based)\n" \
     "    - tau: Elementary reflector factors\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03py\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 4, 4\n" \
@@ -10470,7 +10699,8 @@
     "Returns:\n" \
     "  (a, u, ndim, info): Reordered A, updated U, invariant subspace dim, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03qd\n" \
     ">>> a = np.array([\n" \
@@ -10517,7 +10747,8 @@
     "    ndim (int): Number of eigenvalues in domain of interest\n" \
     "    info (int): 0=success, <0=param error, 1=block boundary error, 2=swap failed\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03qg\n" \
     ">>> n = 4\n" \
@@ -10558,7 +10789,8 @@
     "    beta (ndarray): Eigenvalue denominators\n" \
     "    info (int): 0 = success, <0 = -i means i-th argument invalid\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03qv\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -10603,7 +10835,8 @@
     "    beta (ndarray): Eigenvalue denominators (2,)\n" \
     "    info (int): 0 = success, <0 = -i means i-th argument invalid\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03qw\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -10636,7 +10869,8 @@
     "Returns:\n" \
     "  (wr, wi, info): Real parts, imaginary parts, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03qx\n" \
     ">>> n = 4\n" \
@@ -10666,7 +10900,8 @@
     "Returns:\n" \
     "  (a, u, e1, e2, info): Transformed matrices, eigenvalue parts, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03qy\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -10695,7 +10930,8 @@
     "  (a, x, nblcks, blsize, wr, wi, info): Block-diagonal A, transformation X,\n" \
     "   number of blocks, block sizes, real/imag eigenvalues, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03rd\n" \
     ">>> n = 4\n" \
@@ -10732,7 +10968,8 @@
     "    x (ndarray): Solution matrix X (M-by-N, complex)\n" \
     "    info (int): 0=success, 1=element of X exceeds PMAX, 2=perturbed values used\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03rw\n" \
     ">>> m, n = 3, 3\n" \
@@ -10769,7 +11006,8 @@
     "Returns:\n" \
     "  (a, x, wr, wi, ku_out): Reordered matrix, transformation, eigenvalues, new ku\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03rx\n" \
     ">>> n = 3\n" \
@@ -10801,7 +11039,8 @@
     "Returns:\n" \
     "  (x, info): Solution X (same array as c), exit code (0=ok, 1=norm exceeded)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03ry\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([[2.0]], order='F', dtype=float)\n" \
@@ -10837,7 +11076,8 @@
     "    w (ndarray): Eigenvalues (N,)\n" \
     "    info (int): 0=success, <0=param error\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03rz\n" \
     ">>> n = 3\n" \
@@ -10869,7 +11109,8 @@
     "    wi (ndarray): Imaginary parts of N eigenvalues\n" \
     "    info (int): 0=success, <0=param error, >0=DHSEQR failed at i-th eigenvalue\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03sd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -10924,7 +11165,8 @@
     "    m (int): Dimension of specified invariant subspace\n" \
     "    info (int): 0=success, <0=param error, 1=reordering failed\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03td\n" \
     ">>> n = 5\n" \
@@ -10981,7 +11223,8 @@
     "    u2 (ndarray): Updated matrix U2\n" \
     "    info (int): 0=success, 1=swap rejected (result would be far from Schur form)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03ts\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -11038,7 +11281,8 @@
     "Returns:\n" \
     "  (a, tau, info): Reduced matrices, tau factors, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03vd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -11087,7 +11331,8 @@
     "Returns:\n" \
     "  (a, q, h, info): Reduced factors, orthogonal matrices, Hessenberg index, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03vw\n" \
     ">>> n = 4\n" \
@@ -11121,7 +11366,8 @@
     "Returns:\n" \
     "  (q, info): Orthogonal matrices Q_j, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03vy\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -11165,7 +11411,8 @@
     "    z_out: Updated orthogonal matrix Z (if wantz)\n" \
     "    info: 0=success, 1=swap rejected (would be too far from Schur form)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03wa\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([\n" \
@@ -11208,7 +11455,8 @@
     "Returns:\n" \
     "  (h, z, wr, wi, info): Schur form, transforms, eigenvalues, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03wd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -11253,7 +11501,8 @@
     "Returns:\n" \
     "  (wr, wi, info): Real and imaginary parts of eigenvalues, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03wx\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -11289,7 +11538,8 @@
     "Returns:\n" \
     "  (S, T, QG, U1, U2, V1, V2, wr, wi, ilo, scale, info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03xd\n" \
     ">>> n = 5\n" \
@@ -11330,7 +11580,8 @@
     "Returns:\n" \
     "  (S, T, Q, Z, alphar, alphai, beta, info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03xp\n" \
     ">>> n = 4\n" \
@@ -11366,7 +11617,8 @@
     "  (a_out, qg_out, u1, u2, wr, wi, info):\n" \
     "    u1, u2: N-by-N matrices where U = [[U1, U2], [-U2, U1]]\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03xs\n" \
     ">>> import numpy as np\n" \
     ">>> n = 2\n" \
@@ -11406,7 +11658,8 @@
     "  (A, B, G, Q, XA, XB, XG, XQ, YA, YB, YG, YQ, CSL, CSR, TAUL, TAUR, info):\n" \
     "    Modified matrices, update matrices, Givens rotations, reflectors, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03xu\n" \
     ">>> n = 5\n" \
@@ -11447,7 +11700,8 @@
     "    scale: Balancing scale factors\n" \
     "    info: 0=success, <0=param error, >0=QR failed, 2N+1=2x2 block failed\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03xz\n" \
     ">>> n = 4\n" \
@@ -11489,7 +11743,8 @@
     "Returns:\n" \
     "  (a, b, q, z, info): Transformed matrices and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03ya\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -11527,7 +11782,8 @@
     "Returns:\n" \
     "  (alphar, alphai, beta, info): Eigenvalue numerators/denominators and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03yd\n" \
     ">>> n = 2\n" \
@@ -11559,7 +11815,8 @@
     "  (a, b, alphar, alphai, beta, csl, snl, csr, snr):\n" \
     "    Transformed matrices, eigenvalue info, rotation parameters\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03yt\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([\n" \
@@ -11603,7 +11860,8 @@
     "    m: Number of selected eigenvalues\n" \
     "    info: 0=success, 1-4=various algorithm failures\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb03za\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -11660,7 +11918,8 @@
     "    uu: Unstable invariant subspace basis (mm x m, F-order)\n" \
     "    info: 0=success, 1-5=various algorithm failures\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb03zd\n" \
     ">>> n = 5\n" \
@@ -11765,7 +12024,8 @@
     "    alphar, alphai, beta: Generalized eigenvalues (n/2,)\n" \
     "    info: 0=success, 3=QZ did not converge\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04ad\n" \
     ">>> import numpy as np\n" \
     ">>> n = 8\n" \
@@ -11819,7 +12079,8 @@
     "    alphar, alphai, beta: Generalized eigenvalues (N,)\n" \
     "    info: 0=success, positive=failure\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04az\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -11870,7 +12131,8 @@
     "    alphar, alphai, beta: Generalized eigenvalues (n/2,)\n" \
     "    info: 0=success, 1=eigenvalue problem, 2=QZ failed, 3=warning\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04bd\n" \
     ">>> n = 8\n" \
@@ -11933,7 +12195,8 @@
     "    alphar, alphai, beta: Generalized eigenvalues (n/2,)\n" \
     "    info: 0=success, 1=eigenvalue problem, 2=QZ failed, 3=warning\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04bp\n" \
     ">>> a = np.array([\n" \
@@ -11991,7 +12254,8 @@
     "    alphar, alphai, beta: Generalized eigenvalues (N,)\n" \
     "    info: 0=success, 1=MB04FD QZ failed, 2=ZHGEQZ failed, 3=pencil singular\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04bz\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -12039,7 +12303,8 @@
     "  (a, b, d, q1, q2, q3, info): Transformed matrices, orthogonal Q matrices, exit code\n" \
     "  info=0: success, info=1-4: algorithm warnings\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04cd\n" \
     ">>> n = 4\n" \
@@ -12079,7 +12344,8 @@
     "Returns:\n" \
     "  (v1, v2, info): Transformed matrices and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04db\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -12103,7 +12369,8 @@
     "Returns:\n" \
     "  (a, qg, ilo, scale, info): Balanced matrices and scaling info\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04dd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -12129,7 +12396,8 @@
     "Returns:\n" \
     "  (v1, v2, info): Transformed matrices and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04di\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -12158,7 +12426,8 @@
     "  (a, b, ilo, ihi, lscale, rscale, dwork, iwarn, info):\n" \
     "    Balanced matrices, indices, scaling factors, workspace, and exit codes\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04dl\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -12198,7 +12467,8 @@
     "  (a, de, c, vw, ilo, lscale, rscale, dwork, iwarn, info):\n" \
     "    Balanced matrices, ILO, scaling factors, workspace, and exit codes\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04dp\n" \
     ">>> import numpy as np\n" \
     ">>> n = 2\n" \
@@ -12241,7 +12511,8 @@
     "    Balanced matrices, ILO (number of deflated eigenvalues + 1),\n" \
     "    scaling factors, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04ds\n" \
     ">>> import numpy as np\n" \
     ">>> n = 6\n" \
@@ -12286,7 +12557,8 @@
     "    Scaled matrices, scaling factors (N for 'S', 1 for '1'/'O'),\n" \
     "    and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04dy\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -12354,7 +12626,8 @@
     "    Balanced matrices, ILO (number of deflated eigenvalues + 1),\n" \
     "    scaling factors (real array), and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04dz\n" \
     ">>> import numpy as np\n" \
     ">>> n = 6\n" \
@@ -12398,7 +12671,8 @@
     "    Transformed matrices, orthogonal Q, symplectic U blocks,\n" \
     "    eigenvalue components (lambda = (alphar+alphai*j)/beta), info\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04ed\n" \
     ">>> n = 8\n" \
@@ -12458,7 +12732,8 @@
     "    Transformed matrices, orthogonal Q,\n" \
     "    eigenvalue components (lambda = (alphar+alphai*j)/beta), info\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04fd\n" \
     ">>> n = 8\n" \
@@ -12517,7 +12792,8 @@
     "    eigenvalue components (lambda = (alphar+alphai*j)/beta),\n" \
     "    iwork (inaccurate eigenvalue info), info\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04fp\n" \
     ">>> n = 64\n" \
@@ -12547,7 +12823,8 @@
     "Returns:\n" \
     "  (a, jpvt, tau, info): Modified matrix, pivot indices, reflector factors, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04gd\n" \
     ">>> import numpy as np\n" \
     ">>> m = 6\n" \
@@ -12589,7 +12866,8 @@
     "  info=3: reordering in periodic QZ failed\n" \
     "  info=4: illegal structure (deflation window too small)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04hd\n" \
     ">>> n = 4\n" \
@@ -12626,7 +12904,8 @@
     "  If l=0: (tau, info) - Householder factors, exit code\n" \
     "  If ldwork=-1: adds optimal workspace size to tuple\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04id\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 8, 7, 2\n" \
@@ -12674,7 +12953,8 @@
     "    zwork_opt: Optimal workspace size\n" \
     "    b: Transformed B (only if b provided)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04iz\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 6, 5, 2\n" \
@@ -12708,7 +12988,8 @@
     "  If l=0: (a, tau, info) - factored A, Householder factors, exit code\n" \
     "  If ldwork=-1: adds optimal workspace size to tuple\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04jd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 8, 7, 2\n" \
@@ -12738,7 +13019,8 @@
     "Returns:\n" \
     "  (r_bar, a_out, d, c, tau): Transformed matrices and Householder factors\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 2, 4\n" \
     ">>> R = np.array([\n" \
@@ -12782,7 +13064,8 @@
     "Returns:\n" \
     "  (l_bar, a_out, d, c, tau): Transformed matrices and Householder factors\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 4, 2\n" \
     ">>> L = np.tril(np.random.randn(n, n)).astype(float, order='F')\n" \
@@ -12812,7 +13095,8 @@
     "    maxred_out: Ratio of original/balanced 1-norm (if A non-zero)\n" \
     "    info: 0=success, <0=param -info invalid\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04md\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -12843,7 +13127,8 @@
     "Returns:\n" \
     "  tau (ndarray): Scalar factors of elementary reflectors\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 2, 3\n" \
     ">>> a = np.random.randn(n, p).astype(float, order='F')\n" \
@@ -12874,7 +13159,8 @@
     "Returns:\n" \
     "  (a, b): Updated matrices\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 3, 1\n" \
     ">>> a = np.random.randn(m, 1).astype(float, order='F')\n" \
@@ -12907,7 +13193,8 @@
     "Returns:\n" \
     "  (r, a, b, c, tau): Updated matrices and Householder scalars\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 2, 2\n" \
     ">>> uplo = 'F'\n" \
@@ -12950,7 +13237,8 @@
     "Returns:\n" \
     "  (a, t, x, b, c, d): Modified arrays\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04ow\n" \
     ">>> import numpy as np\n" \
     ">>> m, n, p = 4, 3, 2\n" \
@@ -13012,7 +13300,8 @@
     "Returns:\n" \
     "  (r, x_out): Updated upper triangular matrix R, modified x\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04ox\n" \
     ">>> n = 3\n" \
@@ -13042,7 +13331,8 @@
     "Returns:\n" \
     "  (a, b): Updated matrices\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 1, 3\n" \
     ">>> a = np.random.randn(1, n).astype(float, order='F')\n" \
@@ -13079,7 +13369,8 @@
     "Returns:\n" \
     "  (a, qg, xa, xg, xq, ya, cs, tau): Modified arrays\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04pa\n" \
     ">>> n, k, nb = 0, 0, 0\n" \
@@ -13122,7 +13413,8 @@
     "    tau: Scalar factors of elementary reflectors (n-1,)\n" \
     "    info: 0=success, <0=param -info invalid\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04pb\n" \
     ">>> import numpy as np\n" \
     ">>> n = 5\n" \
@@ -13172,7 +13464,8 @@
     "    tau: Scalar factors of elementary reflectors (n-1,)\n" \
     "    info: 0=success, <0=param -info invalid\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04pu\n" \
     ">>> import numpy as np\n" \
     ">>> n = 5\n" \
@@ -13218,7 +13511,8 @@
     "Returns:\n" \
     "  c: Updated matrix\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 1, 3\n" \
     ">>> c = np.random.randn(m, n).astype(float, order='F')\n" \
@@ -13254,7 +13548,8 @@
     "Returns:\n" \
     "  (c, d, info): Modified matrices and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04qb\n" \
     ">>> m, n, k = 4, 0, 2\n" \
@@ -13291,7 +13586,8 @@
     "Returns:\n" \
     "  (a, b): Modified matrices\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04qc\n" \
     ">>> m, n, k = 4, 3, 2\n" \
@@ -13325,7 +13621,8 @@
     "Returns:\n" \
     "  (rs, t, info): Block factor matrices RS (k,6k), T (k,9k), exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04qf\n" \
     ">>> n, k = 4, 2\n" \
@@ -13365,7 +13662,8 @@
     "Returns:\n" \
     "  (c, d, info): Modified matrices and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04qs\n" \
     ">>> m, n = 4, 0\n" \
@@ -13402,7 +13700,8 @@
     "Returns:\n" \
     "  (c, d, info): Modified matrices and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04qu\n" \
     ">>> m, n, k = 4, 3, 2\n" \
@@ -13448,7 +13747,8 @@
     "    tau: Scalar factors of reflectors F(i), length N-1\n" \
     "    info: Exit code (0=success, <0=invalid parameter -info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04rb\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -13496,7 +13796,8 @@
     "    Block-diagonalized matrices, number of blocks, block sizes,\n" \
     "    eigenvalue components (alphar+i*alphai)/beta, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04rd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 2\n" \
@@ -13541,7 +13842,8 @@
     "  (r, l, scale, info): Solution R (in c), solution L (in f),\n" \
     "    scaling factor, exit code (0=success, 1=element > pmax, 2=singular)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04rs\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 1, 1\n" \
@@ -13582,7 +13884,8 @@
     "  (r, l, scale, info): Solution R (in c), solution L (in f),\n" \
     "    scaling factor, exit code (0=success, 1=element > pmax, 2=singular)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04rt\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 1, 1\n" \
@@ -13624,7 +13927,8 @@
     "    tau: Scalar factors of reflectors F(i), length N-1\n" \
     "    info: Exit code (0=success, <0=invalid parameter -info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04ru\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -13679,7 +13983,8 @@
     "  (r, l, scale, info): Solution R (in c), solution L (in f),\n" \
     "    scaling factor, exit code (0=success, 1=element > pmax, 2=singular/close eigenvalues)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04rv\n" \
     ">>> m, n = 1, 1\n" \
@@ -13728,7 +14033,8 @@
     "  (r, l, scale, info): Solution R (in c), solution L (in f),\n" \
     "    scaling factor, exit code (0=success, 1=element > pmax, 2=singular/close eigenvalues)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04rw\n" \
     ">>> m, n = 2, 2\n" \
@@ -13773,7 +14079,8 @@
     "    Block-diagonalized matrices, number of blocks, block sizes,\n" \
     "    complex eigenvalue components alpha/beta, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04rz\n" \
     ">>> import numpy as np\n" \
     ">>> n = 2\n" \
@@ -13813,7 +14120,8 @@
     "    tau: Scalar factors of reflectors F(i), length min(m,n)\n" \
     "    info: Exit code (0=success, <0=invalid parameter -info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04su\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 3, 3\n" \
@@ -13856,7 +14164,8 @@
     "  (a, b, g, q, csl, csr, taul, taur, info):\n" \
     "    Modified matrices, Givens rotations, reflector factors, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04tb\n" \
     ">>> n = 5\n" \
@@ -13916,7 +14225,8 @@
     "  (a, b, g, q, csl, csr, taul, taur, info):\n" \
     "    Modified matrices, Givens rotations, reflector factors, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04ts\n" \
     ">>> n = 5\n" \
@@ -13982,7 +14292,8 @@
     "  (a, e, q, z, istair, rank, info):\n" \
     "    Transformed matrices, updated staircase array, rank of Aj, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04tt\n" \
     ">>> m, n = 3, 5\n" \
@@ -14027,7 +14338,8 @@
     "Returns:\n" \
     "  (x, y): Transformed arrays\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04tu\n" \
     ">>> import numpy as np\n" \
     ">>> x = np.array([1.0, 2.0, 3.0], dtype=float, order='F')\n" \
@@ -14058,7 +14370,8 @@
     "Returns:\n" \
     "  (a, e, z, info): Transformed matrices and exit code (0=success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04tv\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -14102,7 +14415,8 @@
     "Returns:\n" \
     "  (a, e, q, info): Transformed matrices and exit code (0=success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04tw\n" \
     ">>> import numpy as np\n" \
     ">>> m = 2\n" \
@@ -14154,7 +14468,8 @@
     "    Transformed matrices, updated block count, dimensions, pencil sizes, exit code.\n" \
     "    mnei = [meps, neps, minf, ninf] dimensions of epsilon and infinite pencils.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04tx\n" \
     ">>> import numpy as np\n" \
     ">>> nblcks = 2\n" \
@@ -14215,7 +14530,8 @@
     "    info=1: incorrect dimensions of full column rank submatrix (mu(k+1) > nu(k))\n" \
     "    info=2: incorrect dimensions of full row rank submatrix (nu(k) > mu(k))\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04ty\n" \
     ">>> import numpy as np\n" \
     ">>> m = 2\n" \
@@ -14260,7 +14576,8 @@
     "    istair: Staircase structure array (+j=corner, -j=boundary)\n" \
     "    info: Exit code (0=success, <0=invalid parameter -info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 4, 4\n" \
     ">>> a = np.array([\n" \
@@ -14308,7 +14625,8 @@
     "  (a, e, q, z, nblcks, nblcki, imuk, inuk, imuk0, mnei, info):\n" \
     "    Transformed matrices, block counts, dimension arrays, exit code.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04vd\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 2, 4\n" \
@@ -14349,7 +14667,8 @@
     "  (a, e, q, z, inuk, imuk, mnei): Transformed matrices and pencil dimensions.\n" \
     "    mnei = [meps, neps, minf] dimensions of epsilon and infinite pencils.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04vx\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 3, 4\n" \
@@ -14396,7 +14715,8 @@
     "Returns:\n" \
     "  (q1, q2, info): Generated orthogonal matrices, exit code (0=success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04wd\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 3, 3\n" \
@@ -14443,7 +14763,8 @@
     "Returns:\n" \
     "  (u1, u2, info): Generated orthogonal symplectic matrix blocks, exit code (0=success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04wp\n" \
     ">>> import numpy as np\n" \
     ">>> n = 5\n" \
@@ -14498,7 +14819,8 @@
     "Returns:\n" \
     "  (q1, q2, info): Generated orthogonal symplectic matrix blocks, exit code (0=success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04wr\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -14540,7 +14862,8 @@
     "Returns:\n" \
     "  (q1, q2, info): Generated orthogonal matrices, exit code (0=success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04wu\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 3, 3\n" \
@@ -14595,7 +14918,8 @@
     "    warning (1 = rank lowered due to multiplicity);\n" \
     "    exit code (0 = success, 1 = max QR/QL iterations exceeded)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb04xd\n" \
     ">>> m, n = 6, 4\n" \
@@ -14645,7 +14969,8 @@
     "Returns:\n" \
     "  (u, v, info): Transformed matrices, exit code (0=success, <0=-i param error)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 4, 3\n" \
     ">>> p = min(m, n)\n" \
@@ -14698,7 +15023,8 @@
     "  - both: (q, e, u, v, theta, rank, inul, iwarn, info)\n" \
     "  where inul (bool array) indicates elements with singular values <= theta.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb04yd\n" \
     ">>> import numpy as np\n" \
     ">>> m = 5\n" \
@@ -14740,7 +15066,8 @@
     "Returns:\n" \
     "  (d, e, u, v, info): Transformed diagonal/superdiagonal, updated U/V, exit code (0=success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 4, 4\n" \
     ">>> p = min(m, n)\n" \
@@ -14778,7 +15105,8 @@
     "Returns:\n" \
     "  (a, qg, u, info): Square-reduced matrices and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
     ">>> compu = 'N'\n" \
@@ -14827,7 +15155,8 @@
     "    vali: Imaginary parts of eigenvalues\n" \
     "    info: Exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb05md\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -14869,7 +15198,8 @@
     "Returns:\n" \
     "  (wr, wi, r, q, t, info): Eigenvalues, eigenvectors, Schur form\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb05my\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([\n" \
@@ -14896,7 +15226,8 @@
     "Returns:\n" \
     "  (ex, exint, info): exp(A*delta), integral H(delta), exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb05nd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 5\n" \
@@ -14933,7 +15264,8 @@
     "    iwarn: Warning (0=ok, 1=possible, 2=severe inaccuracy, 3=balancing unused)\n" \
     "    info: Exit code (0=ok, 1=norm too large, 2=singular, 3=overflow)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb05od\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -14965,7 +15297,8 @@
     "Returns:\n" \
     "  (a, info): Back-transformed matrix and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mb05oy\n" \
     ">>> n = 4\n" \
@@ -15006,7 +15339,8 @@
     "    neig (int): Number of eigenvalues with negative real part\n" \
     "    info (int): 0 = success, <0 = -i means i-th argument invalid\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb3jzp\n" \
     ">>> import numpy as np\n" \
     ">>> m = 2  # n = 2*m = 4\n" \
@@ -15061,7 +15395,8 @@
     "    neig: Number of eigenvalues with negative real part\n" \
     "    info: 0=success, 1=MB04FP QZ failed, 2=ZHGEQZ failed, 3=ZGESVD failed, 4=singular\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb3lzp\n" \
     ">>> import numpy as np\n" \
     ">>> m = 2  # n = 2*m = 4\n" \
@@ -15090,7 +15425,8 @@
     "  (a, rank, info, sval, jpvt, tau): QR factors, rank, exit code,\n" \
     "    singular value estimates, column permutation, reflector factors\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb3oyz\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 6, 4\n" \
@@ -15124,7 +15460,8 @@
     "  (a, rank, info, sval, jpvt, tau): RQ factors, rank, exit code,\n" \
     "    singular value estimates, row permutation, reflector factors\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb3pyz\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 4, 6\n" \
@@ -15160,7 +15497,8 @@
     "Returns:\n" \
     "  (v1, v2, info): Modified matrices and exit code (info=0: success, <0: -info arg illegal)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb4dbz\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -15199,7 +15537,8 @@
     "    iwarn: Warning indicator (0=ok, 1=scaling reset to 1)\n" \
     "    info: Exit code (0=success, <0: -info arg illegal)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb4dlz\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -15254,7 +15593,8 @@
     "    iwarn: Warning indicator (0=ok, 1=scaling reset to 1)\n" \
     "    info: Exit code (0=success, <0: -info arg illegal)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mb4dpz\n" \
     ">>> import numpy as np\n" \
     ">>> n = 2\n" \
@@ -15294,7 +15634,8 @@
     "Returns:\n" \
     "  (q, info): Shifted coefficients (leading k meaningful), exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mc01md\n" \
     ">>> dp = 5\n" \
@@ -15319,7 +15660,8 @@
     "Returns:\n" \
     "  (vr, vi, info): Real and imaginary parts of P(x0), exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mc01nd\n" \
     ">>> dp = 4\n" \
@@ -15344,7 +15686,8 @@
     "  (rep, imp, info): Real and imaginary parts of coefficients\n" \
     "    (increasing powers), exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mc01od\n" \
     ">>> rez = np.array([1.1, 0.6, -2.0, -0.8, -0.3], order='F', dtype=float)\n" \
@@ -15364,7 +15707,8 @@
     "Returns:\n" \
     "  (p, info): Polynomial coefficients (increasing powers), exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mc01pd\n" \
     ">>> k = 5\n" \
@@ -15391,7 +15735,8 @@
     "Returns:\n" \
     "  (p, info): Polynomial coefficients (decreasing powers), exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mc01py\n" \
     ">>> rez = np.array([3.0], order='F', dtype=float)\n" \
@@ -15414,7 +15759,8 @@
     "  (rq, db, iwarn, info): Combined [R | Q] array, divisor degree,\n" \
     "    warning count (leading zeros removed), exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mc01qd\n" \
     ">>> a = np.array([2.0, 2.0, -1.0, 2.0, 1.0], order='F', dtype=float)\n" \
@@ -15442,7 +15788,8 @@
     "Returns:\n" \
     "  (p, dp, info): Result polynomial coefficients, degree, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mc01rd\n" \
     ">>> import numpy as np\n" \
     ">>> p1 = np.array([1.0, 2.5], dtype=float)\n" \
@@ -15467,7 +15814,8 @@
     "  (q, s, t, mant, e, info): Scaled coefficients Q(x), scaling exponents S and T,\n" \
     "    mantissas and exponents of Q(x) coefficients, exit code (0=success, 1=zero polynomial)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mc01sd\n" \
     ">>> import numpy as np\n" \
     ">>> p = np.array([10.0, -40.5, 159.5, 0.0, 2560.0, -10236.5], order='F', dtype=float)\n" \
@@ -15487,7 +15835,8 @@
     "Returns:\n" \
     "  (m, e): Mantissa and exponent\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mc01sw\n" \
     ">>> import numpy as np\n" \
     ">>> m, e = mc01sw(1000.0, 10)"
@@ -15501,7 +15850,8 @@
     "Returns:\n" \
     "  int: Variation V = max(E(j)) - min(E(j)) for non-zero mantissas\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mc01sx\n" \
     ">>> e = np.array([5, 10, 3, 8], dtype=np.int32)\n" \
@@ -15520,7 +15870,8 @@
     "Returns:\n" \
     "  (a, ovflow): The reconstructed value and overflow flag\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mc01sy\n" \
     ">>> test_values = [1024.0, 0.5, -256.0, 1.5, 0.125]\n" \
@@ -15538,7 +15889,8 @@
     "  (stable, nz, dp_out, iwarn, info): Stability flag, unstable zeros,\n" \
     "    actual degree, warning, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mc01td\n" \
     ">>> p = np.array([2.0, 0.0, 1.0, -1.0, 1.0], order='F', dtype=float)\n" \
@@ -15566,7 +15918,8 @@
     "    info = 3: c=0 and -b/a overflows, or largest root overflows\n" \
     "    info = 4: roots cannot be computed without overflow\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mc01vd\n" \
     ">>> import numpy as np\n" \
     ">>> a = 0.5\n" \
@@ -15588,7 +15941,8 @@
     "Returns:\n" \
     "  (q, info): Quotient polynomial coefficients, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mc01wd\n" \
     ">>> import numpy as np\n" \
     ">>> p = np.array([0.62, 1.10, 1.64, 1.88, 2.12, 1.70, 1.00], dtype=float)\n" \
@@ -15615,7 +15969,8 @@
     "Returns:\n" \
     "  (evr, evi, evq, info): Real parts, imaginary parts, quotients, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mc01xd\n" \
     ">>> alpha, beta, gamma, delta = -6.0, 11.0, -6.0, 1.0\n" \
@@ -15644,7 +15999,8 @@
     "Returns:\n" \
     "  (p, dp, info): Result polynomial matrix coefficients (rp1, cp2, max_deg+1), degree, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mc03md\n" \
     ">>> rp1, cp1, cp2 = 3, 2, 2\n" \
@@ -15688,7 +16044,8 @@
     "    ker (ndarray): 3D array (np, nk, dk+1) of kernel coefficients.\n" \
     "    info (int): Exit code. 0 = success.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mc03nd\n" \
     ">>> mp, np_dim, dp = 5, 4, 2\n" \
@@ -15742,7 +16099,8 @@
     "Returns:\n" \
     "  (a, e): Companion pencil matrices A and E\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import mc03nx\n" \
     ">>> mp, np_, dp = 2, 2, 2\n" \
@@ -15778,7 +16136,8 @@
     "  (veps, imuk, info): Minimal polynomial basis (nca x ncv),\n" \
     "    restored mu(k) array, exit code (>0 means block not full row rank)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import mc03ny\n" \
     ">>> import numpy as np\n" \
     ">>> nblcks = 1\n" \
@@ -15808,7 +16167,8 @@
     "Returns:\n" \
     "  (r, e, jnorms, gnorm, ipvt, info): R factor, Q'*e, norms, gradient norm, permutation, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> try:\n" \
     ">>> from slicot import md03ba\n" \
@@ -15843,7 +16203,8 @@
     "Returns:\n" \
     "  (r, par, rank, x, rx, info): Modified R, LM parameter, rank, solution, residual, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import md03bb\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -15878,7 +16239,8 @@
     "Returns:\n" \
     "  (x, nfev, njev, fnorm, iwarn, info): Solution, evaluations, norm, status\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import md03bd\n" \
     ">>> import numpy as np\n" \
     ">>> m = 15\n" \
@@ -15935,7 +16297,8 @@
     "  iflag=2: (j, e, nfevl, info) - Jacobian (15x3), error, evals, code\n" \
     "  iflag=3: (ipar, info) - Workspace requirements tuple, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import md03bf\n" \
     ">>> import numpy as np\n" \
     ">>> x = np.array([1.0, 1.0, 1.0], dtype=np.float64)\n" \
@@ -15960,7 +16323,8 @@
     "Returns:\n" \
     "  (r, par, rank, x, rx, info): Modified R, LM parameter, rank, solution, residual, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import md03by\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -15996,7 +16360,8 @@
     "Returns:\n" \
     "  (y, info): Output samples, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import nf01ay\n" \
     ">>> import numpy as np\n" \
     ">>> nsmp = 5\n" \
@@ -16044,7 +16409,8 @@
     "Returns:\n" \
     "  (b, ranks, info): Solution x, ranks, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import nf01br\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -16080,7 +16446,8 @@
     "Returns:\n" \
     "  (r, e, jnorms, gnorm, ipvt, info): R factor, Q'*e, norms, gradient norm, permutation, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import nf01bs\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 5, 3\n" \
@@ -16115,7 +16482,8 @@
     "Returns:\n" \
     "  (j, jte, info): Jacobian, J'*e, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> try:\n" \
     ">>> from slicot import nf01by\n" \
@@ -16173,7 +16541,8 @@
     "  (a, wr, wi, nfp, nap, nup, f, z, iwarn, info):\n" \
     "    Schur form, eigenvalues, counts, feedback, transformation\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb01bd\n" \
     ">>> n, m, np_poles = 4, 2, 2\n" \
@@ -16216,7 +16585,8 @@
     "Returns:\n" \
     "  (wr, wi, s, p): Reordered arrays, sum, product\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb01bx\n" \
     ">>> import numpy as np\n" \
     ">>> reig = True\n" \
@@ -16243,7 +16613,8 @@
     "Returns:\n" \
     "  (f, info): Feedback matrix (m x n), exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb01by\n" \
     ">>> import numpy as np\n" \
     ">>> n, m = 1, 1\n" \
@@ -16281,7 +16652,8 @@
     "    count: Number of Y elements used\n" \
     "    info: 0=success, <0=invalid arg, 1=not controllable\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb01dd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -16321,7 +16693,8 @@
     "Returns:\n" \
     "  (f, v, info): Feedback matrix (m x n), V matrix (m x m), exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb01fy\n" \
     ">>> n = 1\n" \
@@ -16357,7 +16730,8 @@
     "    g: State feedback matrix (NCONT elements)\n" \
     "    info: 0=success, <0=parameter -info invalid\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb01md\n" \
     ">>> n = 4\n" \
@@ -16391,7 +16765,8 @@
     "Returns:\n" \
     "  bool: True if purely imaginary, False otherwise\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb02cx\n" \
     ">>> result = sb02cx(0.0, 1.0)\n" \
@@ -16433,7 +16808,8 @@
     "  - U: Orthogonal transformation (2n x 2n)\n" \
     "  - info: Exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb02md\n" \
     ">>> n = 2\n" \
@@ -16467,7 +16843,8 @@
     "Returns:\n" \
     "  bool: True if unstable (reig >= 0), False otherwise\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb02mr\n" \
     ">>> result = sb02mr(1.0, 0.0)\n" \
@@ -16491,7 +16868,8 @@
     "Returns:\n" \
     "  bool: True if unstable (|lambda| >= 1), False otherwise\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb02ms\n" \
     ">>> result = sb02ms(2.0, 0.0)\n" \
@@ -16530,7 +16908,8 @@
     "  - If jobg='N', jobl='N': (a, b, q, l, oufact, info)\n" \
     "  - If jobg='G', jobl='N': (a, b, q, l, g, oufact, info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> n, m = 4, 2\n" \
     ">>> B = np.random.randn(n, m).astype(float, order='F')\n" \
@@ -16588,7 +16967,8 @@
     "Returns:\n" \
     "  bool: True if stable (reig < 0), False otherwise\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb02mv\n" \
     ">>> result = sb02mv(-1.0, 0.0)\n" \
@@ -16612,7 +16992,8 @@
     "Returns:\n" \
     "  bool: True if stable (|lambda| < 1), False otherwise\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb02mw\n" \
     ">>> result = sb02mw(0.0, 0.0)\n" \
@@ -16660,7 +17041,8 @@
     "  - If jobg='N', jobl='N': (a, b, q, l, oufact, info)\n" \
     "  - If jobg='G', jobl='N': (a, b, q, l, g, oufact, info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> n, m = 4, 2\n" \
     ">>> B = np.random.randn(n, m).astype(float, order='F')\n" \
@@ -16707,7 +17089,8 @@
     "  - rcond: Reciprocal condition number\n" \
     "  - info: Exit code (0=success, m+1=singular)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb02nd\n" \
     ">>> n, m = 2, 1\n" \
@@ -16762,7 +17145,8 @@
     "    u: 2N-by-2N transformation matrix\n" \
     "    info: 0=success, 1-6 various errors\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb02od\n" \
     ">>> n, m, p = 2, 1, 3\n" \
@@ -16810,7 +17194,8 @@
     "Returns:\n" \
     "  bool: True if unstable (Re(lambda) > 0), False otherwise\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb02ou\n" \
     ">>> result = sb02ou(1.0, 0.0, 2.0)"
@@ -16833,7 +17218,8 @@
     "Returns:\n" \
     "  bool: True if unstable (|lambda| >= 1), False otherwise\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb02ov\n" \
     ">>> result = sb02ov(2.0, 0.0, 1.0)"
@@ -16856,7 +17242,8 @@
     "Returns:\n" \
     "  bool: True if stable (Re(lambda) < 0), False otherwise\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb02ow\n" \
     ">>> result = sb02ow(-1.0, 0.0, 2.0)"
@@ -16879,7 +17266,8 @@
     "Returns:\n" \
     "  bool: True if stable (|lambda| < 1), False otherwise\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb02ox\n" \
     ">>> result = sb02ox(1.0, 0.0, 2.0)"
@@ -16913,7 +17301,8 @@
     "  For JOBB='G', DICO='C', JOBE='I': (af, info) - 2N-by-2N matrix only\n" \
     "  For JOBB='G' otherwise: (af, bf, info) - 2N-by-2N matrices\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> n, m = 3, 2\n" \
     ">>> A = np.random.randn(n, n).astype(float, order='F')\n" \
@@ -16957,7 +17346,8 @@
     "  - info: 0=success, 1=imaginary eigenvalues, 2=no convergence (approx computed),\n" \
     "          3=singular system, 4=Schur reduction failed\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb02pd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 2\n" \
@@ -17005,7 +17395,8 @@
     "  - u: Updated orthogonal matrix U\n" \
     "  - info: Exit code (0=success, >0=algorithm error)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb02qd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 2\n" \
@@ -17058,7 +17449,8 @@
     "  - S: Ordered Schur form (2*n x 2*n)\n" \
     "  - info: Exit code (0=success, >0=error)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb02rd\n" \
     ">>> n = 2\n" \
@@ -17107,7 +17499,8 @@
     "                           condition number (discrete only), pivot growth,\n" \
     "                           exit code (0=success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb02ru\n" \
     ">>> n = 3\n" \
@@ -17144,7 +17537,8 @@
     "Returns:\n" \
     "  (t, u, sepd, rcond, ferr, info): Updated T, U, separation, rcond, error, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb02sd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -17179,7 +17573,8 @@
     "  (x, a, u, wr, wi, scale, sep, ferr, info):\n" \
     "    Solution, Schur form, transformation, eigenvalues, scale, info\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb03md\n" \
     ">>> n = 3\n" \
@@ -17213,7 +17608,8 @@
     "Returns:\n" \
     "  (X, scale, xnorm, info): Solution X, scale factor, inf-norm, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb03mu\n" \
     ">>> tl = np.array([[2.0]], order='F', dtype=float)\n" \
@@ -17237,7 +17633,8 @@
     "Returns:\n" \
     "  (X, scale, xnorm, info): Solution X, scale factor, inf-norm, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb03mv\n" \
     ">>> T = np.array([\n" \
@@ -17268,7 +17665,8 @@
     "Returns:\n" \
     "  (X, scale, xnorm, info): Solution X, scale factor, inf-norm, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb03mw\n" \
     ">>> import numpy as np\n" \
     ">>> t = np.array([[-2.0, 0.0], [1.0, -3.0]], order='F') # T is Upper in C (row 0: -2, 1; row 1: 0, -3) -> Wait, Fortran order.\n" \
@@ -17292,7 +17690,8 @@
     "Returns:\n" \
     "  (X, scale, info): Solution X, scale factor, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb03mx\n" \
     ">>> a = np.array([\n" \
@@ -17322,7 +17721,8 @@
     "Returns:\n" \
     "  (X, scale, info): Solution X, scale factor, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb03my\n" \
     ">>> a = np.array([\n" \
@@ -17365,7 +17765,8 @@
     "  - scale: Scale factor (scale <= 1)\n" \
     "  - info: Exit code (0=success, 1=nearly singular, 2/3=unstable)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb03od\n" \
     ">>> import numpy as np\n" \
     ">>> n, m = 4, 5\n" \
@@ -17420,7 +17821,8 @@
     "Returns:\n" \
     "  (u, scale, info): Upper triangular Cholesky factor U, scale factor, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb03ou\n" \
     ">>> n = 3\n" \
@@ -17444,7 +17846,8 @@
     "Returns:\n" \
     "  (d, c_re, c_im, s, info): d, complex cosine, real sine, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb03ov\n" \
     ">>> import numpy as np\n" \
     ">>> a_re, a_im = 3.0, 4.0\n" \
@@ -17472,7 +17875,8 @@
     "  For job='S': (a, u, None, scale, sepd, wr, wi, info)\n" \
     "  For job='B': (a, u, x, scale, sepd, ferr, wr, wi, info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb03pd\n" \
     ">>> n = 3\n" \
@@ -17519,7 +17923,8 @@
     "  u_out: Orthogonal transformation matrix\n" \
     "  info: 0=success, 1..n=DGEES fail, n+1=near-common eigenvalues\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb03qd\n" \
     ">>> n = 3\n" \
@@ -17574,7 +17979,8 @@
     "Returns:\n" \
     "  (sep, thnorm, info): Separation, Theta norm, exit code (N+1=close eigenvalues)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb03qy\n" \
     ">>> n = 3\n" \
@@ -17613,7 +18019,8 @@
     "  wr, wi: Real/imaginary eigenvalue parts (fact='N')\n" \
     "  info: 0=success, -i=arg i invalid, 1..n=DGEES fail, n+1=singular\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb03rd\n" \
     ">>> n = 3\n" \
@@ -17658,7 +18065,8 @@
     "  ferr: Forward error bound\n" \
     "  info: 0=success, 1..n=DGEES fail, n+1=near-reciprocal eigenvalues\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
     ">>> a = np.array([\n" \
@@ -17701,7 +18109,8 @@
     "Returns:\n" \
     "  (ferr, r, info): Forward error bound, modified R, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb03sx\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -17733,7 +18142,8 @@
     "Returns:\n" \
     "  (sepd, thnorm, info): Separation, Theta norm, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb03sy\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -17778,7 +18188,8 @@
     "  ferr: Forward error bound (if job='E' or 'A')\n" \
     "  info: 0=success, -i=arg i invalid, 1..n=DGEES fail, n+1=close eigenvalues\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb03td\n" \
     ">>> n = 3\n" \
@@ -17828,7 +18239,8 @@
     "  wr, wi: Eigenvalue real/imaginary parts (if fact='N')\n" \
     "  info: 0=success, -i=arg i invalid, 1..n=DGEES fail, n+1=near-reciprocal\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb03ud\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -17863,7 +18275,8 @@
     "Returns:\n" \
     "  (x, z, info): Solution matrix X, orthogonal matrix Z, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb04md\n" \
     ">>> n = 3\n" \
@@ -17898,7 +18311,8 @@
     "Returns:\n" \
     "  (d, ipr, info): Updated d, solution indices, exit code (0=success, 1=singular)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb04mr\n" \
     ">>> m = 2\n" \
@@ -17928,7 +18342,8 @@
     "Returns:\n" \
     "  (d, ipr, info): Updated d, solution indices, exit code (0=success, 1=singular)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb04mw\n" \
     ">>> m = 2\n" \
@@ -17968,7 +18383,8 @@
     "Returns:\n" \
     "  (x, info): Solution matrix X and exit code (0=success, 1=singular)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb04nd\n" \
     ">>> n = 5\n" \
@@ -18011,7 +18427,8 @@
     "Returns:\n" \
     "  d (ndarray): Right-hand side vector (2*N or 2*M elements)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb04nv\n" \
     ">>> n = 3\n" \
@@ -18036,7 +18453,8 @@
     "Returns:\n" \
     "  d (ndarray): Right-hand side vector (N or M elements)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb04nw\n" \
     ">>> n = 3\n" \
@@ -18062,7 +18480,8 @@
     "Returns:\n" \
     "  (d, info): Solution vector and exit code (0=success, 1=singular)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb04nx\n" \
     ">>> m = 3\n" \
@@ -18104,7 +18523,8 @@
     "Returns:\n" \
     "  (d, info): Solution vector and exit code (0=success, 1=singular)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb04ny\n" \
     ">>> m = 4\n" \
@@ -18148,7 +18568,8 @@
     "    P,Q for (A,D), U,V for (B,E); None if not computed.\n" \
     "    info: 0=success, 1=Schur fail, 2=not quasi-triangular, 3=singular\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb04od\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 3, 2\n" \
@@ -18212,7 +18633,8 @@
     "    scale: Scaling factor (0 <= scale <= 1)\n" \
     "    info: 0=success, >0=common eigenvalues in A*D and B*E\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb04ow\n" \
     ">>> import numpy as np\n" \
     ">>> m, n = 1, 1\n" \
@@ -18261,7 +18683,8 @@
     "    scale: Scale factor (0 < scale <= 1)\n" \
     "    info: 0=success, <0=arg error, >0=algorithm error\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb04pd\n" \
     ">>> import numpy as np\n" \
     ">>> m = 3\n" \
@@ -18307,7 +18730,8 @@
     "  scale: Scale factor (0 < scale <= 1) to prevent overflow\n" \
     "  info: 0=success, 1=A and -ISGN*B have almost reciprocal eigenvalues\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb04py\n" \
     ">>> a = np.array([[2.0, 0.0], [0.0, 3.0]], dtype=float, order='F')\n" \
@@ -18331,7 +18755,8 @@
     "Returns:\n" \
     "  (x, z, info): Solution matrix X, orthogonal matrix Z, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb04qd\n" \
     ">>> n = 3\n" \
@@ -18367,7 +18792,8 @@
     "Returns:\n" \
     "  (d, ipr, info): Updated d, solution indices, exit code (0=success, 1=singular)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb04qr\n" \
     ">>> m = 4\n" \
@@ -18419,7 +18845,8 @@
     "  (x, info): Solution matrix X and exit code\n" \
     "    info=0: success, info=1: nearly singular matrix encountered\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb04rd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 5\n" \
@@ -18469,7 +18896,8 @@
     "Returns:\n" \
     "  d (ndarray): Right-hand side vector (2*n or 2*m elements, interleaved)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb04rv\n" \
     ">>> n = 3\n" \
@@ -18502,7 +18930,8 @@
     "Returns:\n" \
     "  d (ndarray): Right-hand side vector (n or m elements)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb04rw\n" \
     ">>> n = 3\n" \
@@ -18538,7 +18967,8 @@
     "  (d, info): Solution vector (2*M elements) and exit code\n" \
     "    info=0: success, info=1: system is (numerically) singular\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb04rx\n" \
     ">>> m = 4\n" \
@@ -18573,7 +19003,8 @@
     "  (d, info): Solution vector (M elements) and exit code\n" \
     "    info=0: success, info=1: system is (numerically) singular\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb04ry\n" \
     ">>> m = 4\n" \
@@ -18607,7 +19038,8 @@
     "  (a, b, u, f, info): Modified A (U'AU + U'BF), modified B (U'B),\n" \
     "    modified U, deadbeat feedback matrix F, and exit code.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb06nd\n" \
     ">>> n = 5\n" \
@@ -18658,7 +19090,8 @@
     "    output injection matrix Z'*H (N-by-P), lower triangular V (P-by-P),\n" \
     "    warning count, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb08cd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 7, 2, 3\n" \
@@ -18706,7 +19139,8 @@
     "  (a, b, c, d, nq, nr, cr, dr, iwarn, info): Modified matrices, orders,\n" \
     "    denominator matrices CR and DR, warning and exit codes\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb08dd\n" \
     ">>> n, m, p = 7, 2, 3\n" \
@@ -18771,7 +19205,8 @@
     "    br = NQ-by-P output injection matrix Z'*H (first NR rows = BR of R),\n" \
     "    dr = P-by-P identity matrix, iwarn = warning count, info = exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb08ed\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 7, 2, 3\n" \
@@ -18841,7 +19276,8 @@
     "    feedback matrix CR (M-by-N), identity DR (M-by-M),\n" \
     "    order NQ, denominator order NR, warning count, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb08fd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 7, 2, 3\n" \
@@ -18908,7 +19344,8 @@
     "    reciprocal condition number of DR, exit code\n" \
     "    info=0: success, info=1: DR singular, info=2: DR numerically singular (warning)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb08gd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 2, 1, 1\n" \
@@ -18970,7 +19407,8 @@
     "    info=0: success, info=1: DR singular, info=2: DR numerically singular (warning)\n" \
     "    Arrays a, b, c, d are modified in-place to contain G's matrices.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb08hd\n" \
     ">>> n, m, p = 3, 2, 2\n" \
@@ -19013,7 +19451,8 @@
     "    info: 0=success, 1=all A(i)=0, 2=invalid B(s) for ACONA='B',\n" \
     "          3=no convergence in 30 iterations, 4=last iterate unstable\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb08md\n" \
     ">>> import numpy as np\n" \
     ">>> da = 3\n" \
@@ -19036,7 +19475,8 @@
     "  (b, epsb): Coefficients of B(s) in powers of s**2 (length DA+1),\n" \
     "    updated accuracy norm (3 * max_abs_sum * epsb)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb08my\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([2.0], dtype=float, order='F')\n" \
@@ -19064,7 +19504,8 @@
     "    info: 0=success, 2=invalid B(z) for ACONA='B',\n" \
     "          3=no convergence in 30 iterations, 4=last iterate unstable\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb08nd\n" \
     ">>> import numpy as np\n" \
     ">>> da = 2\n" \
@@ -19086,7 +19527,8 @@
     "  (b, epsb): Autocorrelation coefficients (length DA+1),\n" \
     "    accuracy norm (3 * machine_eps * b[0])\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb08ny\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([3.0], dtype=float, order='F')\n" \
@@ -19113,7 +19555,8 @@
     "  (ss, se, pre, info): Sum-of-squares matrix, quadratic error matrix,\n" \
     "    percentage relative error matrix, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb09md\n" \
     ">>> import numpy as np\n" \
     ">>> n = 2\n" \
@@ -19169,7 +19612,8 @@
     "  (ak, bk, ck, dk, ac, bc, cc, dc, gamma, rcond, info):\n" \
     "    Controller K, closed-loop G, achieved gamma, condition numbers, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb10ad\n" \
     ">>> import numpy as np\n" \
     ">>> n = 2       # State dimension\n" \
@@ -19216,7 +19660,8 @@
     "  (ak, bk, ck, dk, x, z, rcond, info): Controller matrices,\n" \
     "    Riccati solutions, condition numbers, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb10dd\n" \
     ">>> n = 6\n" \
@@ -19298,7 +19743,8 @@
     "    6=X-Riccati, 7=B2'*X*B2 not PD, 8=Y-Riccati, 9=C2*Y*C2' not PD,\n" \
     "    10=Im2+DKHAT*D22 singular\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb10ed\n" \
     ">>> n = 6\n" \
@@ -19372,7 +19818,8 @@
     "Returns:\n" \
     "  (ak, bk, ck, dk, rcond, info): Controller matrices, condition numbers, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb10fd\n" \
     ">>> n = 6\n" \
@@ -19444,7 +19891,8 @@
     "  rcond has 4 elements: control/measurement transform rcond, X/Y Riccati rcond\n" \
     "  info: 0=success, 1=D12 rank, 2=D21 rank, 3=SVD, 4=X-Riccati, 5=Y-Riccati\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb10hd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 6\n" \
@@ -19509,7 +19957,8 @@
     "  info: 0=success, 1=X-Riccati, 2=Z-Riccati, 3=iteration,\n" \
     "        4=Ip-D*Dk singular, 5=Im-Dk*D singular, 6=unstable\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb10id\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, np_ = 6, 2, 3\n" \
@@ -19561,7 +20010,8 @@
     "Returns:\n" \
     "  (ad, bd, cd, dd, nsys, info): Converted matrices, reduced order, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb10jd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, np_ = 3, 2, 2\n" \
@@ -19610,7 +20060,8 @@
     "    3: X-Riccati failed, 4: eigenvalue computation failed,\n" \
     "    5: singular matrix, 6: closed-loop unstable\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb10kd\n" \
     ">>> n, m, np_ = 6, 2, 2\n" \
@@ -19667,7 +20118,8 @@
     "  (ac, bc, cc, dc, info): Closed-loop matrices and exit code\n" \
     "    info=0: success, 1: I-D22*DK singular, 2: I-DK*D22 singular\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb10ld\n" \
     ">>> import numpy as np\n" \
     ">>> n = 2      # State dimension\n" \
@@ -19720,7 +20172,8 @@
     "    state-space realization matrices, mu estimates, fitting function value,\n" \
     "    and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb10md\n" \
     ">>> nc = 2\n" \
@@ -19766,7 +20219,8 @@
     "Returns:\n" \
     "  (b, c, d, tu, ty, rcond, info): Transformed matrices, transforms, cond numbers, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb10pd\n" \
     ">>> n = 2\n" \
@@ -19834,7 +20288,8 @@
     "Returns:\n" \
     "  (ak, bk, ck, dk, info): Controller matrices and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb10rd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, np_, ncon, nmeas = 2, 3, 3, 1, 1\n" \
@@ -19896,7 +20351,8 @@
     "    BK (n x nmeas), CK (ncon x n), DK (ncon x nmeas), Riccati solutions\n" \
     "    X and Y (n x n), condition estimates rcond(4), exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb10sd\n" \
     ">>> n = 2\n" \
@@ -19965,7 +20421,8 @@
     "    reciprocal condition number of (I + DKHAT*D22), exit code\n" \
     "    info=0: success, 1: (I + DKHAT*D22) singular or ill-conditioned\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb10td\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, np_ = 2, 3, 3\n" \
@@ -20000,7 +20457,8 @@
     "  (f, h, x, y, xcond, ycond, info): State feedback F, output injection H,\n" \
     "    X-Riccati solution, Y-Riccati solution, condition estimates, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb10vd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, np_, ncon, nmeas = 6, 5, 5, 2, 2\n" \
@@ -20060,7 +20518,8 @@
     "Returns:\n" \
     "  (ak, bk, ck, dk, info): Controller matrices and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb10wd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 2      # State order\n" \
@@ -20097,7 +20556,8 @@
 
 #define DOC_SB10YD "SB10YD: Frequency response fitting\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb10yd\n" \
     ">>> import numpy as np\n" \
     ">>> n_points = 100\n" \
@@ -20147,7 +20607,8 @@
     "    info: 0=success, 1-2=Riccati failed, 3=iteration failed,\n" \
     "    4-9=singular matrices, 10=closed-loop unstable\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb10zd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 6\n" \
@@ -20202,7 +20663,8 @@
     "  (a, b, c, d, n, info): Transformed system matrices, final order,\n" \
     "    and exit code (0=success, <0=param error, >0=algorithm error)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb10zp\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([[2.0, 1.0], [0.0, -1.0]], order='F', dtype=float)\n" \
@@ -20251,7 +20713,8 @@
     "    actual order, stable part order, Hankel SVs, warning, exit code.\n" \
     "    info: 0=success, 1-7=algorithm errors\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb16ad\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 1, 1\n" \
@@ -20342,7 +20805,8 @@
     "    info=0: success, 1: Schur of A+GC failed, 2: A+GC not stable,\n" \
     "    3: HSV computation failed, 4: Schur of A+BF failed, 5: A+BF not stable.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb16bd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 8, 1, 1\n" \
@@ -20426,7 +20890,8 @@
     "    info=0: success, 1: eigenvalue failure, 2: A+GC unstable, 3: A+BF unstable,\n" \
     "    4: obs Lyapunov singular, 5: ctrl Lyapunov singular, 6: HSV computation failed.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sb16cd\n" \
     ">>> n, m, p = 8, 1, 1\n" \
@@ -20504,7 +20969,8 @@
     "    2: A+GC not stable, 3: A+BF not stable,\n" \
     "    4: observability Lyapunov singular, 5: controllability Lyapunov singular.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sb16cy\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 2, 2\n" \
@@ -20574,7 +21040,8 @@
     "Returns:\n" \
     "  (x, rcondu, alfar, alfai, beta, s, t, u, iwarn, info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sg02ad\n" \
     ">>> n = 2\n" \
@@ -20643,7 +21110,8 @@
     "    norms[1] = ||op(E)'*X*op(E)|| (discrete, JOBE='G' only).\n" \
     "    info=0: success, <0: parameter error.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sg02cv\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -20699,7 +21167,8 @@
     "    norms[1] = ||op(A)'*X*op(E)|| for continuous.\n" \
     "    info=0: success, <0: parameter error.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sg02cw\n" \
     ">>> n = 3\n" \
@@ -20764,7 +21233,8 @@
     "    warning code (2 = no optimum in [0,2]), exit code.\n" \
     "    info=0: success, <0: parameter error, 1: eigenproblem failed.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sg02cx\n" \
     ">>> import numpy as np\n" \
     ">>> n = 2\n" \
@@ -20828,7 +21298,8 @@
     "    info=0: success, <0: parameter error, i: d[i]=0, m+1: singular,\n" \
     "    m+2: eigenvalue failure, m+3: X indefinite.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sg02nd\n" \
     ">>> n = 2\n" \
@@ -20889,7 +21360,8 @@
     "Returns:\n" \
     "  (x, scale, sep, ferr, alphar, alphai, beta, a, e, q, z, info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sg03ad\n" \
     ">>> n = 3\n" \
@@ -20930,7 +21402,8 @@
     "Returns:\n" \
     "  (X, scale, info): Solution X, scale factor, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sg03ax\n" \
     ">>> a = np.array([\n" \
@@ -20966,7 +21439,8 @@
     "Returns:\n" \
     "  (X, scale, info): Solution X, scale factor, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import sg03ay\n" \
     ">>> n = 3\n" \
@@ -21006,7 +21480,8 @@
     "Returns:\n" \
     "  (u, scale, alphar, alphai, beta, info): Cholesky factor, scale, eigenvalues, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sg03bd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -21049,7 +21524,8 @@
     "Returns:\n" \
     "  (c, sr, si, zr, zi): Givens rotation parameters and result\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sg03br\n" \
     ">>> import numpy as np\n" \
     ">>> xr, xi = 3.0, 4.0  # X = 3 + 4i\n" \
@@ -21080,7 +21556,8 @@
     "  (u, scale, info): Cholesky factor U, scale factor, exit code\n" \
     "  info=0: success, info=3: not d-stable, info=4: ZSTEIN failed\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sg03bs\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -21124,7 +21601,8 @@
     "  (u, scale, info): Cholesky factor U, scale factor, exit code\n" \
     "  info=0: success, info=3: not c-stable\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sg03bt\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -21160,7 +21638,8 @@
     "Returns:\n" \
     "  (u, scale, info): Cholesky factor U, scale factor, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sg03bu\n" \
     ">>> import numpy as np\n" \
     ">>> trans = 'N'\n" \
@@ -21183,7 +21662,8 @@
     "Returns:\n" \
     "  (u, scale, info): Cholesky factor U, scale factor, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sg03bv\n" \
     ">>> import numpy as np\n" \
     ">>> trans = 'N'\n" \
@@ -21208,7 +21688,8 @@
     "Returns:\n" \
     "  (x, scale, info): Solution matrix, scale factor, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sg03bw\n" \
     ">>> import numpy as np\n" \
     ">>> trans = 'N'\n" \
@@ -21237,7 +21718,8 @@
     "Returns:\n" \
     "  (u, scale, m1, m2, info): Cholesky factor, scale, auxiliary matrices, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sg03bx\n" \
     ">>> import numpy as np\n" \
     ">>> dico = 'C'\n" \
@@ -21280,7 +21762,8 @@
     "Returns:\n" \
     "  (cr, ci, sr, si, z): Givens rotation parameters and result norm\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sg03by\n" \
     ">>> import numpy as np\n" \
     ">>> xr, xi = 3.0, 0.0\n" \
@@ -21320,7 +21803,8 @@
     "  info=0: success, info=4: ZGGES failed, info=5: not c-stable,\n" \
     "  info=6: not d-stable, info=7: ZSTEIN failed\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import sg03bz\n" \
     ">>> import numpy as np\n" \
     ">>> n = 3\n" \
@@ -21361,7 +21845,8 @@
     "  (a, b, c, maxred, scale, info): Balanced matrices,\n" \
     "    norm ratio, scale factors, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tb01id\n" \
     ">>> n, m, p = 5, 2, 5\n" \
@@ -21406,7 +21891,8 @@
     "  (a, b, c, maxred, scale, info): Balanced matrices,\n" \
     "    norm ratio, scale factors, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb01iz\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 5, 2, 5\n" \
@@ -21460,7 +21946,8 @@
     "Returns:\n" \
     "  (a, b, c, ndim, u, wr, wi, info): Block-diagonal A, transformed B/C, counts, eigenvalues\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tb01kd\n" \
     ">>> n, m, p = 5, 2, 3\n" \
@@ -21510,7 +21997,8 @@
     "  (a, b, c, u, v, info): Block-diagonal A, transformed B/C/U, inverse V, exit code\n" \
     "  info=0: success, info=1: Sylvester equation failed (close eigenvalues)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tb01kx\n" \
     ">>> n, m, p = 4, 2, 2\n" \
@@ -21555,7 +22043,8 @@
     "Returns:\n" \
     "  (a, b, c, ndim, u, wr, wi, info): Transformed matrices, counts, eigenvalues\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tb01ld\n" \
     ">>> n, m, p = 5, 2, 3\n" \
@@ -21604,7 +22093,8 @@
     "Returns:\n" \
     "  (a, b, u, info): Transformed A=U'AU, B=U'B, transformation U, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tb01md\n" \
     ">>> a = np.array([\n" \
@@ -21645,7 +22135,8 @@
     "Returns:\n" \
     "  (a, c, u, info): Transformed A=U'AU, C=CU, transformation U, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tb01nd\n" \
     ">>> a = np.array([\n" \
@@ -21687,7 +22178,8 @@
     "    - nblk: Staircase block structure\n" \
     "    - info: Exit code (0 = success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb01pd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 1, 2\n" \
@@ -21739,7 +22231,8 @@
     "    - iwork: Block dimensions (infred[3] elements)\n" \
     "    - info: Exit code (0 = success)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb01px\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 1, 2\n" \
@@ -21805,7 +22298,8 @@
     "    - scout: Output scalings (p elements)\n" \
     "    - info: Exit code (0 = success, <0 = invalid parameter)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tb01td\n" \
     ">>> n, m, p = 5, 2, 2\n" \
@@ -21857,7 +22351,8 @@
     "Returns:\n" \
     "  (x, bvect, info): Balanced matrix, scale factors, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb01ty\n" \
     ">>> import numpy as np\n" \
     ">>> nrow = 3\n" \
@@ -21897,7 +22392,8 @@
     "Returns:\n" \
     "  (a, b, c, ncont, indcon, nblk, z, tau, info): Transformed system and metadata\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb01ud\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 2, 2\n" \
@@ -21962,7 +22458,8 @@
     "Returns:\n" \
     "  (a, b, c, nobsv, nlblck, ctau, z, info): Transformed system and metadata\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb01ux\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 2, 2\n" \
@@ -22004,7 +22501,8 @@
     "    indcon: Controllability index (always even)\n" \
     "    nblk: Block dimensions (2*n array, INDCON/2 odd+even pairs)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb01uy\n" \
     ">>> import numpy as np\n" \
     ">>> n, m1, m2, p = 3, 1, 1, 2\n" \
@@ -22070,7 +22568,8 @@
     "  (theta, a, b, c, scale, info): Parameter vector, transformed matrices, scale factor, exit code\n" \
     "  info=0: success, info=1: Lyapunov scale=0, info=2: unstable A, info=3: QR failed\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb01vd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, l = 2, 1, 1\n" \
@@ -22107,7 +22606,8 @@
     "Returns:\n" \
     "  (a, b, c, d, x0, info): State-space matrices, initial state, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb01vy\n" \
     ">>> import numpy as np\n" \
     ">>> n = 2\n" \
@@ -22144,7 +22644,8 @@
     "Returns:\n" \
     "  (a, b, c, u, wr, wi, info): Transformed system, Schur vectors, eigenvalues, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb01wd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 5, 2, 3\n" \
@@ -22218,7 +22719,8 @@
     "Returns:\n" \
     "  (a, b, c, u, dwork, info): Hessenberg A, transformed B and C, transformation U, workspace, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb01wx\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 5, 2, 3\n" \
@@ -22265,7 +22767,8 @@
     "Returns:\n" \
     "  (a, b, c, d, info): Transformed matrices and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb01xd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 2, 2\n" \
@@ -22297,7 +22800,8 @@
     "Returns:\n" \
     "  (a, b, c, d, info): Transformed complex matrices and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb01xz\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 2, 2\n" \
@@ -22325,7 +22829,8 @@
     "Returns:\n" \
     "  (a, b, c, ncont, z, tau, info): Transformed system and metadata\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb01zd\n" \
     ">>> import numpy as np\n" \
     ">>> n, p = 3, 2\n" \
@@ -22364,7 +22869,8 @@
     "Returns:\n" \
     "  (a, b, c, nr, index, pcoeff, qcoeff, vcoeff, iwork, info)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb03ad\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 1, 2\n" \
@@ -22422,7 +22928,8 @@
     "Returns:\n" \
     "  (vcoeff, pcoeff, info): Modified arrays and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb03ay\n" \
     ">>> import numpy as np\n" \
     ">>> nr = 1\n" \
@@ -22470,7 +22977,8 @@
     "    ucoeff: Numerator polynomial coefficients\n" \
     "    info: 0=success\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb04ad\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 2, 2\n" \
@@ -22532,7 +23040,8 @@
     "    gd: Denominator coefficients (p*m*md,)\n" \
     "    info: 0=success, 1=QR failed for zeros, 2=QR failed for poles\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb04bd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 2, 2\n" \
@@ -22586,7 +23095,8 @@
     "    d: Feedthrough matrix D (p x m)\n" \
     "    info: 0=success, 1=not proper, 2=null denominator\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb04bv\n" \
     ">>> import numpy as np\n" \
     ">>> p, m, md = 1, 1, 2\n" \
@@ -22623,7 +23133,8 @@
     "    gn: Updated numerator coefficients of G + D\n" \
     "    info: 0=success, -i=parameter i invalid\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb04bw\n" \
     ">>> import numpy as np\n" \
     ">>> p, m, md = 1, 1, 2\n" \
@@ -22663,7 +23174,8 @@
     "Returns:\n" \
     "  gain (float): Computed gain of the linear system\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tb04bx\n" \
     ">>> ip = 1\n" \
@@ -22705,7 +23217,8 @@
     "    gains: Gain of each element (p x m)\n" \
     "    info: 0=success, 1=QR failed for zeros, 2=QR failed for poles\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb04cd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 2, 2\n" \
@@ -22754,7 +23267,8 @@
     "  (g, rcond, evre, evim, hinvb, info): Frequency response G(freq),\n" \
     "    condition estimate, eigenvalues (real/imag), H^(-1)*B, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tb05ad\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 3, 1, 2\n" \
@@ -22799,7 +23313,8 @@
     "Returns:\n" \
     "  (pcoeff, qcoeff, info): Transposed coefficient matrices, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tc01od\n" \
     ">>> import numpy as np\n" \
     ">>> m = 2\n" \
@@ -22841,7 +23356,8 @@
     "    state-space matrices (A n-by-n, B n-by-m, C p-by-n, D p-by-m), exit code\n" \
     "    info=1 means P(s) is not row/column proper\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tc04ad\n" \
     ">>> m, p = 2, 2\n" \
@@ -22883,7 +23399,8 @@
     "    complex frequency response matrix (p x m), exit code.\n" \
     "    info=1 means P(SVAL) is exactly or nearly singular.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tc05ad\n" \
     ">>> import numpy as np\n" \
     ">>> m = 2\n" \
@@ -22944,7 +23461,8 @@
     "    iwork (ndarray): Diagonal block orders of A\n" \
     "    info (int): Exit code, 0 = success\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import td03ad\n" \
     ">>> m, p = 2, 2\n" \
@@ -22984,7 +23502,8 @@
     "  (a, b, c, d, info): State-space matrices, exit code.\n" \
     "    info > 0 means row info has near-zero leading coefficient.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import td03ay\n" \
     ">>> mwork, pwork = 1, 1\n" \
@@ -23019,7 +23538,8 @@
     "  (nr, a, b, c, d, info): Minimal order, state-space matrices, exit code.\n" \
     "    info > 0 means row info has near-zero leading coefficient.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import td04ad\n" \
     ">>> m, p = 2, 2\n" \
@@ -23064,7 +23584,8 @@
     "    For OUTPUT='P': valr = magnitude in dB, vali = phase in degrees\n" \
     "    info=1 means W is a pole or all A coefficients are zero.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import td05ad\n" \
     ">>> import numpy as np\n" \
     ">>> np1 = 6  # Denominator order + 1\n" \
@@ -23091,7 +23612,8 @@
     "Returns:\n" \
     "  (y, x_final, info): Output sequence (p x ny), final state, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tf01md\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p, ny = 3, 2, 2, 10\n" \
@@ -23143,7 +23665,8 @@
     "Returns:\n" \
     "  (y, x, info): Output sequence, final state, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tf01mx\n" \
     ">>> import numpy as np\n" \
     ">>> n = 2\n" \
@@ -23190,7 +23713,8 @@
     "Returns:\n" \
     "  (y, x_final, info): Output sequence (ny x p), final state, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tf01my\n" \
     ">>> import numpy as np\n" \
     ">>> n = 2\n" \
@@ -23241,7 +23765,8 @@
     "Returns:\n" \
     "  (y, x_final, info): Output sequence (p x ny), final state, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tf01nd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p, ny = 3, 2, 2, 10\n" \
@@ -23293,7 +23818,8 @@
     "Returns:\n" \
     "  (t, info): Block Hankel matrix (NH1*NR x NH2*NC), exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tf01od\n" \
     ">>> import numpy as np\n" \
     ">>> nh1, nh2, nr, nc = 2, 2, 3, 3\n" \
@@ -23327,7 +23853,8 @@
     "Returns:\n" \
     "  (t, info): Block Toeplitz matrix (NH1*NR x NH2*NC), exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tf01pd\n" \
     ">>> import numpy as np\n" \
     ">>> nh1, nh2, nr, nc = 2, 2, 3, 3\n" \
@@ -23366,7 +23893,8 @@
     "Returns:\n" \
     "  (h, info): Markov parameters (nc x n*nb), exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tf01qd\n" \
     ">>> import numpy as np\n" \
     ">>> nc = 2  # outputs\n" \
@@ -23395,7 +23923,8 @@
     "Returns:\n" \
     "  (h, info): Markov parameters (nc x n*nb), exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tf01rd\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([\n" \
@@ -23435,7 +23964,8 @@
     "Returns:\n" \
     "  (a, e, b, c, lscale, rscale, info): Balanced system and scaling factors\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01ad\n" \
     ">>> import numpy as np\n" \
     ">>> l, n, m, p = 4, 4, 2, 2\n" \
@@ -23490,7 +24020,8 @@
     "Returns:\n" \
     "  (a, e, b, c, lscale, rscale, info): Balanced system and scaling factors\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01az\n" \
     ">>> import numpy as np\n" \
     ">>> l, n, m, p = 4, 4, 2, 2\n" \
@@ -23542,7 +24073,8 @@
     "Returns:\n" \
     "  (a, e, b, c, q, z, info): Transformed system in Hessenberg form\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01bd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 4, 2, 2\n" \
@@ -23572,7 +24104,8 @@
     "Returns:\n" \
     "  (a, e, b, q, info): Transformed system with Q'*E upper trapezoidal\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01cd\n" \
     ">>> import numpy as np\n" \
     ">>> l, n, m = 4, 4, 2\n" \
@@ -23612,7 +24145,8 @@
     "Returns:\n" \
     "  (a, e, c, z, info): Transformed system with E*Z upper trapezoidal\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01dd\n" \
     ">>> import numpy as np\n" \
     ">>> l, n, p = 4, 4, 2\n" \
@@ -23654,7 +24188,8 @@
     "  (a, e, b, c, q, z, ranke, rnka22, info):\n" \
     "    Transformed matrices, orthogonal Q and Z, ranks of E and A22, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01ed\n" \
     ">>> import numpy as np\n" \
     ">>> l, n, m, p = 4, 4, 2, 2\n" \
@@ -23705,7 +24240,8 @@
     "Returns:\n" \
     "  (a, e, b, c, q, z, ranke, rnka22, info): Transformed system and ranks\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01fd\n" \
     ">>> import numpy as np\n" \
     ">>> l, n, m, p = 4, 4, 2, 2\n" \
@@ -23764,7 +24300,8 @@
     "Returns:\n" \
     "  (a, e, b, c, q, z, ranke, rnka22, info): Transformed system and ranks\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01fz\n" \
     ">>> import numpy as np\n" \
     ">>> l, n, m, p = 4, 4, 2, 2\n" \
@@ -23820,7 +24357,8 @@
     "  (a, e, b, c, d, lr, nr, ranke, infred, info):\n" \
     "    Reduced system (LR x NR), rank of E, reduction info, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01gd\n" \
     ">>> import numpy as np\n" \
     ">>> l, n, m, p = 4, 4, 2, 2\n" \
@@ -23886,7 +24424,8 @@
     "    controllable order NCONT, uncontrollable infinite eigenvalue count NIUCON,\n" \
     "    number of staircase blocks NRBLCK, block sizes RTAU, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01hd\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 7, 3, 2\n" \
@@ -23963,7 +24502,8 @@
     "    controllable order NR, number of staircase blocks,\n" \
     "    block sizes RTAU, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01hu\n" \
     ">>> import numpy as np\n" \
     ">>> l, n, m1, m2, p = 4, 4, 1, 1, 2\n" \
@@ -24029,7 +24569,8 @@
     "    controllable order NR, number of staircase blocks,\n" \
     "    block sizes RTAU, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01hx\n" \
     ">>> import numpy as np\n" \
     ">>> l, n, m, p = 4, 4, 2, 2\n" \
@@ -24096,7 +24637,8 @@
     "    controllable order NR, number of staircase blocks,\n" \
     "    block sizes RTAU, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01hy\n" \
     ">>> import numpy as np\n" \
     ">>> l, n, m, p = 4, 4, 2, 2\n" \
@@ -24164,7 +24706,8 @@
     "    observable order NOBSV, unobservable infinite eigenvalue count NIUOBS,\n" \
     "    number of staircase blocks NLBLCK, block sizes CTAU, and exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tg01id\n" \
     ">>> n, m, p = 7, 2, 3\n" \
@@ -24235,7 +24778,8 @@
     "    INFRED array (phase reductions in [0-3], A/E sub-diagonals in [4-5],\n" \
     "    block count in [6]); IWORK with block dimensions; exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tg01jd\n" \
     ">>> n, m, p = 9, 2, 2\n" \
@@ -24327,7 +24871,8 @@
     "    INFRED array (phase reductions in [0-3], A/E sub-diagonals in [4-5],\n" \
     "    block count in [6]); IWORK with block dimensions; exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tg01jy\n" \
     ">>> n, m, p = 9, 2, 2\n" \
@@ -24409,7 +24954,8 @@
     "  (a, e, b, c, q, z, info):\n" \
     "    Transformed Q'*A*Z, Q'*E*Z, Q'*B, C*Z, orthogonal Q and Z, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01kd\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -24456,7 +25002,8 @@
     "  (a, e, b, c, q, z, info):\n" \
     "    Transformed Q'*A*Z, Q'*E*Z, Q'*B, C*Z, unitary Q and Z, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01kz\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -24506,7 +25053,8 @@
     "    NIBLCK = number of infinite blocks minus one, IBLCK = block dimensions,\n" \
     "    INFO = 0 success, 1 = pencil not regular\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01ld\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 4, 2, 2\n" \
@@ -24571,7 +25119,8 @@
     "    IBLCK = block dimensions array,\n" \
     "    INFO = 0 success, 1 = pencil not regular, <0 = param error\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tg01ly\n" \
     ">>> n = 4\n" \
@@ -24656,7 +25205,8 @@
     "    IBLCK = block dimensions;\n" \
     "    INFO = 0 success, 1 = pencil not regular, 2 = QZ failed\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tg01md\n" \
     ">>> n, m, p = 4, 2, 2\n" \
@@ -24729,7 +25279,8 @@
     "    IBLCK = block dimensions;\n" \
     "    INFO = 0 success, 1 = not regular, 2 = QZ failed, 3 = Sylvester failed\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tg01nd\n" \
     ">>> n, m, p = 4, 2, 2\n" \
@@ -24792,7 +25343,8 @@
     "  (a, e, b, c, q, z, info):\n" \
     "    Block-diagonal A and E, transformed B and C, updated Q and Z, exit code\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01nx\n" \
     ">>> import numpy as np\n" \
     ">>> n, m, p = 4, 2, 2\n" \
@@ -24852,7 +25404,8 @@
     "    e: Transformed Q'*E*Z (if JOBE='U')\n" \
     "    info: 0 = success, <0 = invalid parameter\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tg01oa\n" \
     ">>> n = 3\n" \
@@ -24896,7 +25449,8 @@
     "    Transformed [D C*Z; Q'*B Q'*A*Z], transformed Q'*E*Z, exit code.\n" \
     "    D is unchanged. Q'*B has only first element nonzero.\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import tg01ob\n" \
     ">>> import numpy as np\n" \
     ">>> n = 4\n" \
@@ -24945,7 +25499,8 @@
     "    g: Gain of reduced system\n" \
     "    info: 0 = success, <0 = invalid parameter\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tg01od\n" \
     ">>> n = 3\n" \
@@ -24991,7 +25546,8 @@
     "    g: Complex gain of reduced system\n" \
     "    info: 0 = success, <0 = invalid parameter\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tg01oz\n" \
     ">>> n = 4\n" \
@@ -25056,7 +25612,8 @@
     "    beta: Denominators of generalized eigenvalues\n" \
     "    info: 0 = success, <0 = invalid param, 1 = QZ failed, 2 = ordering failed\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tg01pd\n" \
     ">>> n, m, p = 4, 2, 2\n" \
@@ -25135,7 +25692,8 @@
     "    alphar, alphai, beta: Generalized eigenvalues\n" \
     "    info: 0 = success, <0 = invalid param, 1 = not regular, 2 = QZ failed, 3 = ordering failed\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tg01qd\n" \
     ">>> n, m, p = 4, 2, 2\n" \
@@ -25210,7 +25768,8 @@
     "    beta: Denominators of generalized eigenvalues (size N)\n" \
     "    info: 0 = success, <0 = invalid param -i, >0 = QZ algorithm failed\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import tg01wd\n" \
     ">>> n, m, p = 4, 2, 2\n" \
@@ -25247,7 +25806,8 @@
     "    p: 3D array (mp, np, dp+1) where p[:,:,k] = P(k), coefficient of s^k\n" \
     "    info: Exit code (0=success, -1=mp<1, -2=np<1, -3=dp<0)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ud01bd\n" \
     ">>> mp, np_dim, dp = 4, 3, 2\n" \
@@ -25307,7 +25867,8 @@
     "          -3 = dp < 0\n" \
     "          1 = warning: some indices/degrees out of bounds (skipped)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ud01cd\n" \
     ">>> mp, np_dim, dp = 4, 3, 2\n" \
@@ -25344,7 +25905,8 @@
     "          -2 = n < 0\n" \
     "          1 = warning: some indices were out of bounds (skipped)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ud01dd\n" \
     ">>> m, n = 6, 5\n" \
@@ -25386,7 +25948,8 @@
     "          -6 = lda < m\n" \
     "          -100 = output buffer too small\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ud01md\n" \
     ">>> m, n, l = 4, 4, 4\n" \
@@ -25424,7 +25987,8 @@
     "          -5 = lda < m\n" \
     "          -6 = output buffer too small\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> from slicot import ud01mz\n" \
     ">>> import numpy as np\n" \
     ">>> a = np.array([\n" \
@@ -25467,7 +26031,8 @@
     "          -7 = ldp2 < np\n" \
     "          -100 = output buffer too small\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ud01nd\n" \
     ">>> mp, np_dim, dp, l = 4, 3, 2, 5\n" \
@@ -25517,7 +26082,8 @@
     "Returns:\n" \
     "  result (int): The parameter value according to ISPEC, or -1 for invalid ISPEC\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import ue01md\n" \
     ">>> ispec = 1\n" \
@@ -25555,7 +26121,8 @@
     "    vsr: Right Schur vectors Z (n x n) if jobvsr='V', else empty\n" \
     "    info: Exit code (0=success, <0=param error, 1..N=QZ failed, >N=LAPACK error)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import zgegs\n" \
     ">>> n = 2\n" \
@@ -25597,7 +26164,8 @@
     "    vr: Right eigenvectors (n x n) if jobvr='V', else empty\n" \
     "    info: Exit code (0=success, <0=param error, 1..N=QZ failed, >N=LAPACK error)\n" \
     "\n" \
-    "Example:\n" \
+    "Examples:\n" \
+    "\n" \
     ">>> import numpy as np\n" \
     ">>> from slicot import zgegv\n" \
     ">>> n = 2\n" \
