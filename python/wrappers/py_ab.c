@@ -601,7 +601,9 @@ PyObject* py_ab08nw(PyObject* self, PyObject* args, PyObject* kwargs) {
     i32 *kronr = (i32*)calloc(n + 1 > 0 ? n + 1 : 1, sizeof(i32));
     i32 *infe = (i32*)calloc(n + 1 > 0 ? n + 1 : 1, sizeof(i32));
     i32 *kronl = (i32*)calloc(n + 1 > 0 ? n + 1 : 1, sizeof(i32));
-    i32 *iwork = (i32*)malloc((max_mp > 1 ? max_mp : 1) * sizeof(i32));
+    i32 iwork_size = (max_mp > n + 1) ? max_mp : (n + 1);
+    if (iwork_size < 1) iwork_size = 1;
+    i32 *iwork = (i32*)malloc(iwork_size * sizeof(i32));
     f64 *dwork = (f64*)calloc(ldwork, sizeof(f64));
 
     if (!e || !infz || !kronr || !infe || !kronl || !iwork || !dwork) {

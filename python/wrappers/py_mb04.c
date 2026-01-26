@@ -8991,7 +8991,7 @@ PyObject *py_mb4dlz(PyObject *self, PyObject *args) {
     } else if (thresh >= 0.0) {
         ldwork = 6 * n;
     } else {
-        ldwork = 8 * n;
+        ldwork = 9 * n;
     }
     f64 *dwork = (f64 *)calloc(ldwork > 0 ? ldwork : 1, sizeof(f64));
 
@@ -9349,7 +9349,7 @@ PyObject *py_mb4dpz(PyObject *self, PyObject *args) {
     } else if (thresh >= 0.0) {
         ldwork = 6 * n;
     } else {
-        ldwork = 8 * n;
+        ldwork = 9 * n;
     }
     f64 *dwork = (f64 *)calloc(ldwork > 0 ? ldwork : 1, sizeof(f64));
 

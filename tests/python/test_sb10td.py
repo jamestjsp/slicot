@@ -254,12 +254,14 @@ class TestSB10TDErrorHandling:
     def test_singular_matrix_error(self):
         """
         Test that info=1 is returned when (I + DKHAT*D22) is singular.
+
+        With TU=TY=I, DKHAT=DK. For I + DK*D22 = 0, use DK=-1, D22=1.
         """
         n, m, np_ = 2, 2, 2
         ncon, nmeas = 1, 1
 
         d = np.zeros((np_, m), dtype=np.float64, order='F')
-        d[np_ - nmeas:, m - ncon:] = 10.0
+        d[np_ - nmeas:, m - ncon:] = 1.0
 
         tu = np.eye(ncon, dtype=np.float64, order='F')
         ty = np.eye(nmeas, dtype=np.float64, order='F')
@@ -267,7 +269,7 @@ class TestSB10TDErrorHandling:
         ak_in = np.array([[0.5, 0.1], [0.0, 0.4]], dtype=np.float64, order='F')
         bk_in = np.array([[0.2], [0.3]], dtype=np.float64, order='F')
         ck_in = np.array([[0.1, 0.2]], dtype=np.float64, order='F')
-        dk_in = np.array([[-0.1]], dtype=np.float64, order='F')
+        dk_in = np.array([[-1.0]], dtype=np.float64, order='F')
 
         ak, bk, ck, dk, rcond, info = slicot.sb10td(
             n, m, np_, ncon, nmeas,

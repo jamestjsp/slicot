@@ -1664,30 +1664,47 @@ PyObject* py_sb02oy(PyObject* self, PyObject* args) {
     }
 
     i32 af_cols = ljobb ? nnm : n2;
-    npy_intp af_out_dims[2] = {n2, n2};
-    npy_intp af_out_strides[2] = {sizeof(f64), ldaf * sizeof(f64)};
-    af_out = (PyArrayObject*)PyArray_New(&PyArray_Type, 2, af_out_dims, NPY_DOUBLE,
-                                                        af_out_strides, NULL, 0, NPY_ARRAY_FARRAY, NULL);
-    if (!af_out) {
+    npy_intp af_buf_size = ldaf * af_cols;
+    PyObject *af_buffer = PyArray_ZEROS(1, &af_buf_size, NPY_DOUBLE, 0);
+    if (!af_buffer) {
         PyErr_NoMemory();
         goto cleanup;
     }
-    f64 *af_data = (f64*)PyArray_DATA(af_out);
-    memset(af_data, 0, ldaf * af_cols * sizeof(f64));
+    f64 *af_data = (f64*)PyArray_DATA((PyArrayObject*)af_buffer);
+
+    npy_intp af_out_dims[2] = {n2, n2};
+    npy_intp af_out_strides[2] = {sizeof(f64), ldaf * sizeof(f64)};
+    af_out = (PyArrayObject*)PyArray_New(&PyArray_Type, 2, af_out_dims, NPY_DOUBLE,
+                                                        af_out_strides, af_data, 0, NPY_ARRAY_FARRAY, NULL);
+    if (!af_out) {
+        Py_DECREF(af_buffer);
+        PyErr_NoMemory();
+        goto cleanup;
+    }
+    PyArray_SetBaseObject(af_out, af_buffer);
 
     f64 *bf_data = NULL;
     if (need_bf) {
-        npy_intp bf_out_dims[2] = {n2, n2};
-        npy_intp bf_out_strides[2] = {sizeof(f64), ldbf * sizeof(f64)};
-        bf_out = (PyArrayObject*)PyArray_New(&PyArray_Type, 2, bf_out_dims, NPY_DOUBLE,
-                                             bf_out_strides, NULL, 0, NPY_ARRAY_FARRAY, NULL);
-        if (!bf_out) {
+        npy_intp bf_buf_size = ldbf * n2;
+        PyObject *bf_buffer = PyArray_ZEROS(1, &bf_buf_size, NPY_DOUBLE, 0);
+        if (!bf_buffer) {
             Py_DECREF(af_out);
             PyErr_NoMemory();
             goto cleanup;
         }
-        bf_data = (f64*)PyArray_DATA(bf_out);
-        memset(bf_data, 0, ldbf * n2 * sizeof(f64));
+        bf_data = (f64*)PyArray_DATA((PyArrayObject*)bf_buffer);
+
+        npy_intp bf_out_dims[2] = {n2, n2};
+        npy_intp bf_out_strides[2] = {sizeof(f64), ldbf * sizeof(f64)};
+        bf_out = (PyArrayObject*)PyArray_New(&PyArray_Type, 2, bf_out_dims, NPY_DOUBLE,
+                                             bf_out_strides, bf_data, 0, NPY_ARRAY_FARRAY, NULL);
+        if (!bf_out) {
+            Py_DECREF(bf_buffer);
+            Py_DECREF(af_out);
+            PyErr_NoMemory();
+            goto cleanup;
+        }
+        PyArray_SetBaseObject(bf_out, bf_buffer);
     }
 
     i32 ldwork;
@@ -10259,10 +10276,10 @@ PyObject* py_sb10kd(PyObject* self, PyObject* args, PyObject* kwds) {
     f64 *bk = (f64*)PyArray_DATA(bk_array);
     f64 *ck = (f64*)PyArray_DATA(ck_array);
     f64 *dk = (f64*)PyArray_DATA(dk_array);
-    if (ldak * n_ > 0) memset(ak, 0, ldak * n_ * sizeof(f64));
-    if (ldbk * np_ > 0) memset(bk, 0, ldbk * np_ * sizeof(f64));
-    if (ldck * n_ > 0) memset(ck, 0, ldck * n_ * sizeof(f64));
-    if (lddk * np_ > 0) memset(dk, 0, lddk * np_ * sizeof(f64));
+    if (n_ * n_ > 0) memset(ak, 0, n_ * n_ * sizeof(f64));
+    if (n_ * np_ > 0) memset(bk, 0, n_ * np_ * sizeof(f64));
+    if (m_ * n_ > 0) memset(ck, 0, m_ * n_ * sizeof(f64));
+    if (m_ * np_ > 0) memset(dk, 0, m_ * np_ * sizeof(f64));
 
     f64 rcond[4];
 

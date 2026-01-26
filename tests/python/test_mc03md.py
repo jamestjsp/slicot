@@ -319,17 +319,6 @@ def test_mc03md_degree_reduction():
     assert_allclose(p_out[0, 0, 0], 1.0, rtol=1e-14)
 
 
-def test_mc03md_error_negative_rp1():
-    """
-    Test error for rp1 < 0 (info = -1).
-    """
-    from slicot import mc03md
-
-    # Cannot directly test via Python wrapper if it infers dimensions.
-    # Skip if wrapper validates input.
-    pytest.skip("Cannot test negative dimensions via Python wrapper")
-
-
 def test_mc03md_random_verification():
     """
     Verify polynomial matrix multiplication with random data.

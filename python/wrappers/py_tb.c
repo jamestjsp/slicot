@@ -1712,7 +1712,7 @@ PyObject* py_tb05ad(PyObject* self, PyObject* args) {
         return NULL;
     }
     c128 *g_data = (c128*)PyArray_DATA((PyArrayObject*)g_array);
-    memset(g_data, 0, ldg * m * sizeof(c128));
+    memset(g_data, 0, p * m * sizeof(c128));
 
     npy_intp eig_dims[1] = {n > 0 ? n : 1};
     PyObject *evre_array = PyArray_SimpleNew(1, eig_dims, NPY_DOUBLE);
@@ -1752,7 +1752,7 @@ PyObject* py_tb05ad(PyObject* self, PyObject* args) {
         return NULL;
     }
     c128 *hinvb_data = (c128*)PyArray_DATA((PyArrayObject*)hinvb_array);
-    memset(hinvb_data, 0, ldhinv * m * sizeof(c128));
+    memset(hinvb_data, 0, n * m * sizeof(c128));
 
     f64 *dwork = (f64*)malloc(ldwork * sizeof(f64));
     c128 *zwork = (c128*)malloc(lzwork * sizeof(c128));
