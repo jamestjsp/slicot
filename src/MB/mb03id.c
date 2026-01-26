@@ -632,7 +632,7 @@ void mb03id(const char *compq, const char *compu, i32 n, f64 *a, i32 lda,
         SLC_DLACPY("Full", &dim1, &dim1, &d[ir + ir * ldd], &ldd, &dwork[izupri], &sdim);
         SLC_DLACPY("Lower", &dim1, &dim1, &c[ir + ir * ldc], &ldc, &dwork[izlori], &sdim);
         SLC_DLACPY("Full", &dim1, &dim1, &b[ir + ir * ldb], &ldb, &dwork[ihuple], &sdim);
-        SLC_DLACPY("Upper", &dim1, &dim1, &f[ir + ir * ldf], &ldb, &dwork[ihuple + dim1 * sdim], &sdim);
+        SLC_DLACPY("Upper", &dim1, &dim1, &f[ir + ir * ldf], &ldf, &dwork[ihuple + dim1 * sdim], &sdim);
 
         if (dim1 == 2) {
             dwork[izuple + 1] = ZERO;
