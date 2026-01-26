@@ -122,6 +122,9 @@ void ab01md(const char* jobz, i32 n, f64* a, i32 lda, f64* b, i32* ncont,
                 SLC_DLACPY("L", &nm2, &nm2, &a[2], &lda, &z[2 + ldz], &ldz);
             }
             if (ljobi) {
+                if (n == 1) {
+                    z[0] = ONE;
+                }
                 SLC_DORGQR(&n, &n, &n, z, &ldz, tau, dwork, &ldwork, &info_tmp);
                 f64 newopt = dwork[0];
                 wrkopt = (wrkopt > newopt) ? wrkopt : newopt;
