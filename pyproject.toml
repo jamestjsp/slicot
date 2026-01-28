@@ -42,17 +42,17 @@ Issues = "https://github.com/jamestjsp/slicot/issues"
 
 [tool.cibuildwheel]
 build = "cp311-* cp312-* cp313-* cp314-*"
-skip = "pp* *-win32 *-manylinux_i686 *-musllinux_i686 *_universal2"
+skip = "pp* *-win32 *-manylinux_i686 *-musllinux_i686 *_universal2 *t-*"
 test-requires = ["pytest", "scipy"]
 test-command = "pytest {project}/tests/python/test_ab01md.py -v"
 
 [tool.cibuildwheel.linux]
 archs = ["x86_64", "aarch64"]
-manylinux-x86_64-image = "manylinux2014"
-manylinux-aarch64-image = "manylinux2014"
+manylinux-x86_64-image = "manylinux_2_28"
+manylinux-aarch64-image = "manylinux_2_28"
 musllinux-x86_64-image = "musllinux_1_2"
 musllinux-aarch64-image = "musllinux_1_2"
-before-all = "yum install -y meson ninja-build openblas-devel || apk add meson ninja openblas-dev"
+before-all = "(dnf install -y openblas-devel 2>/dev/null || yum install -y openblas-devel 2>/dev/null || apk add openblas-dev 2>/dev/null) || true"
 
 [tool.cibuildwheel.macos]
 archs = ["arm64"]
