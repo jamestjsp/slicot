@@ -5,23 +5,27 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Build Commands
 
 ```bash
-# Install dev dependencies
-pip install -e ".[test]"
+# macOS: generate openblas pkg-config (one-time)
+python3 -m venv /tmp/openblas_venv && /tmp/openblas_venv/bin/pip install -q scipy-openblas32 && \
+  /tmp/openblas_venv/bin/python -c "import scipy_openblas32 as sc; open('/tmp/openblas/openblas.pc','w').write(sc.get_pkg_config())"
 
-# Build wheel (uses meson-python)
-pip install build && python -m build
+# Install dev + test dependencies (auto-rebuilds on C changes)
+PKG_CONFIG_PATH=/tmp/openblas uv sync --extra dev --extra test --reinstall-package slicot
 
 # Run all tests
-pytest tests/python/
+uv run pytest tests/python/
 
 # Run single test
-pytest tests/python/test_ab01md.py -v
+uv run pytest tests/python/test_ab01md.py -v
 
 # Run specific test function
-pytest tests/python/test_ab01md.py::test_basic -v
+uv run pytest tests/python/test_ab01md.py::test_basic -v
 
 # Parallel tests (faster)
-pytest tests/python/ -n auto
+uv run pytest tests/python/ -n auto
+
+# Build wheel
+pip install build && python -m build
 ```
 
 ## Architecture
