@@ -33,6 +33,7 @@ dependencies = ["numpy>=2.0"]
 [project.optional-dependencies]
 test = ["pytest", "pytest-xdist", "pytest-rerunfailures", "scipy"]
 benchmark = ["pytest-benchmark>=4.0"]
+dev = ["meson-python>=0.16.0", "meson>=1.1.0", "ninja", "numpy>=2.0", "scipy-openblas32"]
 
 [project.urls]
 Homepage = "https://github.com/jamestjsp/slicot"
@@ -65,6 +66,9 @@ archs = ["AMD64", "ARM64"]
 before-build = "pip install delvewheel scipy-openblas32 && mkdir C:\\openblas & python -c \"import scipy_openblas32 as sc; open('C:/openblas/openblas.pc','w').write(sc.get_pkg_config())\""
 environment = { PKG_CONFIG_PATH = "C:/openblas" }
 repair-wheel-command = "delvewheel repair -w {dest_dir} {wheel}"
+
+[tool.uv]
+no-build-isolation-package = ["slicot"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests/python"]

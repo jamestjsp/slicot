@@ -9,4 +9,3 @@ __pycache__/
 .venv*/
 wheelhouse/
 .DS_Store
-uv.lock
