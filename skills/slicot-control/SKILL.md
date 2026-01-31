@@ -177,9 +177,8 @@ Common patterns in the 2-digit number:
 
 ## Resources
 
-- Headers: `include/slicot/*.h` (doxygen comments)
-- Tests: `tests/python/test_*.py` (usage examples)
-- Docstrings: `python/data/docstrings.json`
-- Build: `pip install -e ".[test]"` then `pytest tests/python/`
+- **API Docs:** https://slicot.readthedocs.io/en/latest/api/
+- **Python docstrings:** `help(slicot.routine_name)` or `routine_name.__doc__`
+- **Tests:** `tests/python/test_*.py` (usage examples)
 
 See `references/` for detailed category info, workflows, and quick reference tables.

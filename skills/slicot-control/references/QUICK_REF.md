@@ -246,14 +246,14 @@ For pole placement, complex eigenvalues must appear as consecutive conjugate pai
 
 ```bash
 # Install dev
-pip install -e ".[test]"
+uv sync --extra test
 
 # Run tests
-pytest tests/python/ -v
+uv run pytest tests/python/ -v
 
 # Single test
-pytest tests/python/test_sb02md.py::test_basic -v
+uv run pytest tests/python/test_sb02md.py::test_basic -v
 
 # Parallel
-pytest tests/python/ -n auto
+uv run pytest tests/python/ -n auto
 ```
