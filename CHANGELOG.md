@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.11] - 2025-01-31
+
+### Fixed
+
+- ab13dd: segfault for n=1 single-state systems (mb03xd requires T workspace even for JOB='E')
+
 ## [1.0.10] - 2025-01-30
 
 ### Fixed
