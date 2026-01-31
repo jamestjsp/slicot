@@ -266,3 +266,39 @@ def test_mb03rd_empty_matrix():
 
     assert info == 0
     assert nblcks == 0
+
+
+def test_mb03rd_transformation_correctness():
+    """
+    Validate that solve(X, A) @ X = A_out holds.
+
+    This is the fundamental correctness property of similarity transformations.
+    The transformation X should satisfy: X^(-1) @ A @ X = A_out
+
+    This test uses clustered eigenvalues that trigger actual block-diagonalization,
+    which exercises the transformation accumulation code path.
+    """
+    from slicot import mb03rd
+    from scipy.linalg import solve
+
+    n = 5
+    aschur = np.array([
+        [-2.0, -12.0, 5.0, 1.0, 2.0],
+        [0.0, -2.0, 3.0, 1.0, 1.0],
+        [0.0, 0.0, -2.0, 1.0, 1.0],
+        [0.0, 0.0, 0.0, -1.0, -0.5],
+        [0.0, 0.0, 0.0, 0.0, -1.0]
+    ], order='F', dtype=float)
+
+    X_in = np.eye(n, order='F', dtype=float)
+    pmax = 1e4
+
+    Aout, Xout, nblcks, blsize, wr, wi, info = mb03rd(
+        'U', 'N', aschur.copy(), pmax, X_in.copy(), 0.0
+    )
+
+    assert info == 0
+    assert nblcks == 2
+
+    result = solve(Xout, aschur) @ Xout
+    assert_allclose(result, Aout, rtol=1e-10, atol=1e-10)
