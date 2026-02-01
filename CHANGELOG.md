@@ -10,6 +10,7 @@
   - Algorithm structure: frequency collection, sorting, midpoint computation
   - MB03XD BALANC parameter ('B' not 'N')
   - Hamiltonian scaling (divide by gamma not gamma²)
+  - MB03XD SCALE array buffer overflow (crash on Linux)
 
 ## [1.0.11] - 2025-01-31
 
