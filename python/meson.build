@@ -7,9 +7,7 @@ if not np_dep.found()
   # Try to get numpy include path from Python
   numpy_include = run_command(py, ['-c', 'import numpy; print(numpy.get_include())'],
     check: true).stdout().strip()
-  np_inc = include_directories(numpy_include)
-else
-  np_inc = []
+  np_dep = declare_dependency(compile_args: ['-I' + numpy_include])
 endif
 
 # Generate docstrings.h from docstrings.json
@@ -58,7 +56,7 @@ wrapper_sources = files(
 # Build Python extension module
 py.extension_module('_slicot',
   [wrapper_sources, docstrings_gen],
-  include_directories: [inc, 'data', np_inc],
+  include_directories: [inc, 'data'],
   dependencies: [py_dep, np_dep, slicot_dep],
   c_args: fc_defines,
   subdir: 'slicot',
