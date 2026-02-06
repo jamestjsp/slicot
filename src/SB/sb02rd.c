@@ -155,6 +155,8 @@ void sb02rd(
     f64 wrkopt = 0.0;
     f64 rconda = 0.0;
     f64 pivota = 0.0;
+    f64 rcondu = 0.0;
+    f64 pivotu = 0.0;
     f64 qnorm = 0.0;
     f64 gnorm = 0.0;
     bool lscl = false;
@@ -244,7 +246,6 @@ void sb02rd(
         i32 iwb = iwf + n;
         iw = iwb + n;
 
-        f64 rcondu;
         char equed = 'N';
 
         mb02pd("E", "T", n, n, &dwork[iu], n2, &s[np1 - 1], lds, iwork, &equed,
@@ -280,17 +281,11 @@ void sb02rd(
             SLC_DLASET("F", &n, &n, &zero, &zero, &s[np1 - 1], &lds);
         }
 
-        f64 pivotu = dwork[iw];
+        pivotu = dwork[iw];
 
         if (ierr > 0) {
             *info = 5;
-            dwork[1] = rcondu;
-            dwork[2] = pivotu;
-            if (discr) {
-                dwork[3] = rconda;
-                dwork[4] = pivota;
-            }
-            return;
+            goto done;
         }
 
         for (i32 i = 0; i < n - 1; i++) {
@@ -303,42 +298,177 @@ void sb02rd(
             i32 kl = 0, ku = 0;
             SLC_DLASCL("G", &kl, &ku, &gnorm, &qnorm, &n, &n, x, &ldx, &ierr);
         }
+    }
 
-        dwork[0] = wrkopt;
+    if (!jobx) {
+        // Estimate conditioning and/or error bound using SB02QD/SB02SD.
+        if (!joba)
+            wrkopt = 0;
+
+        i32 iw = 5;
+        char lofact = fact;
+        i32 ierr;
+
+        if (nofact && !update) {
+            // Compute Ac and its Schur factorization.
+            if (discr) {
+                // Ac = inv(I_n + G*X)*A (TRANA='N') or A*inv(I_n + X*G) (TRANA='T')
+                SLC_DLASET("F", &n, &n, &zero, &one, &dwork[iw], &n);
+                SLC_DSYMM("L", &uplo, &n, &n, &one, g, &ldg, x, &ldx,
+                          &one, &dwork[iw], &n);
+                if (notrna) {
+                    SLC_DLACPY("F", &n, &n, a, &lda, t, &ldt);
+                    SLC_DGESV(&n, &n, &dwork[iw], &n, iwork, t, &ldt, &ierr);
+                } else {
+                    ma02ad("F", n, n, a, lda, t, ldt);
+                    SLC_DGESV(&n, &n, &dwork[iw], &n, iwork, t, &ldt, &ierr);
+                    for (i32 i = 1; i < n; i++) {
+                        SLC_DSWAP(&(i32){i}, &t[i * ldt], &int1, &t[i], &ldt);
+                    }
+                }
+                if (ierr != 0) {
+                    *info = 6;
+                    goto done;
+                }
+            } else {
+                // Ac = A - G*X (TRANA='N') or A - X*G (TRANA='T')
+                SLC_DLACPY("F", &n, &n, a, &lda, t, &ldt);
+                if (notrna) {
+                    f64 neg1 = -one;
+                    SLC_DSYMM("L", &uplo, &n, &n, &neg1, g, &ldg, x, &ldx,
+                              &one, t, &ldt);
+                } else {
+                    f64 neg1 = -one;
+                    SLC_DSYMM("R", &uplo, &n, &n, &neg1, g, &ldg, x, &ldx,
+                              &one, t, &ldt);
+                }
+            }
+
+            // Schur factorization of Ac: Ac = V*T*V'
+            i32 iwr = iw;
+            i32 iwi = iwr + n;
+            i32 iw2 = iwi + n;
+            i32 ldw = ldwork - iw2;
+            i32 nrot;
+
+            SLC_DGEES("V", "N", sb02ms, &n, t, &ldt, &nrot,
+                      &dwork[iwr], &dwork[iwi], v, &ldv,
+                      &dwork[iw2], &ldw, bwork, &ierr);
+
+            if (ierr != 0) {
+                *info = 6;
+                goto done;
+            }
+
+            wrkopt = fmax(wrkopt, dwork[iw2] + (f64)iw2);
+            lofact = 'F';
+            iw = 5;
+        }
+
+        if (!update) {
+            char tranat = notrna ? 'T' : 'N';
+
+            // Save diagonal elements of G and Q at dwork[iw..iw+2n-1].
+            SLC_DCOPY(&n, g, &(i32){ldg + 1}, &dwork[iw], &int1);
+            SLC_DCOPY(&n, q, &(i32){ldq + 1}, &dwork[iw + n], &int1);
+            iw += n2;
+
+            // Save X in S(NP1,1) if JOB='A' (will restore later).
+            if (joba) {
+                SLC_DLACPY("F", &n, &n, x, &ldx, &s[np1 - 1], &lds);
+            }
+
+            // Transform X <- V'*X*V
+            char tranat_str[2] = {tranat, '\0'};
+            mb01ru(&uplo, tranat_str, n, n, zero, one, x, ldx, v, ldv,
+                   x, ldx, &dwork[iw], nn, &ierr);
+            SLC_DSCAL(&n, &half, x, &(i32){ldx + 1});
+            ma02ed(uplo, n, x, ldx);
+
+            if (!discr) {
+                ma02ed(uplo, n, g, ldg);
+                ma02ed(uplo, n, q, ldq);
+            }
+
+            // Transform G <- V'*G*V
+            mb01ru(&uplo, tranat_str, n, n, zero, one, g, ldg, v, ldv,
+                   g, ldg, &dwork[iw], nn, &ierr);
+            SLC_DSCAL(&n, &half, g, &(i32){ldg + 1});
+
+            // Transform Q <- V'*Q*V
+            mb01ru(&uplo, tranat_str, n, n, zero, one, q, ldq, v, ldv,
+                   q, ldq, &dwork[iw], nn, &ierr);
+            SLC_DSCAL(&n, &half, q, &(i32){ldq + 1});
+        }
+
+        // Call SB02QD (continuous) or SB02SD (discrete) for conditioning/error.
+        char jobs[2];
+        if (joba) {
+            jobs[0] = 'B'; jobs[1] = '\0';
+        } else {
+            jobs[0] = job; jobs[1] = '\0';
+        }
+        char lofact_str[2] = {lofact, '\0'};
+        i32 ldw_qd = ldwork - iw;
+
+        if (discr) {
+            sb02sd(jobs, lofact_str, trana_str, uplo_str, lyapun_str,
+                   n, a, lda, t, ldt, v, ldv, g, ldg, q, ldq, x, ldx,
+                   sep, rcond, ferr, iwork, &dwork[iw], ldw_qd, &ierr);
+        } else {
+            sb02qd(jobs, lofact_str, trana_str, uplo_str, lyapun_str,
+                   n, a, lda, t, ldt, v, ldv, g, ldg, q, ldq, x, ldx,
+                   sep, rcond, ferr, iwork, &dwork[iw], ldw_qd, &ierr);
+        }
+
+        wrkopt = fmax(wrkopt, dwork[iw] + (f64)iw);
+
+        if (ierr == np1) {
+            *info = 7;
+        } else if (ierr > 0) {
+            *info = 6;
+            goto done;
+        }
+
+        if (!update) {
+            // Restore X, G, and Q, and set S(2,1) to zero if needed.
+            if (joba) {
+                SLC_DLACPY("F", &n, &n, &s[np1 - 1], &lds, x, &ldx);
+                SLC_DLASET("F", &n, &n, &zero, &zero, &s[np1 - 1], &lds);
+            } else {
+                // Undo V transformation on X: X <- V*X*V'
+                mb01ru(&uplo, trana_str, n, n, zero, one, x, ldx, v, ldv,
+                       x, ldx, &dwork[iw], nn, &ierr);
+                SLC_DSCAL(&n, &half, x, &(i32){ldx + 1});
+                ma02ed(uplo, n, x, ldx);
+            }
+
+            // Restore G and Q diagonal elements and mirror.
+            char loup = luplo ? 'L' : 'U';
+            i32 iw_save = 5;
+            SLC_DCOPY(&n, &dwork[iw_save], &int1, g, &(i32){ldg + 1});
+            ma02ed(loup, n, g, ldg);
+            SLC_DCOPY(&n, &dwork[iw_save + n], &int1, q, &(i32){ldq + 1});
+            ma02ed(loup, n, q, ldq);
+        }
+    }
+
+done:
+    // Set optimal workspace and output details.
+    dwork[0] = wrkopt;
+    if (jbxa) {
         dwork[1] = rcondu;
         dwork[2] = pivotu;
         if (discr) {
             dwork[3] = rconda;
             dwork[4] = pivota;
         }
-
         if (jobx) {
             if (lscl) {
                 *sep = qnorm / gnorm;
             } else {
                 *sep = one;
             }
-        } else if (joba) {
-            // JOB='A' - should call SB02QD/SB02SD for proper conditioning
-            // As workaround, use rcondu as approximation for rcond
-            // TODO: Implement SB02QD/SB02SD for proper condition estimation
-            f64 rcondu = dwork[1];
-            *rcond = rcondu;
-            if (lscl) {
-                *sep = qnorm / gnorm;
-            } else {
-                *sep = one;
-            }
-            *ferr = zero;
         }
-    }
-
-    if (!jbxa) {
-        // JOB='C' or JOB='E' - conditioning/error only, no solution computed
-        // TODO: Implement SB02QD/SB02SD for proper condition estimation
-        *info = 0;
-        *sep = zero;
-        *rcond = zero;
-        *ferr = zero;
     }
 }

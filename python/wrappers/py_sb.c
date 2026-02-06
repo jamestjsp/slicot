@@ -1103,16 +1103,16 @@ PyObject* py_sb02rd(PyObject* self, PyObject* args, PyObject* kwargs) {
     const char *job_str, *dico_str, *hinv_str, *trana_str, *uplo_str;
     const char *scal_str, *sort_str, *fact_str, *lyapun_str;
     PyObject *a_obj, *q_obj, *g_obj;
-    PyObject *t_obj = Py_None, *v_obj = Py_None;
+    PyObject *t_obj = Py_None, *v_obj = Py_None, *x_obj = Py_None;
 
     static char *kwlist[] = {"job", "dico", "hinv", "trana", "uplo", "scal",
                              "sort", "fact", "lyapun", "A", "Q", "G",
-                             "T", "V", NULL};
+                             "T", "V", "X", NULL};
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, "sssssssssOOO|OO", kwlist,
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, "sssssssssOOO|OOO", kwlist,
             &job_str, &dico_str, &hinv_str, &trana_str, &uplo_str,
             &scal_str, &sort_str, &fact_str, &lyapun_str,
-            &a_obj, &q_obj, &g_obj, &t_obj, &v_obj)) {
+            &a_obj, &q_obj, &g_obj, &t_obj, &v_obj, &x_obj)) {
         return NULL;
     }
 
@@ -1205,6 +1205,15 @@ PyObject* py_sb02rd(PyObject* self, PyObject* args, PyObject* kwargs) {
     if (!x_array) { PyErr_NoMemory(); goto cleanup; }
     f64 *x_data = (f64*)PyArray_DATA(x_array);
 
+    // For JOB='C'/'E', X is input: copy user-provided X into output array.
+    if (x_obj != Py_None && n > 0) {
+        PyArrayObject *x_in = (PyArrayObject*)PyArray_FROM_OTF(
+            x_obj, NPY_DOUBLE, NPY_ARRAY_FARRAY | NPY_ARRAY_FORCECAST);
+        if (!x_in) goto cleanup;
+        memcpy(x_data, PyArray_DATA(x_in), (size_t)n * n * sizeof(f64));
+        Py_DECREF(x_in);
+    }
+
     npy_intp s_dims[2] = {n2, n2};
     npy_intp s_strides[2] = {sizeof(f64), n2 * sizeof(f64)};
     s_array = (PyArrayObject*)PyArray_New(&PyArray_Type, 2, s_dims, NPY_DOUBLE,
@@ -1224,7 +1233,9 @@ PyObject* py_sb02rd(PyObject* self, PyObject* args, PyObject* kwargs) {
     ldwork = ldwork > 1 ? ldwork : 1;
 
     f64 *dwork = (f64*)malloc(ldwork * sizeof(f64));
-    i32 *iwork = (i32*)malloc((2 * n > 1 ? 2 * n : 1) * sizeof(i32));
+    i32 liwork = (2 * n > nn) ? 2 * n : nn;
+    if (liwork < 1) liwork = 1;
+    i32 *iwork = (i32*)malloc(liwork * sizeof(i32));
     i32 *bwork = (i32*)malloc((n2 > 1 ? n2 : 1) * sizeof(i32));
 
     if ((!dwork || !iwork || !bwork) && n > 0) {

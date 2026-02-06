@@ -17438,6 +17438,7 @@
     "  G (ndarray): Symmetric matrix G = B*R^(-1)*B' (n x n, F-order)\n" \
     "  T (ndarray, optional): Schur form matrix (n x n, F-order)\n" \
     "  V (ndarray, optional): Schur vectors (n x n, F-order)\n" \
+    "  X (ndarray, optional): Solution matrix input for JOB='C'/'E' (n x n, F-order)\n" \
     "\n" \
     "Returns:\n" \
     "  (X, sep, rcond, ferr, wr, wi, S, info):\n" \

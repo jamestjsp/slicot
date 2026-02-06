@@ -26,8 +26,6 @@ def test_sb02rd_html_doc_example():
     - Expected X = [[2, 1], [1, 2]]
 
     This is the primary validation test from authoritative source.
-    Note: JOB='X' is used (solution only) since condition number routines
-    (SB02QD/SB02SD) are not yet implemented.
     """
     from slicot import sb02rd
 
@@ -494,3 +492,353 @@ def test_sb02rd_discrete_hinv_inverse():
     inv_term = np.linalg.inv(I_n + G @ X)
     residual = Q + A.T @ X @ inv_term @ A - X
     np.testing.assert_allclose(residual, np.zeros((n, n)), atol=1e-10)
+
+
+def test_sb02rd_job_all_continuous():
+    """
+    Test SB02RD with JOB='A' - compute solution, condition number, and error bound.
+
+    Continuous-time case with LYAPUN='O' (original Lyapunov).
+    """
+    from slicot import sb02rd
+
+    A = np.array([[0.0, 1.0],
+                  [0.0, 0.0]], order='F', dtype=float)
+    Q = np.array([[1.0, 0.0],
+                  [0.0, 2.0]], order='F', dtype=float)
+    G = np.array([[0.0, 0.0],
+                  [0.0, 1.0]], order='F', dtype=float)
+    X_expected = np.array([[2.0, 1.0],
+                           [1.0, 2.0]], order='F', dtype=float)
+    G_orig = G.copy()
+    Q_orig = Q.copy()
+
+    X, sep, rcond, ferr, wr, wi, s, info = sb02rd(
+        job='A',
+        dico='C',
+        hinv='D',
+        trana='N',
+        uplo='U',
+        scal='N',
+        sort='S',
+        fact='N',
+        lyapun='O',
+        A=A,
+        Q=Q,
+        G=G
+    )
+
+    assert info == 0 or info == 7, f"SB02RD failed with info={info}"
+    np.testing.assert_allclose(X, X_expected, rtol=1e-3, atol=1e-4)
+    assert sep > 0, f"SEP should be positive, got {sep}"
+    assert 0 <= rcond <= 1, f"RCOND should be in [0,1], got {rcond}"
+    assert ferr >= 0, f"FERR should be non-negative, got {ferr}"
+    np.testing.assert_array_equal(G, G_orig, err_msg="G modified")
+    np.testing.assert_array_equal(Q, Q_orig, err_msg="Q modified")
+
+
+def test_sb02rd_job_all_discrete():
+    """
+    Test SB02RD with JOB='A' - discrete-time case.
+
+    Computes solution plus conditioning and error bound.
+    """
+    from slicot import sb02rd
+
+    np.random.seed(500)
+    n = 3
+    A = (np.random.randn(n, n) * 0.3).astype(float, order='F')
+    Q = np.eye(n, dtype=float, order='F')
+    G = np.eye(n, dtype=float, order='F') * 0.1
+    G_orig = G.copy()
+    Q_orig = Q.copy()
+
+    X, sep, rcond, ferr, wr, wi, s, info = sb02rd(
+        job='A',
+        dico='D',
+        hinv='D',
+        trana='N',
+        uplo='U',
+        scal='N',
+        sort='S',
+        fact='N',
+        lyapun='O',
+        A=A,
+        Q=Q,
+        G=G
+    )
+
+    assert info == 0 or info == 7, f"SB02RD failed with info={info}"
+
+    I_n = np.eye(n)
+    inv_term = np.linalg.inv(I_n + G @ X)
+    residual = Q + A.T @ X @ inv_term @ A - X
+    np.testing.assert_allclose(residual, np.zeros((n, n)), atol=1e-9)
+
+    assert sep > 0, f"SEP should be positive, got {sep}"
+    assert 0 <= rcond <= 1, f"RCOND should be in [0,1], got {rcond}"
+    assert ferr >= 0, f"FERR should be non-negative, got {ferr}"
+    np.testing.assert_array_equal(G, G_orig, err_msg="G modified")
+    np.testing.assert_array_equal(Q, Q_orig, err_msg="Q modified")
+
+
+def test_sb02rd_job_condition_continuous():
+    """
+    Test SB02RD with JOB='C' - condition number estimation only.
+
+    Requires a pre-computed solution X as input.
+    """
+    from slicot import sb02rd
+
+    A = np.array([[0.0, 1.0],
+                  [0.0, 0.0]], order='F', dtype=float)
+    Q = np.array([[1.0, 0.0],
+                  [0.0, 2.0]], order='F', dtype=float)
+    G = np.array([[0.0, 0.0],
+                  [0.0, 1.0]], order='F', dtype=float)
+
+    # First solve to get X
+    X_sol, _, _, _, _, _, _, info_sol = sb02rd(
+        job='X', dico='C', hinv='D', trana='N', uplo='U',
+        scal='N', sort='S', fact='N', lyapun='O',
+        A=A, Q=Q, G=G
+    )
+    assert info_sol == 0
+
+    # Now compute condition number only, passing X as input
+    X, sep, rcond, ferr, wr, wi, s, info = sb02rd(
+        job='C',
+        dico='C',
+        hinv='D',
+        trana='N',
+        uplo='U',
+        scal='N',
+        sort='S',
+        fact='N',
+        lyapun='O',
+        A=A,
+        Q=Q,
+        G=G,
+        X=X_sol
+    )
+
+    assert info == 0 or info == 7, f"SB02RD JOB='C' failed with info={info}"
+    assert sep > 0, f"SEP should be positive, got {sep}"
+    assert 0 <= rcond <= 1, f"RCOND should be in [0,1], got {rcond}"
+
+
+def test_sb02rd_job_error_continuous():
+    """
+    Test SB02RD with JOB='E' - error bound estimation only.
+
+    Requires a pre-computed solution X as input.
+    """
+    from slicot import sb02rd
+
+    A = np.array([[0.0, 1.0],
+                  [0.0, 0.0]], order='F', dtype=float)
+    Q = np.array([[1.0, 0.0],
+                  [0.0, 2.0]], order='F', dtype=float)
+    G = np.array([[0.0, 0.0],
+                  [0.0, 1.0]], order='F', dtype=float)
+
+    # First solve to get X
+    X_sol, _, _, _, _, _, _, info_sol = sb02rd(
+        job='X', dico='C', hinv='D', trana='N', uplo='U',
+        scal='N', sort='S', fact='N', lyapun='O',
+        A=A, Q=Q, G=G
+    )
+    assert info_sol == 0
+
+    X, sep, rcond, ferr, wr, wi, s, info = sb02rd(
+        job='E',
+        dico='C',
+        hinv='D',
+        trana='N',
+        uplo='U',
+        scal='N',
+        sort='S',
+        fact='N',
+        lyapun='O',
+        A=A,
+        Q=Q,
+        G=G,
+        X=X_sol
+    )
+
+    assert info == 0 or info == 7, f"SB02RD JOB='E' failed with info={info}"
+    assert ferr >= 0, f"FERR should be non-negative, got {ferr}"
+
+
+def test_sb02rd_job_all_lyapun_reduced():
+    """
+    Test SB02RD with JOB='A' and LYAPUN='R' (reduced Lyapunov).
+
+    This exercises the code path where G, Q, X are transformed with V
+    and then restored.
+    """
+    from slicot import sb02rd
+
+    n = 3
+    np.random.seed(600)
+    A = (np.random.randn(n, n) - 2.0 * np.eye(n)).astype(float, order='F')
+    Q = np.eye(n, dtype=float, order='F')
+    G = np.eye(n, dtype=float, order='F') * 0.5
+    G_orig = G.copy()
+    Q_orig = Q.copy()
+
+    X, sep, rcond, ferr, wr, wi, s, info = sb02rd(
+        job='A',
+        dico='C',
+        hinv='D',
+        trana='N',
+        uplo='U',
+        scal='N',
+        sort='S',
+        fact='N',
+        lyapun='R',
+        A=A,
+        Q=Q,
+        G=G
+    )
+
+    assert info == 0 or info == 7, f"SB02RD failed with info={info}"
+
+    residual = Q + A.T @ X + X @ A - X @ G @ X
+    np.testing.assert_allclose(residual, np.zeros((n, n)), atol=1e-10)
+
+    assert sep > 0, f"SEP should be positive, got {sep}"
+    assert 0 <= rcond <= 1, f"RCOND should be in [0,1], got {rcond}"
+    assert ferr >= 0, f"FERR should be non-negative, got {ferr}"
+    np.testing.assert_array_equal(G, G_orig, err_msg="G modified")
+    np.testing.assert_array_equal(Q, Q_orig, err_msg="Q modified")
+
+
+def test_sb02rd_job_all_discrete_lyapun_reduced():
+    """
+    Test SB02RD with JOB='A', DICO='D', LYAPUN='R'.
+
+    Discrete-time with reduced Lyapunov equations.
+    """
+    from slicot import sb02rd
+
+    np.random.seed(700)
+    n = 3
+    A = (np.random.randn(n, n) * 0.3).astype(float, order='F')
+    Q = np.eye(n, dtype=float, order='F')
+    G = np.eye(n, dtype=float, order='F') * 0.1
+    G_orig = G.copy()
+    Q_orig = Q.copy()
+
+    X, sep, rcond, ferr, wr, wi, s, info = sb02rd(
+        job='A',
+        dico='D',
+        hinv='D',
+        trana='N',
+        uplo='U',
+        scal='N',
+        sort='S',
+        fact='N',
+        lyapun='R',
+        A=A,
+        Q=Q,
+        G=G
+    )
+
+    assert info == 0 or info == 7, f"SB02RD failed with info={info}"
+
+    I_n = np.eye(n)
+    inv_term = np.linalg.inv(I_n + G @ X)
+    residual = Q + A.T @ X @ inv_term @ A - X
+    np.testing.assert_allclose(residual, np.zeros((n, n)), atol=1e-10)
+
+    assert sep > 0, f"SEP should be positive, got {sep}"
+    assert 0 <= rcond <= 1, f"RCOND should be in [0,1], got {rcond}"
+    assert ferr >= 0, f"FERR should be non-negative, got {ferr}"
+    np.testing.assert_array_equal(G, G_orig, err_msg="G modified")
+    np.testing.assert_array_equal(Q, Q_orig, err_msg="Q modified")
+
+
+def test_sb02rd_job_condition_lyapun_reduced():
+    """
+    Test SB02RD with JOB='C' and LYAPUN='R' (reduced Lyapunov).
+
+    Condition number estimation with Schur-based Lyapunov solver.
+    """
+    from slicot import sb02rd
+
+    A = np.array([[0.0, 1.0],
+                  [0.0, 0.0]], order='F', dtype=float)
+    Q = np.array([[1.0, 0.0],
+                  [0.0, 2.0]], order='F', dtype=float)
+    G = np.array([[0.0, 0.0],
+                  [0.0, 1.0]], order='F', dtype=float)
+
+    X_sol, _, _, _, _, _, _, info_sol = sb02rd(
+        job='X', dico='C', hinv='D', trana='N', uplo='U',
+        scal='N', sort='S', fact='N', lyapun='O',
+        A=A, Q=Q, G=G
+    )
+    assert info_sol == 0
+
+    X, sep, rcond, ferr, wr, wi, s, info = sb02rd(
+        job='C',
+        dico='C',
+        hinv='D',
+        trana='N',
+        uplo='U',
+        scal='N',
+        sort='S',
+        fact='N',
+        lyapun='R',
+        A=A,
+        Q=Q,
+        G=G,
+        X=X_sol
+    )
+
+    assert info == 0 or info == 7, f"SB02RD JOB='C' LYAPUN='R' failed with info={info}"
+    assert sep > 0, f"SEP should be positive, got {sep}"
+    assert 0 <= rcond <= 1, f"RCOND should be in [0,1], got {rcond}"
+
+
+def test_sb02rd_job_error_lyapun_reduced():
+    """
+    Test SB02RD with JOB='E' and LYAPUN='R' (reduced Lyapunov).
+
+    Error bound estimation with Schur-based Lyapunov solver.
+    """
+    from slicot import sb02rd
+
+    A = np.array([[0.0, 1.0],
+                  [0.0, 0.0]], order='F', dtype=float)
+    Q = np.array([[1.0, 0.0],
+                  [0.0, 2.0]], order='F', dtype=float)
+    G = np.array([[0.0, 0.0],
+                  [0.0, 1.0]], order='F', dtype=float)
+
+    X_sol, _, _, _, _, _, _, info_sol = sb02rd(
+        job='X', dico='C', hinv='D', trana='N', uplo='U',
+        scal='N', sort='S', fact='N', lyapun='O',
+        A=A, Q=Q, G=G
+    )
+    assert info_sol == 0
+
+    X, sep, rcond, ferr, wr, wi, s, info = sb02rd(
+        job='E',
+        dico='C',
+        hinv='D',
+        trana='N',
+        uplo='U',
+        scal='N',
+        sort='S',
+        fact='N',
+        lyapun='R',
+        A=A,
+        Q=Q,
+        G=G,
+        X=X_sol
+    )
+
+    assert info == 0 or info == 7, f"SB02RD JOB='E' LYAPUN='R' failed with info={info}"
+    assert ferr >= 0, f"FERR should be non-negative, got {ferr}"
