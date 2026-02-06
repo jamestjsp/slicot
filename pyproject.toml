@@ -17,6 +17,8 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Topic :: Scientific/Engineering",
 ]
 
@@ -27,6 +29,7 @@ Homepage = "https://github.com/slicot/slicot.c"
 test = [
     "pytest>=7.0.0",
     "pytest-xdist>=3.0.0",
+    "pytest-rerunfailures>=14.0",
 ]
 dev = [
     "scipy>=1.7.0",

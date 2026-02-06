@@ -1,10 +1,6 @@
 name: Test
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
   workflow_call:
 
@@ -26,8 +22,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libopenblas-dev meson ninja-build
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
       - name: Install Python package
-        run: pip install .[test]
+        run: uv pip install --system ".[test]"
 
       - name: Run tests
         run: pytest tests/python/ -v -n auto --reruns 2 --only-rerun "worker .* crashed"
@@ -44,12 +43,15 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
       - name: Install deps and package
         run: |
-          pip install scipy-openblas32 meson ninja
+          uv pip install --system scipy-openblas32 meson ninja
           mkdir -p /tmp/openblas
           python -c "import scipy_openblas32 as sc; open('/tmp/openblas/openblas.pc','w').write(sc.get_pkg_config())"
-          PKG_CONFIG_PATH=/tmp/openblas pip install .[test]
+          PKG_CONFIG_PATH=/tmp/openblas uv pip install --system ".[test]"
 
       - name: Run quick test
         run: pytest tests/python/test_ab01md.py -v
