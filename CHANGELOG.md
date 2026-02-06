@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.13] - 2026-02-05
+
+### Changed
+
+- Single source of truth for package version — reduced from 5 manual touch points to 2 (`pyproject.toml` + `meson.build` line 2), with `__init__.py` derived via `importlib.metadata`, `slicot_config.h` generated via meson `configure_file()`, and version macros parsed from `meson.project_version()`
+- Added `scripts/bump_version.py` for atomic version updates with drift detection
+
+### Fixed
+
+- Standalone `meson setup build` broken by `include_directories()` rejecting absolute numpy paths
+
 ## [1.0.12] - 2025-02-01
 
 ### Fixed
