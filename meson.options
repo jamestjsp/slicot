@@ -1,2 +1,8 @@
-option('blas', type: 'string', value: 'auto', description: 'BLAS library')
-option('lapack', type: 'string', value: 'auto', description: 'LAPACK library')
+option('blas', type: 'string', value: 'auto',
+  description: 'BLAS library to use (auto, openblas, blas, scipy-openblas, Accelerate)')
+
+option('lapack', type: 'string', value: 'auto',
+  description: 'LAPACK library to use (auto, lapack, Accelerate)')
+
+option('ilp64', type: 'boolean', value: false,
+  description: 'Use 64-bit integers for BLAS/LAPACK')

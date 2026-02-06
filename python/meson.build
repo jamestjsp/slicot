@@ -1,5 +1,26 @@
-np_dep = dependency('numpy')
+py = import('python').find_installation(pure: false)
+py_dep = py.dependency()
 
+# NumPy dependency
+np_dep = dependency('numpy', required: false)
+if not np_dep.found()
+  # Try to get numpy include path from Python
+  numpy_include = run_command(py, ['-c', 'import numpy; print(numpy.get_include())'],
+    check: true).stdout().strip()
+  np_inc = include_directories(numpy_include)
+else
+  np_inc = []
+endif
+
+# Generate docstrings.h from docstrings.json
+docstrings_gen = custom_target('docstrings',
+  input: 'data/docstrings.json',
+  output: 'docstrings.h',
+  command: [py, meson.project_source_root() / 'tools/generate_docstrings.py'],
+  depend_files: [meson.project_source_root() / 'tools/generate_docstrings.py'],
+)
+
+# Python wrapper sources
 wrapper_sources = files(
   'slicot_module.c',
   'wrappers/py_ab.c',
@@ -34,12 +55,18 @@ wrapper_sources = files(
   'wrappers/py_ue.c',
 )
 
+# Build Python extension module
 py.extension_module('_slicot',
-  wrapper_sources,
-  include_directories: [inc, include_directories('.')],
+  [wrapper_sources, docstrings_gen],
+  include_directories: [inc, 'data', np_inc],
   dependencies: [py_dep, np_dep, slicot_dep],
-  install: true,
+  c_args: fc_defines,
   subdir: 'slicot',
+  install: true,
 )
 
-install_subdir('slicot', install_dir: py.get_install_dir())
+# Install Python package files
+py.install_sources(
+  '_package_init/__init__.py',
+  subdir: 'slicot',
+)

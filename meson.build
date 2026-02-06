@@ -1,64 +1,96 @@
-project('slicot', 'c',
-  version: '1.0.8',
+project('slicot_c', 'c',
+  version: '0.1.0',
   license: 'BSD-3-Clause',
   meson_version: '>=1.1.0',
-  default_options: ['c_std=c11', 'buildtype=release']
+  default_options: [
+    'c_std=c11',
+    'buildtype=debugoptimized',
+    'warning_level=2',
+  ],
 )
 
 cc = meson.get_compiler('c')
-py = import('python').find_installation(pure: false)
-py_dep = py.dependency()
 
+# BLAS/LAPACK dependency with fallback chain
 blas_opt = get_option('blas')
 lapack_opt = get_option('lapack')
 
 if blas_opt == 'auto'
-  blas = dependency('openblas', required: false)
-  if not blas.found()
-    blas = dependency('scipy-openblas', required: false)
+  # Try multiple BLAS implementations in order
+  blas_dep = dependency('openblas', required: false)
+  if not blas_dep.found()
+    blas_dep = dependency('scipy-openblas', required: false)
   endif
-  if not blas.found()
-    blas = dependency('blas', required: false)
+  if not blas_dep.found()
+    blas_dep = dependency('blas', required: false)
   endif
-  if not blas.found()
-    _openblas_info = run_command(py, '-c',
-      'import scipy_openblas32 as sc; print(sc.get_include_dir()); print(sc.get_lib_dir())',
-      check: false)
-    if _openblas_info.returncode() == 0
-      _lines = _openblas_info.stdout().strip().split('\n')
-      blas = declare_dependency(
-        include_directories: include_directories(_lines[0]),
-        dependencies: cc.find_library('scipy_openblas', dirs: [_lines[1]])
-      )
-    endif
+  if not blas_dep.found() and host_machine.system() == 'darwin'
+    blas_dep = dependency('Accelerate', required: false)
   endif
-  if not blas.found()
-    blas = dependency('Accelerate', required: true)
+  if not blas_dep.found()
+    # Final fallback: try to find BLAS library directly
+    blas_dep = cc.find_library('blas', required: true)
   endif
 else
-  blas = dependency(blas_opt, required: true)
+  blas_dep = dependency(blas_opt, required: true)
 endif
 
 if lapack_opt == 'auto'
-  lapack = dependency('lapack', required: false)
-  if not lapack.found()
-    lapack = blas
+  # LAPACK often bundled with BLAS
+  lapack_dep = dependency('lapack', required: false)
+  if not lapack_dep.found() and host_machine.system() == 'darwin'
+    # Accelerate includes LAPACK
+    lapack_dep = dependency('Accelerate', required: false)
+  endif
+  if not lapack_dep.found()
+    lapack_dep = cc.find_library('lapack', required: true)
   endif
 else
-  lapack = dependency(lapack_opt, required: true)
+  lapack_dep = dependency(lapack_opt, required: true)
 endif
 
-if cc.has_function('scipy_dgemm_', dependencies: blas)
-  add_project_arguments('-DSLC_FC_SCIPY_OPENBLAS', language: 'c')
-elif cc.has_function('dgemm_', dependencies: blas)
-  add_project_arguments('-DSLC_FC_LOWER_US', language: 'c')
-elif cc.has_function('dgemm', dependencies: blas)
-  add_project_arguments('-DSLC_FC_LOWER', language: 'c')
+# Detect BLAS/LAPACK symbol naming convention
+blas_lapack_deps = [blas_dep, lapack_dep]
+
+# Try lowercase with underscore (most common: gfortran)
+if cc.has_function('dgemm_', dependencies: blas_lapack_deps)
+  fc_defines = ['-DSLC_FC_LOWER_US']
+  message('BLAS/LAPACK uses lowercase with underscore: dgemm_')
+# Try lowercase only (some compilers)
+elif cc.has_function('dgemm', dependencies: blas_lapack_deps)
+  fc_defines = ['-DSLC_FC_LOWER']
+  message('BLAS/LAPACK uses lowercase: dgemm')
+# Try uppercase (old style)
+elif cc.has_function('DGEMM', dependencies: blas_lapack_deps)
+  fc_defines = ['-DSLC_FC_UPPER']
+  message('BLAS/LAPACK uses uppercase: DGEMM')
 else
-  add_project_arguments('-DSLC_FC_LOWER_US', language: 'c')
+  # Default to lowercase with underscore
+  fc_defines = ['-DSLC_FC_LOWER_US']
+  warning('Could not detect BLAS/LAPACK naming convention, defaulting to dgemm_')
 endif
 
+# ILP64 support
+if get_option('ilp64')
+  fc_defines += ['-DSLICOT_ILP64']
+  message('Using 64-bit integers (ILP64)')
+endif
+
+# Version defines
+fc_defines += [
+  '-DSLICOT_VERSION_MAJOR=0',
+  '-DSLICOT_VERSION_MINOR=1',
+  '-DSLICOT_VERSION_PATCH=0',
+]
+
+# Include directories
 inc = include_directories('include')
+
+# Build the library
 subdir('src')
+
+# Python bindings
 subdir('python')
+
+# Benchmarks
 subdir('benchmarks')
