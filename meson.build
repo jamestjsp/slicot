@@ -15,11 +15,18 @@ cc = meson.get_compiler('c')
 blas_opt = get_option('blas')
 lapack_opt = get_option('lapack')
 
+blas_is_openblas = false
+
 if blas_opt == 'auto'
-  # Try multiple BLAS implementations in order
   blas_dep = dependency('openblas', required: false)
+  if blas_dep.found()
+    blas_is_openblas = true
+  endif
   if not blas_dep.found()
     blas_dep = dependency('scipy-openblas', required: false)
+    if blas_dep.found()
+      blas_is_openblas = true
+    endif
   endif
   if not blas_dep.found()
     blas_dep = dependency('blas', required: false)
@@ -28,7 +35,6 @@ if blas_opt == 'auto'
     blas_dep = dependency('Accelerate', required: false)
   endif
   if not blas_dep.found()
-    # Final fallback: try to find BLAS library directly
     blas_dep = cc.find_library('blas', required: true)
   endif
 else
@@ -41,13 +47,9 @@ if lapack_opt == 'auto'
     lapack_dep = dependency('Accelerate', required: false)
   endif
   if not lapack_dep.found()
-    # Check if BLAS bundles LAPACK (e.g., OpenBLAS) BEFORE trying system liblapack.
-    # On musllinux, system liblapack depends on system openblas which conflicts
-    # with scipy-openblas32 at link time. Test all naming conventions since
-    # convention detection hasn't run yet.
-    if cc.has_function('dgesv_', dependencies: [blas_dep]) or cc.has_function('dgesv', dependencies: [blas_dep]) or cc.has_function('DGESV', dependencies: [blas_dep])
+    if blas_is_openblas
       lapack_dep = blas_dep
-      message('LAPACK bundled in BLAS library')
+      message('LAPACK bundled in OpenBLAS')
     else
       lapack_dep = cc.find_library('lapack', required: true)
     endif
@@ -59,20 +61,19 @@ endif
 # Detect BLAS/LAPACK symbol naming convention
 blas_lapack_deps = [blas_dep, lapack_dep]
 
-# Try lowercase with underscore (most common: gfortran)
-if cc.has_function('dgemm_', dependencies: blas_lapack_deps)
+if cc.has_function('scipy_dgemm_', dependencies: blas_lapack_deps)
+  fc_defines = ['-DSLC_FC_SCIPY_OPENBLAS']
+  message('BLAS/LAPACK uses scipy-openblas32 prefix: scipy_dgemm_')
+elif cc.has_function('dgemm_', dependencies: blas_lapack_deps)
   fc_defines = ['-DSLC_FC_LOWER_US']
   message('BLAS/LAPACK uses lowercase with underscore: dgemm_')
-# Try lowercase only (some compilers)
 elif cc.has_function('dgemm', dependencies: blas_lapack_deps)
   fc_defines = ['-DSLC_FC_LOWER']
   message('BLAS/LAPACK uses lowercase: dgemm')
-# Try uppercase (old style)
 elif cc.has_function('DGEMM', dependencies: blas_lapack_deps)
   fc_defines = ['-DSLC_FC_UPPER']
   message('BLAS/LAPACK uses uppercase: DGEMM')
 else
-  # Default to lowercase with underscore
   fc_defines = ['-DSLC_FC_LOWER_US']
   warning('Could not detect BLAS/LAPACK naming convention, defaulting to dgemm_')
 endif
