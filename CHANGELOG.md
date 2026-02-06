@@ -2,14 +2,24 @@
 
 ## [1.0.13] - 2026-02-05
 
+### Added
+
+- sb02rd: condition estimation via SB02QD/SB02SD
+- C11 vs Fortran77 benchmark infrastructure
+- `scripts/bump_version.py` for atomic version updates with drift detection
+
 ### Changed
 
+- Migrated build system to uv
 - Single source of truth for package version — reduced from 5 manual touch points to 2 (`pyproject.toml` + `meson.build` line 2), with `__init__.py` derived via `importlib.metadata`, `slicot_config.h` generated via meson `configure_file()`, and version macros parsed from `meson.project_version()`
-- Added `scripts/bump_version.py` for atomic version updates with drift detection
+- Python version requirement updated to 3.11+
 
 ### Fixed
 
+- Buffer overflows in 7 routines causing parallel test crashes
 - Standalone `meson setup build` broken by `include_directories()` rejecting absolute numpy paths
+- CI gaps after build system migration to uv
+- test_mb03rd: replaced `scipy.linalg.solve` with numpy
 
 ## [1.0.12] - 2025-02-01
 
