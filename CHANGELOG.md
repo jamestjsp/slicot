@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.0.14] - 2026-02-07
+
+### Fixed
+
+- sg03bx: E-standardization bugs — AS(2,2) typo and missing B rotation (upstream [SLICOT-Reference#39](https://github.com/SLICOT/SLICOT-Reference/issues/39))
+- sg03bu/bv/bw: Lyapunov solver indexing and DSCAL pointer fixes
+- mb04hd: remove unnecessary bool cast
+- py_mb04: calloc→PyMem_Calloc for ASAN compatibility
+- mb04rd: Linux OpenBLAS crash resolved — skip marker removed
+
+### Added
+
+- Expanded test coverage across 70 files (AB/AG/IB/MB/MC/MD/SB/SG/TB families)
+- Residual verification tests for sg03bx
+- User guide restructured around python-control workflows, added llms.txt
+
 ## [1.0.13] - 2026-02-05
 
 ### Added
