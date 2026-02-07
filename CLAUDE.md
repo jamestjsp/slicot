@@ -11,6 +11,7 @@ C11 translation of SLICOT (Subroutine Library In Control Theory) from Fortran77.
 ```bash
 # Setup (one-time)
 uv venv && uv pip install ".[test]"
+meson setup build --buildtype=debug  # generates compile_commands.json for clangd
 
 # Development (build + install + test)
 uv pip install . && .venv/bin/pytest tests/python/test_ROUTINE.py -v

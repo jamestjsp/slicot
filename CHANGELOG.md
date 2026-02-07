@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.15] - 2026-02-07
+
+### Added
+
+- Complete 11 C translations from stubs: ab09iy, ab13dd, ab13hd, mb01uy, mb01vd, mb02pd, mb03bd, mb03xp, mb03yd, mb04pb, mb04rb, mb04tb (+5.5k lines)
+- mb04pb test with expanded coverage
+- LSP configs (.clangd, pyrightconfig.json)
+
+### Fixed
+
+- Compiler warnings eliminated across 141 files (964 → 0)
+- ab13hd workspace query in Python wrapper
+
 ## [1.0.14] - 2026-02-07
 
 ### Fixed
