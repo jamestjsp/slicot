@@ -675,10 +675,11 @@ wheels = [
 
 [[package]]
 name = "slicot"
-version = "1.0.13"
+version = "1.0.15"
 source = { editable = "." }
 dependencies = [
     { name = "numpy" },
+    { name = "pytest-xdist" },
 ]
 
 [package.optional-dependencies]
@@ -699,6 +700,7 @@ requires-dist = [
     { name = "numpy", specifier = ">=2.0" },
     { name = "pytest", marker = "extra == 'test'", specifier = ">=7.0.0" },
     { name = "pytest-rerunfailures", marker = "extra == 'test'", specifier = ">=14.0" },
+    { name = "pytest-xdist", specifier = ">=3.8.0" },
     { name = "pytest-xdist", marker = "extra == 'test'", specifier = ">=3.0.0" },
     { name = "scipy", marker = "extra == 'dev'", specifier = ">=1.7.0" },
     { name = "slycot", marker = "extra == 'dev'", specifier = ">=0.6.0" },
