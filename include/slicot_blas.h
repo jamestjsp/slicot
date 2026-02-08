@@ -9,6 +9,7 @@
 
 #include "slicot_types.h"
 #include <stdbool.h>
+#include <string.h>
 
 /**
  * @file slicot_blas.h
@@ -904,7 +905,14 @@ void SLC_FC_FUNC(dormrz, DORMRZ)(const char* side, const char* trans,
                                   int* info);
 
 int SLC_FC_FUNC(ilaenv, ILAENV)(const int* ispec, const char* name, const char* opts,
-                                const int* n1, const int* n2, const int* n3, const int* n4);
+                                const int* n1, const int* n2, const int* n3, const int* n4,
+                                int name_len, int opts_len);
+
+static inline int slc_ilaenv(const int* ispec, const char* name, const char* opts,
+                              const int* n1, const int* n2, const int* n3, const int* n4) {
+    return SLC_FC_FUNC(ilaenv, ILAENV)(ispec, name, opts, n1, n2, n3, n4,
+                                        (int)strlen(name), (int)strlen(opts));
+}
 
 void SLC_FC_FUNC(dgeqlf, DGEQLF)(const int* m, const int* n, f64* a, const int* lda,
                                   f64* tau, f64* work, const int* lwork, int* info);
@@ -1191,7 +1199,7 @@ void SLC_FC_FUNC(dlasrt, DLASRT)(const char* id, const int* n, f64* d, int* info
 #define SLC_DGELSY   SLC_FC_FUNC(dgelsy, DGELSY)
 #define SLC_DTZRZF   SLC_FC_FUNC(dtzrzf, DTZRZF)
 #define SLC_DORMRZ   SLC_FC_FUNC(dormrz, DORMRZ)
-#define SLC_ILAENV   SLC_FC_FUNC(ilaenv, ILAENV)
+#define SLC_ILAENV   slc_ilaenv
 #define SLC_DGEQLF   SLC_FC_FUNC(dgeqlf, DGEQLF)
 #define SLC_DORMQL   SLC_FC_FUNC(dormql, DORMQL)
 #define SLC_DTRCON   SLC_FC_FUNC(dtrcon, DTRCON)
