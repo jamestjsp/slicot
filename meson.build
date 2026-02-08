@@ -121,5 +121,7 @@ subdir('src')
 # Python bindings
 subdir('python')
 
-# Benchmarks
-subdir('benchmarks')
+# Benchmarks (skip for wheel builds)
+if get_option('build_benchmarks')
+  subdir('benchmarks')
+endif

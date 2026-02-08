@@ -6,3 +6,6 @@ option('lapack', type: 'string', value: 'auto',
 
 option('ilp64', type: 'boolean', value: false,
   description: 'Use 64-bit integers for BLAS/LAPACK')
+
+option('build_benchmarks', type: 'boolean', value: true,
+  description: 'Build benchmark executables (disable for wheel builds)')

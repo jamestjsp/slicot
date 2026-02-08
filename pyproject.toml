@@ -9,7 +9,9 @@ description = "Python bindings for SLICOT C library (control theory)"
 readme = "README.md"
 license = "BSD-3-Clause"
 requires-python = ">=3.11"
-dependencies = ["numpy>=2.0"]
+dependencies = [
+    "numpy>=2.0",
+]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
@@ -38,7 +40,7 @@ dev = [
 ]
 
 [tool.meson-python.args]
-setup = []
+setup = ['-Dbuild_benchmarks=false']
 compile = []
 install = ['--skip-subprojects']
 
