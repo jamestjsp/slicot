@@ -6,7 +6,11 @@ on:
   workflow_dispatch:
     inputs:
       skip_tests:
-        description: "Skip tests"
+        description: "Skip tests (tag pushes already tested on main)"
+        type: boolean
+        default: true
+      skip_slow_platforms:
+        description: "Skip QEMU aarch64 builds"
         type: boolean
         default: false
 
@@ -14,16 +18,101 @@ jobs:
   test:
     if: ${{ !inputs.skip_tests }}
     uses: ./.github/workflows/test.yml
+    with:
+      run_asan: true
 
-  build:
+  build-fast:
+    name: Build ${{ matrix.platform }}
     needs: [test]
-    if: always() && (needs.test.result == 'success' || inputs.skip_tests)
-    uses: ./.github/workflows/build.yml
+    if: always() && (needs.test.result == 'success' || needs.test.result == 'skipped')
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: manylinux_x86_64
+            os: ubuntu-latest
+            cibw_archs: x86_64
+            cibw_build: "cp311-manylinux* cp312-manylinux* cp313-manylinux* cp314-manylinux*"
+          - platform: musllinux_x86_64
+            os: ubuntu-latest
+            cibw_archs: x86_64
+            cibw_build: "cp311-musllinux* cp312-musllinux* cp313-musllinux* cp314-musllinux*"
+          - platform: macos_arm64
+            os: macos-14
+            cibw_archs: arm64
+            cibw_build: "cp311-* cp312-* cp313-* cp314-*"
+          - platform: windows_x86_64
+            os: windows-latest
+            cibw_archs: AMD64
+            cibw_build: "cp311-* cp312-* cp313-* cp314-*"
 
-  publish-pypi:
-    name: Publish to PyPI
-    needs: [build]
-    if: always() && needs.build.result == 'success'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v3.3.1
+        env:
+          CIBW_ARCHS: ${{ matrix.cibw_archs }}
+          CIBW_BUILD: ${{ matrix.cibw_build }}
+          CIBW_SKIP: "pp* *-win32 *-manylinux_i686 *_universal2 *t-*"
+          CIBW_MANYLINUX_X86_64_IMAGE: manylinux_2_28
+          CIBW_MUSLLINUX_X86_64_IMAGE: musllinux_1_2
+          CIBW_BEFORE_ALL_LINUX: (dnf install -y openblas-devel 2>/dev/null || yum install -y openblas-devel 2>/dev/null || apk add openblas-dev 2>/dev/null) || true
+          CIBW_BEFORE_ALL_WINDOWS: choco install -y pkgconfiglite --allow-empty-checksums
+          CIBW_ENVIRONMENT_LINUX: PKG_CONFIG_PATH=/tmp/openblas
+          CIBW_ENVIRONMENT_MACOS: MACOSX_DEPLOYMENT_TARGET=11.0 PKG_CONFIG_PATH=/tmp/openblas
+          CIBW_BEFORE_BUILD_LINUX: pip install scipy-openblas32 && mkdir -p /tmp/openblas && python -c "import scipy_openblas32 as sc; open('/tmp/openblas/openblas.pc','w').write(sc.get_pkg_config())" || true
+          CIBW_BEFORE_BUILD_MACOS: pip install scipy-openblas32 && mkdir -p /tmp/openblas && python -c "import scipy_openblas32 as sc; open('/tmp/openblas/openblas.pc','w').write(sc.get_pkg_config())"
+          CIBW_BEFORE_BUILD_WINDOWS: pip install scipy-openblas32 delvewheel && (if not exist C:\openblas mkdir C:\openblas) && python -c "import scipy_openblas32 as sc; open('C:/openblas/openblas.pc','w').write(sc.get_pkg_config()); open('C:/openblas/libdir.txt','w').write(sc.get_lib_dir())"
+          CIBW_ENVIRONMENT_WINDOWS: PKG_CONFIG_PATH=C:/openblas
+          CIBW_REPAIR_WHEEL_COMMAND_WINDOWS: >-
+            powershell -Command "$libdir = Get-Content 'C:/openblas/libdir.txt'; delvewheel repair -w {dest_dir} {wheel} --add-path $libdir"
+          CIBW_TEST_REQUIRES: pytest pytest-xdist pytest-timeout scipy
+          CIBW_TEST_COMMAND: pytest {project}/tests/python/test_ab01md.py -v --timeout=60
+          CIBW_TEST_SKIP: "*-manylinux* *-musllinux*"
+          CIBW_TEST_COMMAND_WINDOWS: pytest {project}/tests/python/test_ab01md.py {project}/tests/python/test_ma01bz.py -v --timeout=60
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wheels-fast-${{ matrix.platform }}
+          path: ./wheelhouse/*.whl
+
+  build-sdist:
+    name: Build sdist
+    needs: [test]
+    if: always() && (needs.test.result == 'success' || needs.test.result == 'skipped')
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Install deps
+        run: |
+          uv venv
+          uv pip install scipy-openblas32 build
+          mkdir -p /tmp/openblas
+          .venv/bin/python -c "import scipy_openblas32 as sc; open('/tmp/openblas/openblas.pc','w').write(sc.get_pkg_config())"
+
+      - name: Build sdist
+        run: |
+          PKG_CONFIG_PATH=/tmp/openblas .venv/bin/python -m build --sdist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sdist
+          path: dist/*.tar.gz
+
+  publish-fast:
+    name: Publish fast wheels
+    needs: [build-fast, build-sdist]
     runs-on: ubuntu-latest
     environment:
       name: pypi
@@ -34,7 +123,82 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: wheels
           path: dist
+          pattern: wheels-fast-*
+          merge-multiple: true
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: sdist
+          path: dist
+
+      - uses: pypa/gh-action-pypi-publish@release/v1
+
+  build-slow:
+    name: Build ${{ matrix.platform }}
+    needs: [test]
+    if: >-
+      always() &&
+      (needs.test.result == 'success' || needs.test.result == 'skipped') &&
+      !inputs.skip_slow_platforms
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: manylinux_aarch64
+            cibw_archs: aarch64
+            cibw_build: "cp311-manylinux* cp312-manylinux* cp313-manylinux* cp314-manylinux*"
+          - platform: musllinux_aarch64
+            cibw_archs: aarch64
+            cibw_build: "cp311-musllinux* cp312-musllinux* cp313-musllinux* cp314-musllinux*"
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+        with:
+          platforms: arm64
+
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v3.3.1
+        env:
+          CIBW_ARCHS: ${{ matrix.cibw_archs }}
+          CIBW_BUILD: ${{ matrix.cibw_build }}
+          CIBW_SKIP: "pp* *-manylinux_i686 *_universal2 *t-*"
+          CIBW_MANYLINUX_AARCH64_IMAGE: manylinux_2_28
+          CIBW_MUSLLINUX_AARCH64_IMAGE: musllinux_1_2
+          CIBW_BEFORE_ALL_LINUX: (dnf install -y openblas-devel 2>/dev/null || yum install -y openblas-devel 2>/dev/null || apk add openblas-dev 2>/dev/null) || true
+          CIBW_ENVIRONMENT_LINUX: PKG_CONFIG_PATH=/tmp/openblas
+          CIBW_BEFORE_BUILD_LINUX: pip install scipy-openblas32 && mkdir -p /tmp/openblas && python -c "import scipy_openblas32 as sc; open('/tmp/openblas/openblas.pc','w').write(sc.get_pkg_config())" || true
+          CIBW_TEST_REQUIRES: pytest pytest-xdist pytest-timeout scipy
+          CIBW_TEST_COMMAND: pytest {project}/tests/python/test_ab01md.py -v --timeout=60
+          CIBW_TEST_SKIP: "*-manylinux* *-musllinux*"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wheels-slow-${{ matrix.platform }}
+          path: ./wheelhouse/*.whl
+
+  publish-slow:
+    name: Publish slow wheels
+    needs: [build-slow]
+    if: always() && needs.build-slow.result == 'success'
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/slicot/
+    permissions:
+      id-token: write
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          pattern: wheels-slow-*
+          merge-multiple: true
 
       - uses: pypa/gh-action-pypi-publish@release/v1
