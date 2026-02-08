@@ -1,57 +1,46 @@
-# SLICOT for Python
+# slicot.c
 
-C11 translation of [SLICOT](https://github.com/SLICOT/SLICOT-Reference) (Subroutine Library In Control Theory) with Python bindings.
+C11 translation of SLICOT (Subroutine Library In Control Theory) from Fortran77.
 
-**552/627 routines translated (88%)** — Riccati/Lyapunov solvers, system identification, model reduction, and more.
+**Based on:** [SLICOT-Reference](https://github.com/SLICOT/SLICOT-Reference) (BSD 3-Clause License)
+**License:** BSD 3-Clause (see [LICENSE](LICENSE))
 
-## Install
+## Quick Start
 
 ```bash
-pip install slicot
+# Install with uv
+uv pip install ".[test]"
+
+# Run tests
+.venv/bin/pytest tests/python/ -v
 ```
 
-## Usage
+## Translation Status
 
-```python
-import numpy as np
-import slicot
+**552/627 routines translated (88%)**
 
-# Continuous-time Algebraic Riccati Equation (CARE)
-# A'X + XA - XBR^{-1}B'X + Q = 0
-A = np.array([[0, 1], [-2, -3]], dtype=np.float64, order='F')
-B = np.array([[0], [1]], dtype=np.float64, order='F')
-Q = np.array([[1, 0], [0, 2]], dtype=np.float64, order='F')
-R = np.array([[1]], dtype=np.float64, order='F')
-G = B @ np.linalg.solve(R, B.T)
+| Family | Translated |
+|--------|------------|
+| AB | 55 |
+| MB | 229 |
+| SB | 113 |
+| MA | 37 |
+| MC | 19 |
+| IB | 16 |
+| Others | 83 |
 
-X, scale, sep, ferr, _, _ = slicot.sb02md(
-    'C', 'N', 'U', 'N', A, G, Q
-)
-```
+513 test files covering translated routines.
 
 ## Features
 
-- **Column-major storage** — Fortran-compatible, works with `order='F'` NumPy arrays
-- **552 routines** — Riccati, Lyapunov, Sylvester solvers; system identification (MOESP, N4SID); model reduction (balanced truncation, Hankel norm); eigenvalue assignment; H-infinity norm
-- **BLAS/LAPACK backend** — Links against system OpenBLAS or scipy-openblas32
+- Column-major storage (Fortran-compatible)
+- Python bindings (NumPy arrays)
+- TDD workflow (RED→GREEN→REFACTOR)
 
-## Routine Families
+## Docs
 
-| Family | Count | Description |
-|--------|-------|-------------|
-| AB | 55 | Analysis (controllability, observability, norms) |
-| SB | 113 | Synthesis (Riccati, Lyapunov, pole placement) |
-| MB | 229 | Matrix operations (decompositions, transformations) |
-| MA | 37 | Matrix analysis (norms, condition numbers) |
-| IB | 16 | System identification (MOESP, N4SID) |
-| Others | 83 | Benchmarks, data generation, transforms |
+- **[CLAUDE.md](CLAUDE.md)** - Development workflow & translation patterns
 
-## License
+## Contributions
 
-BSD 3-Clause — based on [SLICOT-Reference](https://github.com/SLICOT/SLICOT-Reference)
-
-## Links
-
-- [Source Code](https://github.com/jamestjsp/slicot)
-- [SLICOT Documentation](http://slicot.org/objects/software/shared/doc/SLICOT-Reference.pdf)
-- [Original SLICOT-Reference](https://github.com/SLICOT/SLICOT-Reference)
+I don't accept direct contributions. Issues and PRs are welcome for illustration, but won't be merged directly. An AI agent reviews submissions and independently decides whether/how to address them. Bug reports appreciated.
