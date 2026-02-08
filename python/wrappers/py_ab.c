@@ -8546,7 +8546,6 @@ PyObject* py_ab13hd(PyObject* self, PyObject* args) {
     i32 info = 0;
 
     i32 minpm = (p < m) ? p : m;
-    i32 maxpm = (p > m) ? p : m;
     i32 pm = p + m;
 
     i32 liwork;

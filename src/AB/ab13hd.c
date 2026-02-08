@@ -109,7 +109,7 @@ void ab13hd(const char *dico, const char *jobe, const char *equil,
 
         i32 mincwk = 1, maxcwk = 1, minwrk, maxwrk;
         i32 iu = 0, ie = 0, ib_off, ir_off, ibt_off;
-        bool usepen, ncmpre = false, nsrt;
+        bool nsrt;
         i32 pm = p + m;
         i32 tn = 2 * n;
         i32 rnke = ranke;
@@ -118,14 +118,11 @@ void ab13hd(const char *dico, const char *jobe, const char *equil,
             minwrk = 1;
             maxwrk = 1;
         } else {
-            usepen = withe || discr;
             i32 i0, mnwsvd, mnw13x, odwsvd = 0, odw13x = 0;
 
             if (cmpre) {
                 cmpre = (ranke < n);
-                ncmpre = !cmpre;
             } else {
-                ncmpre = false;
                 rnke = n;
             }
 
@@ -487,7 +484,6 @@ void ab13hd(const char *dico, const char *jobe, const char *equil,
             maxwrk = 1;
         }
     } else {
-        bool wnrmd = withd;
         oz = ZERO;
         gammal = ZERO;
         maxwrk = 1;
@@ -760,7 +756,6 @@ void ab13hd(const char *dico, const char *jobe, const char *equil,
                 *info = 1;
                 return;
             }
-            i32 ninf1 = ninf + 1;
             SLC_DGECON("1", &ninf, &dwork[ias_l], &ninf, &tmp, &rcond,
                        &dwork[iwrk], &iwork[ninf], &ierr);
             if (rcond <= (f64)ninf * teps) {
@@ -934,7 +929,6 @@ void ab13hd(const char *dico, const char *jobe, const char *equil,
                 if (sdim != sdim1) { *info = 6; return; }
                 maxwrk = max_i32((i32)dwork[iwrk] + iwrk, maxwrk);
 
-                f64 dum = ZERO;
                 i32 cnt = *nr - sdim;
                 for (i32 i = 0; i < cnt; i++)
                     dwork[ibt + sdim + i] = ZERO;
@@ -1370,8 +1364,7 @@ label_130:
                        &dwork[ie], n, &dwork[ib], n, &dwork[ic_off], p,
                        d, ldd, iwork, &dwork[iwrk], ldwork - iwrk,
                        zwork, lzwork, &ierr);
-        i32 mxcw = (i32)creal(zwork[0]);
-        // maxcwk not tracked after workspace query
+        (void)zwork[0];
     } else {
         i32 ibs_l = ias + nr2;
         id_off = ibs_l + (*nr) * m;
